@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./assets/scss/varaibles";
+@import "./assets/scss/mixins";
+@import "./assets/scss/header";
+@import "./assets/scss/footer";
+
+body,
+html {
+    // background-color: $background;
+    // font-family: $primary-font;
+    // font-size: $medium;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        // font-family: $primary-font;
+        font-weight: 500;
+        box-sizing: border-box;
+        // font-size: $normal;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        line-height: normal;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+b,
+strong {
+    margin: 0;
+}
+
+a,
+button {
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+input,
+select,
+button,
+textarea {
+    box-shadow: none;
+
+    &:focus,
+    &:active {
+        outline: none !important;
+    }
+}
+
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
