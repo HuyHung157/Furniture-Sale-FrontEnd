@@ -8,24 +8,9 @@
     box-shadow: 0px 4px 24px rgba(38, 38, 38, 0.05);
 }
 
-.header ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-    background-color: #fff;
-}
-
-.header li a {
-    display: block;
+.header li {
     padding: 20px 20px;
     border-right: 1px solid #f4f4f4;
-    text-decoration: none;
-}
-
-.header li a:hover,
-.header .menu-btn:hover {
-    background-color: #f4f4f4;
 }
 
 .header .logo {
@@ -33,7 +18,6 @@
     float: left;
     font-size: 2em;
     padding: 10px 20px;
-    text-decoration: none;
 }
 
 /* menu */
@@ -116,7 +100,7 @@
     .header li {
         float: left;
     }
-    .header li a {
+    .header li {
         padding: 20px 30px;
     }
     .header .menu {
