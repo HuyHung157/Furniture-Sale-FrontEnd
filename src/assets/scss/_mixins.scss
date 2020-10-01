@@ -1,0 +1,51 @@
+@mixin flex($justify-content: center, $align-items: center, $flex-direction: row) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+
+$XS: 375px;
+$SM: 768px;
+$MD: 1024px;
+$XL: 1170px;
+
+// media queries
+@mixin Responsive($canvas) {
+    @if $canvas == XL {
+        @media only screen and (max-width: $XL) {
+            @content;
+        }
+    } @else if $canvas == MD {
+        @media only screen and (max-width: $MD) {
+            @content;
+        }
+    } @else if $canvas == SM {
+        @media only screen and (max-width: $SM) {
+            @content;
+        }
+    } @else if $canvas == XS {
+        @media only screen and (max-width: $XS) {
+            @content;
+        }
+    }
+}
+
+@mixin line($color: $primary, $height: 1px, $width: 100%) {
+    background: $color;
+    height: $height;
+    width: $width;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+@mixin font($font-weight: normal, $font-size: $normal, $line-height: 20px, $color: black) {
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $color;
+}
