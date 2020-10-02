@@ -1,0 +1,12 @@
+header-admin {
+    height: 60px;
+    display: block;
+}
+// mat-sidenav-container {
+//     height: calc(100vh - 60px);
+// }
+.main_content {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: #efefef;
+}

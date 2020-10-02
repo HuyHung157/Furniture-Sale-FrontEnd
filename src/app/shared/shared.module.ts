@@ -12,6 +12,11 @@ import { HttpClient } from '@angular/common/http';
     CommonComponentModule,
     // HttpClient,
     MaterialModule
+  ],
+  exports: [
+    CommonComponentModule,
+    // HttpClient,
+    MaterialModule
   ]
 })
 export class SharedModule { }

@@ -12,7 +12,6 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     SharedModule,
-    MaterialModule,
     HomePageRoutingModule,
   ]
 })

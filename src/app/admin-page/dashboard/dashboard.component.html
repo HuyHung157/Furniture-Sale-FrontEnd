@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div>
+    <header-admin [sidenav]="leftSidenav"></header-admin>
+
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #leftSidenav mode="side" opened>
+            <side-nav-admin></side-nav-admin>
+        </mat-sidenav>
+        <mat-sidenav-content [@onMainContentChange]="onSideNavChange ? 'open': 'close'">
+            <div class="main_content">
+                <div style="padding: 20px">
+                    <h1>Hello</h1>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</div>
