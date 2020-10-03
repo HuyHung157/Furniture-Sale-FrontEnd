@@ -1,12 +1,21 @@
-header-admin {
-    height: 60px;
-    display: block;
-}
-// mat-sidenav-container {
-//     height: calc(100vh - 60px);
-// }
-.main_content {
-    width: 100%;
-    height: calc(100vh - 60px);
-    background: #efefef;
+@import "../../../assets/scss/variables";
+
+.dashboard {
+    color: $black;
+    font-family: $primary-font;
+
+    header-admin {
+        height: 60px;
+        display: block;
+        ::ng-deep.header {
+            background-color: $gold;
+        }
+    }
+
+    .main_content {
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: $primary-background;
+        color: $black;
+    }
 }

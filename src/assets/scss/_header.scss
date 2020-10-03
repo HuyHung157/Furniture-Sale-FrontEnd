@@ -1,3 +1,5 @@
+@import "./variables";
+
 /* header */
 
 .header {
@@ -14,7 +16,7 @@
 }
 
 .header li a.active {
-    color: brown;
+    color: $primary;
 }
 
 .header .logo {

@@ -1,15 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "./assets/scss/varaibles";
-@import "./assets/scss/mixins";
+@import "./assets/scss/variables";
+@import "./assets/scss/mixin";
 @import "./assets/scss/header";
 @import "./assets/scss/footer";
 
 body,
-html {
-    // background-color: $background;
-    // font-family: $primary-font;
-    // font-size: $medium;
+html,
+.client {
+    background-color: $primary-background;
+    font-family: $primary-font;
+    font-size: $medium;
+    color: $black;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 
@@ -17,18 +19,16 @@ html {
 
     margin: 0;
     padding: 0;
-
-    * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        // font-family: $primary-font;
-        font-weight: 500;
-        box-sizing: border-box;
-        // font-size: $normal;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        line-height: normal;
-    }
+}
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: $normal;
+    font-weight: 500;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    line-height: normal;
 }
 
 h1,
@@ -71,6 +71,3 @@ li {
     margin: 0;
     padding: 0;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
