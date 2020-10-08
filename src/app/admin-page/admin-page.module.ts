@@ -5,12 +5,14 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminPageRoutingModule } from './admin-page-routing.module';
 import { HeaderComponent } from './dashboard/components/header/header.component';
 import { SideNavComponent } from './dashboard/components/side-nav/side-nav.component';
+import { AdminPageComponent } from './admin-page.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     SideNavComponent,
-    HeaderComponent
+    HeaderComponent,
+    AdminPageComponent
   ],
   imports: [
     CommonModule,

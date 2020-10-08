@@ -13,11 +13,10 @@ export class DashboardComponent implements OnInit {
   name = 'Angular';
   public onSideNavChange: boolean;
 
-  constructor(private _sidenavService: SidenavService) {
-    this._sidenavService.sideNavState$.subscribe(res => {
-      console.log(res)
+  constructor(private sideNavService: SidenavService) {
+    this.sideNavService.sideNavState$.subscribe(res => {
       this.onSideNavChange = res;
-    })
+    });
   }
 
   ngOnInit() {
