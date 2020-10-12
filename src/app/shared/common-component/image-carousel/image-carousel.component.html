@@ -1,1 +1,7 @@
-<p>image-carousel works!</p>
+<!-- You can now use your library component in app.component.html -->
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
+    [ngClass]="isBanner ? 'banner': ''">
+    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+        <img src="https://picsum.photos/id/{{slide}}/1000/500.jpg" alt="" width="100%">
+    </div>
+</ngx-slick-carousel>

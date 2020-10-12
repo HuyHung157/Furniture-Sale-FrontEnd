@@ -8,6 +8,7 @@
     top: 0;
     width: 100%;
     box-shadow: 0px 4px 24px rgba(38, 38, 38, 0.05);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .header li {
@@ -29,9 +30,10 @@
 /* menu */
 
 .header .menu {
-    clear: both;
-    max-height: 0;
+    max-height: 0px;
     transition: max-height 0.2s ease-out;
+    clear: both;
+    overflow: hidden;
 }
 
 /* menu icon */
@@ -80,7 +82,7 @@
 }
 
 .header .menu-btn:checked ~ .menu {
-    max-height: 240px;
+    max-height: 250px;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {

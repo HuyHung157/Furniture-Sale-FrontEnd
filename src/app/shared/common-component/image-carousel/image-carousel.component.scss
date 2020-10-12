@@ -1,0 +1,78 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixin";
+
+.slick-slider {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+    position: relative;
+    &.banner {
+        width: 100%;
+        height: calc(100vh - 76px);
+        ::ng-deep .slick-list,
+        ::ng-deep .slick-track {
+            height: 100%;
+            img {
+                height: 100%;
+            }
+        }
+    }
+    ::ng-deep .btn-slide {
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background-color: transparent;
+        border: none;
+        &.next-list {
+            right: -50px;
+        }
+        &.pre-list {
+            left: -50px;
+        }
+        &.next-banner {
+            right: 0;
+        }
+        &.pre-banner {
+            left: 0;
+        }
+        &.slick-disabled {
+            visibility: hidden;
+        }
+        &:hover {
+            i {
+                color: red;
+            }
+        }
+        i {
+            color: black;
+            font-size: 50px;
+        }
+    }
+    ::ng-deep .slick-dots {
+        position: absolute;
+        bottom: 0;
+        li {
+            button {
+                &::before {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+@include Responsive(MD) {
+    .slick-slider {
+        &.banner {
+            height: fit-content;
+            ::ng-deep .slick-list,
+            ::ng-deep .slick-track {
+                height: 100%;
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

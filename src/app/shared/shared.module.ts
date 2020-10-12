@@ -5,7 +5,7 @@ import { CommonComponentModule } from './common-component/common-component.modul
 import { MaterialModule } from '../material/material.module';
 import { DataService } from './services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [],
@@ -15,13 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    SlickCarouselModule
   ],
   providers: [
     DataService
   ],
   exports: [
     CommonComponentModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class SharedModule { }

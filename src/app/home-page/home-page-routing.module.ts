@@ -11,7 +11,7 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         component: HomeComponent
       },
       {
@@ -24,8 +24,7 @@ const routes: Routes = [
       },
     ]
   },
-
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
