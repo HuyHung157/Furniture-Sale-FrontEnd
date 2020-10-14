@@ -1,0 +1,56 @@
+<div class="page__login">
+    <div class="page__login-container">
+        <form class="form__login" #formLogin="ngForm" (ngSubmit)="login(formLogin)">
+            <div class="form__container">
+                <a routerLink="/" class="login__brand">Thương hiệu</a>
+                <!-- <a routerLink="/"><img class="login_img" src="" alt="img_logo" />LOGO</a> -->
+                <div class="login__heading">
+                    <h1 class="login__headingText">Đăng nhập</h1>
+                </div>
+                <!-- UserName -->
+                <div class="input-field">
+                    <input class="input input__username" type="text" name="username" placeholder="Tài khoản"
+                        #username="ngModel" ngModel required />
+                    <i class="input_user fa fa-user"></i>
+                </div>
+                <ng-container *ngIf="username.errors && (username.dirty || username.touched)">
+                    <div *ngIf="username.errors.required" class="alert alert-danger">
+                        Vui lòng nhập tài khoản
+                    </div>
+                </ng-container>
+
+                <!-- Password -->
+                <div class="input-field">
+                    <input class="input input__password" [type]="inputTypePassword" name="password"
+                        placeholder="Mật khẩu" #password="ngModel" ngModel required #inputPass />
+                    <i (click)="changeType(inputPass.type)" class="input_password" [class]="iconPassword"></i>
+                </div>
+
+                <ng-container *ngIf="password.errors && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.required" class="alert alert-danger">
+                        Vui lòng nhập mật khẩu
+                    </div>
+                </ng-container>
+                <button class="btn__submit-login" type="submit">Sign in</button>
+                <a class="link__create_account" routerLink="/auth/sign-up">Sign up here !</a>
+                <!-- <div class="social__contact">
+                        <ul class="contact__list contact__items">
+                            <li class="contact__item google">
+                                <a href="mailto:contact.tntt.nvhb@gmail.com?subject=Support From Website">
+                                    <i class="fab fa-google"></i>
+                                    <span>Liên hệ qua Email</span>
+                                </a>
+                            </li>
+                            <li class="contact__item facebook">
+                                <a href="https://www.facebook.com/%C4%90O%C3%80N-THI%E1%BA%BEU-NHI-TH%C3%81NH-TH%E1%BB%82-Gx-N%E1%BB%AE-V%C6%AF%C6%A0NG-H%C3%92A-B%C3%8CNH-444468152576275/"
+                                    target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Liên hệ qua Fanpage</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div> -->
+            </div>
+        </form>
+    </div>
+</div>
