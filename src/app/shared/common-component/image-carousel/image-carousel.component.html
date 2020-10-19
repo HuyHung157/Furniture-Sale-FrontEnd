@@ -1,7 +1,35 @@
-<!-- You can now use your library component in app.component.html -->
-<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig"
-    [ngClass]="isBanner ? 'banner': ''">
-    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-        <img src="https://picsum.photos/id/{{slide}}/1000/500.jpg" alt="" width="100%">
+<ngx-slick-carousel class="carousel container" #slickModal="slick-carousel" [config]="slideConfig">
+
+    <div ngxSlickItem class="product__item" *ngFor="let product of listProduct">
+        <div class="product_info">
+            <div class="main">
+                <a [href]="product.link" [title]="product.name">
+                    <img class="product-img" src="https://picsum.photos/id/{{product}}/1000/500.jpg"
+                        [alt]="product.name">
+                </a>
+                <div class="group-label">
+                    <i class=""></i>
+                    <i class="i_ranking">Top 3</i>
+                    <i class="iconsprites_payment_0d">Trả góp 0% - Trả trước 0Đ</i>
+                    <i class="iconsprites_doubleprice"></i>
+                </div>
+            </div>
+            <a [href]="product.link" [title]="product.name">
+                <h3 class="product-name"> {{product.name}} </h3>
+            </a>
+            <div class="pro_description">
+                <strong class="price_sale line_throught"> {{product.price}}<sup>đ</sup> </strong>
+                <p class="more_sale" *ngIf="product?.sale">
+                    <span class="price_market"> {{product?.sale.price}}<sup>đ</sup> <label
+                            class="pro_percent">{{product?.sale.percent}}%</label> </span>
+                </p>
+                <ul class="list_gift" *ngIf="product?.gift">
+                    <li *ngFor="let gift of product.gift">
+                        <span> {{gift.label}} </span>
+                        <span *ngIf="gift?.price"> {{gift.price}}<sup>đ</sup> </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </ngx-slick-carousel>

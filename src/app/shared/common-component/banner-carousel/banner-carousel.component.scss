@@ -2,7 +2,7 @@
 @import "../../../../assets/scss/mixin";
 
 .slick-slider {
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-bottom: 30px;
   position: relative;
@@ -12,6 +12,7 @@
     ::ng-deep .slick-list,
     ::ng-deep .slick-track {
       height: 100%;
+      width: 100%;
       img {
         height: 100%;
       }
@@ -42,7 +43,7 @@
     }
     &:hover {
       i {
-        color: red;
+        color: $primary;
       }
     }
     i {
@@ -57,21 +58,6 @@
       button {
         &::before {
           font-size: 15px;
-        }
-      }
-    }
-  }
-}
-@include Responsive(MD) {
-  .slick-slider {
-    &.banner {
-      height: fit-content;
-      ::ng-deep .slick-list,
-      ::ng-deep .slick-track {
-        height: 100%;
-        width: 100%;
-        img {
-          height: 100%;
         }
       }
     }

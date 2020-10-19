@@ -5,6 +5,18 @@
 @import "./assets/scss/header";
 @import "./assets/scss/footer";
 
+$max-width: 1190px;
+
+@font-face {
+    font-family: futu;
+    src: url("./assets/fonts/UTMFUTURAEXTRA.eot");
+    src: url("./assets/fonts/UTMFUTURAEXTRA.eot?#iefix") format("embedded-opentype"),
+        url("./assets/fonts/UTMFUTURAEXTRA.woff2") format("woff2"),
+        url("./assets/fonts/UTMFUTURAEXTRA.woff") format("woff"),
+        url("./assets/fonts/UTMFUTURAEXTRA.ttf") format("truetype"),
+        url("./assets/fonts/UTMFUTURAEXTRA.svg#utm-impact") format("svg");
+}
+
 body,
 html,
 .client {
@@ -14,9 +26,7 @@ html,
     color: $black;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-
     width: 100%;
-
     margin: 0;
     padding: 0;
 }
@@ -67,4 +77,9 @@ li {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
 }

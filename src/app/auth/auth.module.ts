@@ -7,7 +7,6 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [SignInComponent, SignUpComponent],
   imports: [

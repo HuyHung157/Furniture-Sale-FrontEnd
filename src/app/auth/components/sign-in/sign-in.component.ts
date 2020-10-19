@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,8 +13,11 @@ export class SignInComponent implements OnInit {
 
   public iconPassword = 'fa fa-eye';
   public inputTypePassword = 'password';
+  public tooltipContent = 'Hiển thị mật khẩu';
 
-  constructor() { }
+  constructor(
+    private readonly router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -22,9 +26,11 @@ export class SignInComponent implements OnInit {
     if (inputType === 'password') {
       this.iconPassword = 'fa fa-eye-slash';
       this.inputTypePassword = 'text';
+      this.tooltipContent = 'Ẩn mật khẩu';
     } else {
       this.iconPassword = 'fa fa-eye';
       this.inputTypePassword = 'password';
+      this.tooltipContent = 'Hiển thị mật khẩu';
     }
   }
 
@@ -32,9 +38,7 @@ export class SignInComponent implements OnInit {
     if (formLogin.valid) {
       const value = formLogin.form.value;
       console.log(value);
-      const input = {
-
-      };
+      this.router.navigate(['dashboard']);
 
     } else {
       this.formLoginGroup.form.markAllAsTouched();

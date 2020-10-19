@@ -1,0 +1,22 @@
+@import "./variables";
+@import "./mixin";
+
+footer {
+  padding-bottom: 20px;
+  .footer-group {
+    .copyright {
+      margin: 0 auto;
+      text-align: center;
+      font-size: 30px;
+      a {
+        font-size: 30px;
+        font-weight: bold;
+        color: $black;
+        transition: 0.3s color ease-in-out;
+        &:hover {
+          color: $gold;
+        }
+      }
+    }
+  }
+}

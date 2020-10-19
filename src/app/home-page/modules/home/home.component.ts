@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public isBanner = true;
-  public slideTopSell = [50, 60, 80];
+  public slideTopSell = [50, 60, 80, 22, 16, 38, 90, 45, 23];
   public slideBanner = [22, 44, 12, 50];
+  public titleTopSale = 'bán chạy';
 
   constructor() { }
 

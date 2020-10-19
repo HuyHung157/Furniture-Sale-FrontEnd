@@ -1,0 +1,19 @@
+@import "../../../../assets/scss/variables";
+
+.list-product-carousel {
+  .title-group {
+    border-bottom: 5px solid $gold;
+    margin-bottom: 18px;
+    .title {
+      font-family: $secondary-font;
+      font-weight: bold;
+      font-size: 25px;
+      color: $gold;
+      text-transform: uppercase;
+      &.default {
+        color: gray;
+        margin-right: 5px;
+      }
+    }
+  }
+}

@@ -1,4 +1,7 @@
 <section class="list-product-carousel">
-    <h2 class="list-title">{{listTitle}}</h2>
-    <app-image-carousel [isBanner]="false"></app-image-carousel>
+    <h2 class="title-group container" *ngIf="listTitle">
+        <span class="title default">Danh sách</span>
+        <span class="title">{{listTitle}}</span>
+    </h2>
+    <app-image-carousel [listProduct]="listCarousel"></app-image-carousel>
 </section>

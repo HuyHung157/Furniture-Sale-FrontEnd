@@ -23,7 +23,8 @@
                 <div class="input-field">
                     <input class="input input__password" [type]="inputTypePassword" name="password"
                         placeholder="Mật khẩu" #password="ngModel" ngModel required #inputPass />
-                    <i (click)="changeType(inputPass.type)" class="input_password" [class]="iconPassword"></i>
+                    <i [matTooltip]="tooltipContent" (click)="changeType(inputPass.type)" class="input_password"
+                        [class]="iconPassword"></i>
                 </div>
 
                 <ng-container *ngIf="password.errors && (password.dirty || password.touched)">

@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListProductCarouselComponent implements OnInit {
   @Input() listTitle: string;
+  @Input() listCarousel;
 
   constructor() { }
 
