@@ -83,3 +83,21 @@ li {
     max-width: $max-width;
     margin: 0 auto;
 }
+
+// Mat table
+.mat-table {
+    width: 100%;
+    min-width: 768px;
+    border-collapse: collapse;
+    background-color: white;
+    .mat-cell,
+    .mat-header-cell {
+        color: black;
+        font-size: 18px;
+    }
+    th.mat-header-cell,
+    td.mat-cell,
+    td.mat-footer-cell {
+        border-color: red;
+    }
+}
