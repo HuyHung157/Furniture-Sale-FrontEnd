@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit {
     if (formLogin.valid) {
       const value = formLogin.form.value;
       console.log(value);
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['admin']);
 
     } else {
       this.formLoginGroup.form.markAllAsTouched();

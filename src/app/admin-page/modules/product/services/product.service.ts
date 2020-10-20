@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Injectable()
@@ -11,10 +13,8 @@ export class ProductService {
   ) { }
 
   public getListProduct(): any {
-    // this.http.get('/productList').subscribe(res => console.log(res));
-    this.dataService.get('/productList').subscribe(res => {
-      console.log(res);
-    });
+    return this.dataService.get('/productItem')
+      .pipe(map((data: any) => data));
   }
 
 }

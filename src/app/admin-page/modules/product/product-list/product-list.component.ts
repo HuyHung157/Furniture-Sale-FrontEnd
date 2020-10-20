@@ -23,8 +23,10 @@ export class ProductListComponent implements OnInit {
     this.getListProduct();
     this.displayedColumns = [
       'id',
+      'product_code',
       'name',
       'price',
+      'size',
       'color',
       'status',
     ];
@@ -45,8 +47,10 @@ export class ProductListComponent implements OnInit {
   }
 
   private getListProduct() {
-    // this.pureData =
-    this.productService.getListProduct();
+    this.productService.getListProduct()
+      .subscribe((res: any) => {
+        this.pureData = res;
+      });
   }
 
 
