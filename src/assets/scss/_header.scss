@@ -16,8 +16,23 @@
   border-right: 1px solid #f4f4f4;
 }
 
-.header li a.active {
-  color: $primary;
+.header {
+  .menu {
+    li {
+      a {
+        color: #333;
+        &.active {
+          color: $primary;
+        }
+        &:active {
+          color: orange;
+        }
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
 }
 
 .header .logo {

@@ -13,4 +13,12 @@ export class DataService {
   public get(uri: string) {
     return this.http.get(HOST + uri).pipe(map((res) => res));
   }
+
+  public post(uri: string) {
+    return this.http.get(HOST + uri).pipe(map((res) => res));
+  }
+
+  public delete(uri: string) {
+    return this.http.get(HOST + uri).pipe(map((res) => res));
+  }
 }

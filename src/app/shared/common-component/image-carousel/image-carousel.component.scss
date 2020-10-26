@@ -2,19 +2,13 @@
 @import "../../../../assets/scss/mixin";
 
 .slick-slider {
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-bottom: 30px;
   position: relative;
-  &.banner {
-    width: 100%;
-    height: calc(100vh - 76px);
-    ::ng-deep .slick-list,
-    ::ng-deep .slick-track {
-      height: 100%;
-      img {
-        height: 100%;
-      }
+  .proudct-item {
+    .item {
+      width: 98%;
     }
   }
   ::ng-deep .btn-slide {
@@ -31,18 +25,12 @@
     &.pre-list {
       left: -50px;
     }
-    &.next-banner {
-      right: 0;
-    }
-    &.pre-banner {
-      left: 0;
-    }
     &.slick-disabled {
       visibility: hidden;
     }
     &:hover {
       i {
-        color: red;
+        color: $primary;
       }
     }
     i {
@@ -64,15 +52,12 @@
 }
 @include Responsive(MD) {
   .slick-slider {
-    &.banner {
-      height: fit-content;
-      ::ng-deep .slick-list,
-      ::ng-deep .slick-track {
-        height: 100%;
-        width: 100%;
-        img {
-          height: 100%;
-        }
+    ::ng-deep .btn-slide {
+      &.next-list {
+        right: 0;
+      }
+      &.pre-list {
+        left: 0;
       }
     }
   }

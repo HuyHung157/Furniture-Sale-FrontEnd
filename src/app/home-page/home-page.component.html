@@ -26,27 +26,90 @@
     <router-outlet></router-outlet>
 </main>
 
-<footer>
-    <div class="footer-group">
+<footer class="footer">
+    <div class="footer__top">
         <div class="container">
-            <div class="logo"><a routerLink="">Logo</a></div>
-            <div class="description">
-                <h2 class="company-name">Huy Hùng</h2>
-                <ul>
-                    <li>Địa chỉ: <a href="">19/14E, Bùi Công Trừng, Đông Thạnh, Hóc Môn</a></li>
-                    <li>Điện thoại: <a href="tel:0908559709">0908559709</a></li>
-                    <li>Email: <a href="mailto:hhungtran98@gmail.com">hhungtran98@gmail.com</a></li>
-                </ul>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="footer__top-item">
+                        <h6 class="footer__top-title">Contact info</h6>
+                        <ul class="footer__top-list">
+                            <li>
+                                <p><i class="fas fa-map-marker-alt"></i>123 Street, Old Trafford, NewYork, USA</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-envelope"></i>info@sitename.com</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-mobile-alt"></i>+ 457 789 789 65</p>
+                            </li>
+                        </ul>
+                        <ul class="list-social_icons row">
+                            <li><a class="sc_facebook" href="#"> <i class="fab fa-facebook-f"></i></a></li>
+                            <li><a class="sc_twitter" href="#"> <i class="fab fa-twitter"></i></a></li>
+                            <li><a class="sc_google" href="#"> <i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a class="sc_youtube" href="#"> <i class="fab fa-youtube"></i></a></li>
+                            <li><a class="sc_instagram" href="#"> <i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__top-item">
+                        <h6 class="footer__top-title">Useful Links</h6>
+                        <ul class="footer__top-list">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Location</a></li>
+                            <li><a href="#">Affiliates</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__top-item">
+                        <h6 class="footer__top-title">My Account</h6>
+                        <ul class="footer__top-list">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Discount</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Orders History</a></li>
+                            <li><a href="#">Order Tracking</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer__top-item">
+                        <h6 class="footer__top-title">Subscribe Our Newsletter</h6>
+                        <p class="If">you want to get an email from us every time we have a new special offer, then sign
+                            up here!</p>
+                        <div class="newsletter_form rounded_input">
+                            <form>
+                                <input class="form-control" type="text" required="" placeholder="Enter Email Address">
+                                <button class="btn-send" type="submit" name="submit" value="Submit"><i
+                                        class="fas fa-envelope-open-text"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="payment">
-                <p class="title">Bạn có thể thanh toán qua</p>
-                <ul>
-                    <li>MOMO</li>
-                    <li>Internet Banking</li>
-                    <li>COD</li>
-                </ul>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <p>© 2020 All Rights Reserved by Bestwebcreator</p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <ul class="footer_payment d-flex">
+                        <li><a href="#"><img src="./images/layout/visa.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/layout/discover.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/layout/master_card.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/layout/paypal.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/layout/amarican_express.png" alt=""></a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="copyright">Copyright <a routerLink="">HuyHung</a> 2020</div>
         </div>
     </div>
 </footer>

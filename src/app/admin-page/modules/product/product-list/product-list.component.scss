@@ -1,11 +1,27 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/mixin";
+
 .product-list {
+  .header-product {
+    .header-title {
+      color: $primary;
+      font-size: 30px;
+    }
+    .btn-group-create {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      button {
+        background-color: $primary;
+      }
+    }
+  }
   .table-list-content {
     overflow-x: auto;
     max-width: 1190px;
     width: 100%;
     margin: 0 auto;
     border-spacing: 0;
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid gray;
   }
 }

@@ -1,73 +1,70 @@
 <div class="product-list">
-  <div class="category-box">
-    <div class="category">
-      <div class="header-category m__b--24">
-        <section class="header-tile"><span>Item List</span></section>
+  <div class="product-box">
+    <div class="header-product">
+      <h2 class="header-title"><span>Item List</span></h2>
 
-        <div>
-          <button class="m__r--24" mat-raised-button color="primary" (click)="addNew()">Tạo mới</button>
-        </div>
-
+      <div class="btn-group-create">
+        <button mat-raised-button color="primary" (click)="addNew()">Tạo mới</button>
       </div>
-      <div content class="table-list-content">
-        <table mat-table [dataSource]="pureData">
 
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>STT</th>
-            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="product_code">
-            <th mat-header-cell *matHeaderCellDef>Mã SP</th>
-            <td mat-cell *matCellDef="let element">{{ element.product_code }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Tên SP</th>
-            <td mat-cell *matCellDef="let element">{{ element.product_name }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef>Giá</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.price | number:'1.0-3'}} VNĐ
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="color">
-            <th mat-header-cell *matHeaderCellDef>Màu sắc</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.color}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="size">
-            <th mat-header-cell *matHeaderCellDef>Kích thước</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.size}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
-            <td mat-cell *matCellDef="let element">
-
-              <mat-slide-toggle [matTooltip]="!element?.is_available ? tooltipContent: ''"
-                [checked]="element.is_available" (click)="changeStatus(element)" toggleChange="">
-              </mat-slide-toggle>
-
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row mat-row class="web-admin" *matRowDef="let row; columns: displayedColumns"
-            (click)="gotoProductDetail(row)"></tr>
-        </table>
-
-
-        <!-- </ng-template> -->
-      </div>
     </div>
+    <div content class="table-list-content">
+      <table mat-table [dataSource]="pureData">
 
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>STT</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="product_code">
+          <th mat-header-cell *matHeaderCellDef>Mã SP</th>
+          <td mat-cell *matCellDef="let element">{{ element.product_code }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Tên SP</th>
+          <td mat-cell *matCellDef="let element">{{ element.product_name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Giá</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.price | number:'1.0-3'}} VNĐ
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+          <th mat-header-cell *matHeaderCellDef>Màu sắc</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.color}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef>Kích thước</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.size}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Trạng thái</th>
+          <td mat-cell *matCellDef="let element">
+
+            <mat-slide-toggle [matTooltip]="!element?.is_available ? tooltipContent: ''"
+              [checked]="element.is_available" (click)="changeStatus(element)" toggleChange="">
+            </mat-slide-toggle>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row mat-row class="web-admin" *matRowDef="let row; columns: displayedColumns"
+          (click)="gotoProductDetail(row)"></tr>
+      </table>
+
+
+      <!-- </ng-template> -->
+    </div>
   </div>
 </div>

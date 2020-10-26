@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,17 +9,18 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   @Input() sidenav: MatSidenav;
   public firstName = 'Hùng';
 
-  constructor() { }
+  constructor(
+    private readonly router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   public logout(): void {
-    console.log('log out');
+    this.router.navigate(['auth/sign-in']);
   }
 
 }

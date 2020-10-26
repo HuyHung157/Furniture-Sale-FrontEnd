@@ -4,6 +4,7 @@ import { ImageCarouselComponent } from './image-carousel/image-carousel.componen
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ListProductCarouselComponent } from './list-product-carousel/list-product-carousel.component';
 import { BannerCarouselComponent } from './banner-carousel/banner-carousel.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 
 
@@ -11,7 +12,9 @@ import { BannerCarouselComponent } from './banner-carousel/banner-carousel.compo
   declarations: [
     ImageCarouselComponent,
     ListProductCarouselComponent,
-    BannerCarouselComponent],
+    BannerCarouselComponent,
+    ProductItemComponent
+  ],
   imports: [
     CommonModule,
     SlickCarouselModule
@@ -19,7 +22,8 @@ import { BannerCarouselComponent } from './banner-carousel/banner-carousel.compo
   exports: [
     BannerCarouselComponent,
     ImageCarouselComponent,
-    ListProductCarouselComponent
+    ListProductCarouselComponent,
+    ProductItemComponent
   ],
 })
 export class CommonComponentModule { }

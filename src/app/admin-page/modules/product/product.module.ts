@@ -9,6 +9,7 @@ import { ProductComponent } from './product.component';
 import { ProductService } from './services/product.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     SharedModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     DataService,

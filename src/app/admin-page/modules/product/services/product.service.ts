@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { pipe } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 
@@ -12,8 +12,13 @@ export class ProductService {
 
   ) { }
 
-  public getListProduct(): any {
+  public getListProduct(): Observable<any> {
     return this.dataService.get('/productItem')
+      .pipe(map((data: any) => data));
+  }
+
+  public createItemProduct(): Observable<any> {
+    return this.dataService.post('/productItem')
       .pipe(map((data: any) => data));
   }
 

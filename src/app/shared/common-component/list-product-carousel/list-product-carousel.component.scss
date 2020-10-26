@@ -2,13 +2,13 @@
 
 .list-product-carousel {
   .title-group {
-    border-bottom: 5px solid $gold;
+    border-bottom: 5px solid $primary;
     margin-bottom: 18px;
     .title {
       font-family: $secondary-font;
       font-weight: bold;
       font-size: 25px;
-      color: $gold;
+      color: $primary;
       text-transform: uppercase;
       &.default {
         color: gray;

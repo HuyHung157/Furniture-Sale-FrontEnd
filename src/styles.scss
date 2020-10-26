@@ -1,9 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "./assets/scss/variables";
 @import "./assets/scss/mixin";
 @import "./assets/scss/header";
 @import "./assets/scss/footer";
+@import "./assets/scss/layout";
+
+/* You can add global styles to this file, and also import other style files */
 
 $max-width: 1190px;
 
@@ -89,7 +90,7 @@ li {
     width: 100%;
     min-width: 768px;
     border-collapse: collapse;
-    background-color: white;
+    // background-color: white;
     .mat-cell,
     .mat-header-cell {
         color: black;
@@ -98,6 +99,11 @@ li {
     th.mat-header-cell,
     td.mat-cell,
     td.mat-footer-cell {
-        border-color: red;
+        border-color: gray;
     }
+}
+
+.slick-slide,
+.slick-slide:focus * {
+    outline: none !important;
 }
