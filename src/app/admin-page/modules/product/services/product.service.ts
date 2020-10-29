@@ -9,7 +9,6 @@ export class ProductService {
 
   constructor(
     private dataService: DataService,
-
   ) { }
 
   public getListProduct(): Observable<any> {

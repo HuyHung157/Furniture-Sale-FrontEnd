@@ -1,0 +1,63 @@
+<section>
+  <div content class="form-product form__page container-section">
+    <h2 class="title">Tạo sản phẩm mới</h2>
+    <form [formGroup]="createForm" (submit)="submit(createForm)" class="form-section ">
+
+      <div class="row-group">
+        <!-- Name -->
+        <div class="form-group">
+          <mat-label class="label-form">name </mat-label>
+          <mat-form-field class="form-field" appearance="fill">
+            <input matInput formControlName="name" required class="input-form" placeholder="abc">
+            <mat-error *ngIf="createForm.controls.name.touched && createForm.controls.name.invalid || submitted">
+              Vui lòng điển thông tin
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Language -->
+        <div class="form-group">
+          <mat-label class="label-form">Language </mat-label>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-select formControlName="language" required class="input-form" placeholder="ABC">
+              <mat-option *ngFor="let lang of listLanguages" [value]="lang.value">
+                {{lang.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="createForm.controls.language.touched && createForm.controls.language.invalid || submitted">
+              Vui lòng điển thông tin
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row-group">
+        <!-- Category -->
+        <div class="form-group">
+          <mat-label class="label-form"> Category </mat-label>
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-select formControlName="category" required class="input-form" placeholder="BCD">
+              <mat-option *ngFor="let lang of listLanguages" [value]="lang.value">
+                {{lang.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="createForm.controls.category.touched && createForm.controls.category.invalid || submitted">
+              Vui lòng điển thông tin
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <!-- Btn-group -->
+      <div class="button-group__action">
+        <button class="btn-cancel secondary pink" mat-stroked-button color="secondary" (click)="cancel()">
+          Cancel</button>
+        <button type="submit" class="btn-submit primary" mat-raised-button color="primary"> Submit </button>
+      </div>
+    </form>
+  </div>
+
+</section>

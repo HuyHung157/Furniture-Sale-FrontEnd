@@ -8,14 +8,6 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      // {
-      //   path: 'auth',
-      //   component:
-      // },
-      // {
-      //   path: 'order',
-      //   component:
-      // },
       {
         path: '',
         component: AdminPageComponent
@@ -24,10 +16,18 @@ const routes: Routes = [
         path: 'product',
         loadChildren: () => import('./modules/product/product.module').then((m) => m.ProductModule),
       },
+      {
+        path: 'category',
+        loadChildren: () => import('./modules/category/category.module').then((m) => m.CategoryModule),
+      }
       // {
-      //   path: 'category',
+      //   path: 'auth',
       //   component:
-      // }
+      // },
+      // {
+      //   path: 'order',
+      //   component:
+      // },
     ]
   }
 

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class CategoryListComponent implements OnInit {
 
   public pureData;
   public displayedColumns;
@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly productService: ProductService
+    private readonly categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
@@ -47,11 +47,10 @@ export class ProductListComponent implements OnInit {
   }
 
   private getListProduct() {
-    this.productService.getListProduct()
-      .subscribe((res: any) => {
-        this.pureData = res;
-      });
+    // this.categoryService.getListProduct()
+    //   .subscribe((res: any) => {
+    //     this.pureData = res;
+    //   });
   }
-
 
 }

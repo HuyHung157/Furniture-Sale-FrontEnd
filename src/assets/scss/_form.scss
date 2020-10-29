@@ -1,0 +1,33 @@
+.form__page {
+  .row-group {
+    @include flex($justify-content: space-between, $align-items: flex-start);
+    > * {
+      width: 100%;
+      & + * {
+        margin-left: 32px;
+      }
+    }
+    .form-group {
+      mat-label {
+        margin-bottom: 0;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include Responsive(SM) {
+  .form__page {
+    .row-group {
+      flex-wrap: wrap;
+      > * {
+        width: 100%;
+        & + * {
+          margin-left: unset;
+        }
+      }
+    }
+  }
+}

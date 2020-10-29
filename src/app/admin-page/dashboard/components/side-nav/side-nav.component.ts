@@ -19,7 +19,7 @@ export class SideNavComponent implements OnInit {
     this.navbarActions = [
       { name: 'Đơn hàng', icon: 'fas fa-money-bill', isSelected: false, subActions: this.orderActions },
       { name: 'Sản phẩm', link: 'product', icon: 'fas fa-archive', isSelected: false },
-      { name: 'Danh mục', link: 'category-list', icon: 'fas fa-list', isSelected: false },
+      { name: 'Danh mục', link: 'category', icon: 'fas fa-list', isSelected: false },
       { name: 'Tài khoản', icon: 'fas fa-users-cog', isSelected: false, subActions: this.accountActions },
     ];
   }
