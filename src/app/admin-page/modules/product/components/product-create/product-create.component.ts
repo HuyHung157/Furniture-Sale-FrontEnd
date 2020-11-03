@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-create',
@@ -8,9 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./product-create.component.scss']
 })
 export class ProductCreateComponent implements OnInit {
-  createForm: FormGroup;
-  submitted = false;
-  listLanguages;
+  public createForm: FormGroup;
+  public submitted = false;
+  public listCategory;
+  public product: Product;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -18,34 +20,44 @@ export class ProductCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.listLanguages = [
+    this.listCategory = [
       {
-        value: 'fr',
-        label: 'France'
+        value: '1',
+        label: 'Bán chạy'
       },
       {
-        value: 'en',
-        label: 'EngLish'
+        value: '2',
+        label: 'Phòng ngủ'
       }
     ];
     this.createForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      language: ['', Validators.required],
       category: ['', Validators.required],
+      name: ['', Validators.required],
+      product_code: ['', Validators.required],
+      price: ['', Validators.required],
+      size: ['', Validators.required],
+      color: ['', Validators.required],
+      description: [''],
+      is_available: [''],
+      srcImg: ['', Validators.required],
     });
   }
 
   submit(form) {
     this.submitted = true;
     if (form) {
-      console.log(form.value);
       const data = { ...form.value };
       console.log(data);
     } else {
       form.markAllAsTouched();
     }
   }
+
   public cancel(): void {
     this.location.back();
+  }
+
+  public changeStatus(e): void {
+    console.log(e);
   }
 }

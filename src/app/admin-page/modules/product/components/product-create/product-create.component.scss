@@ -9,19 +9,4 @@
     display: block;
     text-transform: capitalize;
   }
-
-  .button-group__action {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 32px;
-    button {
-      &.cancel {
-        margin-right: 16px;
-        color: #000000;
-        &:hover {
-          border-color: unset;
-        }
-      }
-    }
-  }
 }
