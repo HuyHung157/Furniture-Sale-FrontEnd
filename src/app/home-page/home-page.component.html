@@ -12,11 +12,6 @@
 
         <ul class="menu">
             <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">HOME</a></li>
-            <!-- <li> <button mat-button [matMenuTriggerFor]="menu">Menu</button></li>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
-        </mat-menu> -->
             <li><a routerLink="about" routerLinkActive="active">GIỚI THIỆU</a></li>
             <li><a routerLink="contact" routerLinkActive="active">LIÊN HỆ</a></li>
             <li><a routerLink="auth/sign-in" routerLinkActive="active">ĐĂNG NHẬP</a></li>
@@ -30,91 +25,102 @@
 
 <footer class="footer">
     <div class="footer__top">
-        <div class="container">
+        <div class="container-section">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="footer__top-item">
-                        <h6 class="footer__top-title">Contact info</h6>
-                        <ul class="footer__top-list">
-                            <li>
-                                <p><i class="fas fa-map-marker-alt"></i>123 Street, Old Trafford, NewYork, USA</p>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-envelope"></i>info@sitename.com</p>
-                            </li>
-                            <li>
-                                <p><i class="fas fa-mobile-alt"></i>+ 457 789 789 65</p>
-                            </li>
-                        </ul>
-                        <ul class="list-social_icons">
-                            <li><a class="sc_facebook" href="#"> <i class="fab fa-facebook-f"></i></a></li>
-                            <li><a class="sc_twitter" href="#"> <i class="fab fa-twitter"></i></a></li>
-                            <li><a class="sc_google" href="#"> <i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a class="sc_youtube" href="#"> <i class="fab fa-youtube"></i></a></li>
-                            <li><a class="sc_instagram" href="#"> <i class="fab fa-instagram"></i></a></li>
-                        </ul>
+                <div class="footer__top-item">
+                    <h6 class="footer__top-title">Thông tin liên hệ</h6>
+                    <ul class="footer__top-list">
+                        <li>
+                            <a href="https://maps.google.com/?q=19/14E, Ấp 4, Bùi Công Trừng, Đông Thạnh, Hóc Môn"
+                                target="_blank">
+                                <i class="fas fa-map-marker-alt"></i>
+                                19/14E, Ấp 4, Bùi Công Trừng, Đông Thạnh, Hóc Môn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hhungtran98@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                                hhungtran98@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:0908559709">
+                                <i class="fas fa-mobile-alt"></i>
+                                0908559709
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list-social_icons">
+                        <li>
+                            <a class="sc_facebook" target="_blank"
+                                href="https://www.facebook.com/HHouse-103305761589037">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sc_google" target="_blank" href="mailto:hhungtran98@gmail.com">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="footer__top-item">
+                    <h6 class="footer__top-title">Useful Links</h6>
+                    <ul class="footer__top-list">
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Địa điểm</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__top-item">
+                    <h6 class="footer__top-title">Thông tin tài khoản
+                    </h6>
+                    <ul class="footer__top-list">
+                        <li><a href="#">Tài khoản của tôi
+                            </a></li>
+                        <li><a href="#">Giảm giá</a></li>
+                        <li><a href="#">Hoàn trả</a></li>
+                        <li><a href="#">Lịch sử đơn hàng</a></li>
+                        <li><a href="#">Theo dõi đơn hàng</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="footer__top-item">
+                    <h6 class="footer__top-title">Đăng ký bản tin của chúng tôi</h6>
+                    <p class="If">Bạn muốn nhận email từ chúng tôi mỗi khi chúng tôi có ưu đãi đặc biệt mới, hãy ký trên
+                        này này!</p>
+                    <div class="newsletter_form rounded_input">
+                        <form>
+                            <input class="form-control" type="text" required="" placeholder="Email của bạn">
+                            <button class="btn-send" type="submit" name="submit" value="Submit"><i
+                                    class="fas fa-envelope-open-text"></i></button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__top-item">
-                        <h6 class="footer__top-title">Useful Links</h6>
-                        <ul class="footer__top-list">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Location</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__top-item">
-                        <h6 class="footer__top-title">My Account</h6>
-                        <ul class="footer__top-list">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Discount</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Orders History</a></li>
-                            <li><a href="#">Order Tracking</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="footer__top-item">
-                        <h6 class="footer__top-title">Subscribe Our Newsletter</h6>
-                        <p class="If">you want to get an email from us every time we have a new special offer, then sign
-                            up here!</p>
-                        <div class="newsletter_form rounded_input">
-                            <form>
-                                <input class="form-control" type="text" required="" placeholder="Enter Email Address">
-                                <button class="btn-send" type="submit" name="submit" value="Submit"><i
-                                        class="fas fa-envelope-open-text"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
-
-    <!-- Facebook -live chat -->
-    <div class="fb-customerchat" page_id="103305761589037" theme_color="#f3af06" logged_in_greeting="Chào bạn!"
-        logged_out_greeting="Chào bạn!"></div>
 
     <div class="footer__bottom">
         <div class="container">
+
             <div class="footer__content">
-                <div class="col-12 col-md-6">
-                    <p class="copyright">© 2020 All Rights Reserved by HHouse</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <ul class="footer_payment d-flex">
-                        <li><a href="#"><img src="assets/images/visa.png" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/master_card.png" alt=""></a></li>
-                        <li><a href="#"><img src="assets/images/momo-icon.png" alt=""></a></li>
-                    </ul>
-                </div>
+                <p class="copyright">© 2020 All Rights Reserved by <a class="brand" routerLink="/">HHouse</a> </p>
+
+                <ul class="footer_payment ">
+                    <li><a href="#"><img src="assets/images/visa.png" alt=""></a></li>
+                    <li><a href="#"><img src="assets/images/master_card.png" alt=""></a></li>
+                    <li><a href="#"><img src="assets/images/momo-icon.png" alt=""></a></li>
+                </ul>
             </div>
+
         </div>
     </div>
+
 </footer>

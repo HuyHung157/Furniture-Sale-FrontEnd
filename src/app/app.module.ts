@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { FacebookModule } from 'ngx-facebook';
     AppRoutingModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
-    FacebookModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

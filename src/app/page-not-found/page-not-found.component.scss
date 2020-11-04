@@ -1,0 +1,30 @@
+@import "../../assets/scss/variables";
+.pageNotFound {
+  text-align: center;
+  color: black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .logo__brand {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+  .pageNotFound__container {
+    .pageNotFound__number {
+      font-size: 100px;
+      height: fit-content;
+      background: -webkit-linear-gradient(red, orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pageNotFound__text {
+      font-size: 50px;
+    }
+  }
+}
