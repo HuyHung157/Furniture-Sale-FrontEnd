@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-carousel',
@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ImageCarouselComponent implements OnInit {
   @Input() listProduct;
+
   public slideConfig;
 
   constructor() { }
@@ -14,6 +15,7 @@ export class ImageCarouselComponent implements OnInit {
   ngOnInit(): void {
     this.slideConfig = this.getModeCarousel();
   }
+
 
   private getModeCarousel() {
     return {

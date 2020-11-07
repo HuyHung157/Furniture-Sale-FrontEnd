@@ -2,9 +2,13 @@ export interface Product {
   name: string;
   product_code: string;
   price: number;
+  price_before: number;
   size: string;
   color: string;
-  description: string;
+  rate?: string;
+  vote?: string;
+  description?: string;
   is_available: boolean;
-  product_list_id: string;
+  category: string[];
+  image_url: string;
 }

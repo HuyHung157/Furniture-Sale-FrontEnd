@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { relative } from 'path';
+import { empty } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
+import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
+import { CommonConstant } from 'src/app/shared/constants/common.constant';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -16,21 +23,14 @@ export class ProductListComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly productService: ProductService
+    public readonly dialog: MatDialog,
+    private readonly snackBar: MatSnackBar,
+    private readonly productService: ProductService,
   ) { }
 
   ngOnInit(): void {
     this.getListProduct();
-    this.displayedColumns = [
-      'id',
-      'product_code',
-      'name',
-      'price',
-      'size',
-      'color',
-      'status',
-    ];
-    this.tooltipContent = 'Không thể thay đổi trạng thái ở trang này';
+    this.config();
   }
 
   public addNew(): void {
@@ -38,20 +38,57 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['create'], { relativeTo: this.route.parent });
   }
 
-  public changeStatus(e): void {
-    console.log(e);
-  }
-
   public gotoProductDetail(row): void {
-    console.log(row);
+    this.router.navigate([`update/${row.id}`], { relativeTo: this.route.parent });
   }
 
-  private getListProduct() {
+  public goToDelete($event, product): void {
+    $event.stopPropagation();
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Xóa sản phẩm',
+        message: 'Bạn có chắc chắn muốn xóa',
+        productName: `${product.name}`
+      }
+    });
+
+    // listen to response
+    dialogRef.afterClosed().pipe(
+      concatMap(isDeleteItem => {
+        const $ = isDeleteItem ? this.productService.deleteProduct(product.id) : empty();
+        return $;
+      }),
+    ).subscribe(() => {
+      this.getListProduct(),
+        this.showSuccessSnackBar();
+    });
+
+  }
+
+  private config(): void {
+    this.displayedColumns = [
+      'id',
+      // 'product_code',
+      'name',
+      'price_before',
+      'price',
+      'size',
+      'color',
+      'status',
+      'action',
+    ];
+  }
+
+  private showSuccessSnackBar(message?: string): void {
+    const msg = message || 'Đã xóa thành công !';
+    this.snackBar.open(msg, null, CommonConstant.SUCCESS_SNACKBAR_CONFIG);
+  }
+
+  private getListProduct(): void {
     this.productService.getListProduct()
       .subscribe((res: any) => {
         this.pureData = res;
       });
   }
-
 
 }

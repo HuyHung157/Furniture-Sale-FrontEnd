@@ -4,6 +4,7 @@ import { HomePageComponent } from './home-page.component';
 import { AboutComponent } from './modules/about/about.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { HomeComponent } from './modules/home/home.component';
+import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
         path: 'contact',
         component: ContactComponent
       },
+      {
+        path: 'shopping-cart',
+        component: ShoppingCartComponent
+      }
     ]
   },
 ];

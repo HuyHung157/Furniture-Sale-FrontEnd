@@ -1,0 +1,14 @@
+<div class="confirm-dialog">
+
+  <h3 class="title" *ngIf="data?.title">{{data.title}}</h3>
+  <p class="message">
+    <span *ngIf="data?.message">{{data.message}}</span>
+    <span class="product-name" *ngIf="data?.productName">{{data.productName}}</span>
+  </p>
+
+  <div class="row-group__button">
+    <button class="btn-deny primary red" (click)="onDismiss()">Cancel</button>
+    <button class="btn-accept primary" color="primary" (click)="onConfirm()">Delete</button>
+  </div>
+
+</div>

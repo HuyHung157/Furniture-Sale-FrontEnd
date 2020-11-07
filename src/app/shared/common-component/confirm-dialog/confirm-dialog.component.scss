@@ -1,0 +1,30 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixin";
+::ng-deep mat-dialog-container {
+  min-width: 350px;
+  background-color: $white;
+  box-shadow: 0px 0px 30px rgba(71, 64, 60, 0.1);
+  .confirm-dialog {
+    .title {
+      @include font(500, $large, 32px, $black);
+      text-align: center;
+      margin: 0;
+    }
+    .message {
+      text-align: center;
+      margin: 23px auto 33px;
+      span {
+        @include font($regular, $normal, 24px, $gray);
+        &.product-name {
+          font-weight: bold;
+          display: block;
+        }
+      }
+    }
+    .row-group__button {
+      button {
+        min-width: 200px;
+      }
+    }
+  }
+}

@@ -1,57 +1,60 @@
 @import "./variables";
 
-$max-width: 230px;
+$width: 230px;
 
-[class^="btn-"],
-[class*="btn-"] {
+.primary,
+.secondary,
+button.mat-primary,
+button.mat-secondary {
   color: $black;
   background: transparent;
-  &.primary,
-  &.secondary {
-    max-width: $max-width;
-    width: 100%;
-    height: 100%;
-    padding: 15px 10px;
-    border-radius: 5px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-    font-size: $normal;
-    line-height: 1.23;
-    border: 1px solid transparent;
+  min-width: $width;
+  height: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  font-size: $normal;
+  line-height: 1.23;
+  border: 1px solid transparent;
+}
+.primary,
+[class^="-button"],
+[class*="-button"].primary {
+  background-color: $primary;
+  color: $white;
+  &.red {
+    background-color: $error;
   }
-  &.primary {
-    background-color: $primary;
-    &.red {
-      background-color: $error;
-    }
-    &.pink {
-      background-color: $pink;
-    }
-    &.cyan {
-      color: $white;
-      background-color: $cyan;
-    }
-    &.yellow {
-      background-color: $yellow;
-    }
-    &.disable {
-      background-color: $disable;
-    }
+  &.pink {
+    background-color: $pink;
   }
-  &.secondary {
-    border-color: $primary;
-    &.red {
-      border-color: $error;
-    }
-    &.pink {
-      border-color: $pink;
-    }
-    &.cyan {
-      color: $white;
-      border-color: $cyan;
-    }
-    &.yellow {
-      border-color: $yellow;
-    }
+  &.cyan {
+    color: $white;
+    background-color: $cyan;
+  }
+  &.yellow {
+    background-color: $yellow;
+  }
+  &.disable {
+    background-color: $disable;
+  }
+}
+.secondary,
+[class^="-button"],
+[class*="-button"].secondary {
+  border-color: $primary;
+  &.red {
+    border-color: $error;
+  }
+  &.pink {
+    border-color: $pink;
+  }
+  &.cyan {
+    color: $white;
+    border-color: $cyan;
+  }
+  &.yellow {
+    border-color: $yellow;
   }
 }
 

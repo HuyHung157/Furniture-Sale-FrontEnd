@@ -1,5 +1,7 @@
 @import "./variables";
 
+$width-tag: 300px;
+
 .container-section {
   max-width: 1190px;
   margin: 0 auto;
@@ -86,4 +88,48 @@ mat-form-field {
       background: $primary;
     }
   }
+}
+
+// review-tag
+.review-tag {
+  width: $width-tag;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: $primary;
+  color: $white;
+  text-align: center;
+  .title-item {
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .content-item {
+    font-size: 60px;
+    line-height: 65px;
+  }
+  .currency {
+    font-size: 25px;
+  }
+  &.red {
+    background-color: $google-0;
+  }
+  &.blue {
+    background-color: $facebook-0;
+  }
+  &.pink {
+    background-color: $pink;
+  }
+  &.cyan {
+    background-color: $cyan;
+  }
+}
+
+.success__snack-bar {
+  background-color: $success;
+  color: $black;
+}
+
+.failure__snack-bar {
+  background-color: $error;
 }

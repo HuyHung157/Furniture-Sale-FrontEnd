@@ -1,6 +1,8 @@
 @import "../../../../assets/scss/variables";
 @import "../../../../assets/scss/mixin";
 
+$height-image: 500px;
+
 .slick-slider {
   width: 100%;
   margin-bottom: 30px;
@@ -8,7 +10,8 @@
   img {
     margin: 0 auto;
     width: 100%;
-    height: fit-content;
+    height: 100%;
+    max-height: $height-image;
   }
 
   ::ng-deep .btn-slide {

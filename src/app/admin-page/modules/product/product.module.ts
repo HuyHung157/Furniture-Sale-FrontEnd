@@ -7,8 +7,8 @@ import { ProductService } from './services/product.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductUpdateComponent } from './components/product-update/product-update.component';
-import { ProductCreateComponent } from './components/product-create/product-create.component';
+import { CommonComponentModule } from 'src/app/shared/common-component/common-component.module';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 
 
@@ -16,11 +16,11 @@ import { ProductCreateComponent } from './components/product-create/product-crea
   declarations: [
     ProductComponent,
     ProductListComponent,
-    ProductUpdateComponent,
-    ProductCreateComponent
+    ProductFormComponent
   ],
   imports: [
     CommonModule,
+    CommonComponentModule,
     SharedModule,
     ProductRoutingModule,
     ReactiveFormsModule,

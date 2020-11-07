@@ -23,14 +23,9 @@ export class CategoryListComponent implements OnInit {
     this.getListProduct();
     this.displayedColumns = [
       'id',
-      'product_code',
       'name',
-      'price',
-      'size',
-      'color',
       'status',
     ];
-    this.tooltipContent = 'Không thể thay đổi trạng thái ở trang này';
   }
 
   public addNew(): void {

@@ -12,12 +12,27 @@ export class ProductService {
   ) { }
 
   public getListProduct(): Observable<any> {
-    return this.dataService.get('/productItem')
+    return this.dataService.get('/product')
       .pipe(map((data: any) => data));
   }
 
-  public createItemProduct(): Observable<any> {
-    return this.dataService.post('/productItem')
+  public getProductById(id): Observable<any> {
+    return this.dataService.get(`/product/${id}`)
+      .pipe(map((data: any) => data));
+  }
+
+  public createItemProduct(input): Observable<any> {
+    return this.dataService.post('/product', input)
+      .pipe(map((data: any) => data));
+  }
+
+  public updateItemProduct(id: string, input): Observable<any> {
+    return this.dataService.put(`/product/${id}`, input)
+      .pipe(map((data: any) => data));
+  }
+
+  public deleteProduct(id: string): Observable<any> {
+    return this.dataService.delete(`/product/${id}`)
       .pipe(map((data: any) => data));
   }
 

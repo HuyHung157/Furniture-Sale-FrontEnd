@@ -5,6 +5,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ListProductCarouselComponent } from './list-product-carousel/list-product-carousel.component';
 import { BannerCarouselComponent } from './banner-carousel/banner-carousel.component';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -13,7 +14,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
     ImageCarouselComponent,
     ListProductCarouselComponent,
     BannerCarouselComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
     BannerCarouselComponent,
     ImageCarouselComponent,
     ListProductCarouselComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    ConfirmDialogComponent
   ],
 })
 export class CommonComponentModule { }

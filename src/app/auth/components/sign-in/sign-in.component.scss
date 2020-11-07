@@ -22,11 +22,10 @@
         .login__brand {
           // font-family: "Yeseva One", cursive;
           font-family: "Nunito", sans-serif;
-          font-size: 27px;
+          font-size: 30px;
           font-weight: 700;
           text-decoration: none;
-          color: red !important;
-          text-decoration: underline;
+          color: $primary;
           cursor: pointer;
           transition: all 0.5s;
           &:hover {
@@ -40,7 +39,8 @@
         }
         .login_img {
           display: block !important;
-          width: 200px;
+          width: 100px;
+          padding: 15px;
           margin: 30px auto 20px !important;
           box-shadow: 0 5px 10px -7px black;
           border-radius: 50%;
@@ -114,10 +114,10 @@
           cursor: pointer;
           transition: all 0.5s;
           &:hover {
-            background-color: blue !important;
+            background-color: $primary !important;
           }
           &:focus {
-            background-color: blue !important;
+            background-color: $primary !important;
           }
           // &:disabled {
           //   cursor: no-drop;
@@ -126,13 +126,13 @@
         .link__create_account {
           text-align: center;
           // margin-top: 30px !important;
-          color: blue;
+          color: $primary;
           text-decoration: none;
           padding: 8px !important;
           display: inline-block !important;
           transition: all 0.5s;
           &:hover {
-            color: blue;
+            color: $primary;
           }
         }
         .social__contact {
@@ -141,7 +141,7 @@
             display: flex;
             .contact__item {
               margin: 15px auto 10px;
-              color: white !important;
+              color: white;
               transition: all 0.5s;
               padding: 10px 20px 10px 12px;
               &:hover {
@@ -149,7 +149,7 @@
               }
               a {
                 width: 100%;
-                color: white !important;
+                color: white;
                 font-size: 17px;
                 i {
                   margin-right: 12px;
