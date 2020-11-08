@@ -34,7 +34,6 @@ export class ProductListComponent implements OnInit {
   }
 
   public addNew(): void {
-    console.log(this.route.parent);
     this.router.navigate(['create'], { relativeTo: this.route.parent });
   }
 

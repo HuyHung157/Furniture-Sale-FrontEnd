@@ -107,8 +107,7 @@
       <!-- Status Product -->
       <div class="form-group">
         <mat-label class="label-form">Trạng thái</mat-label>
-        <mat-slide-toggle [checked]="product.is_available" formControlName="is_available" (click)="changeStatus($event)"
-          toggleChange="">
+        <mat-slide-toggle [checked]="product.is_available" formControlName="is_available">
         </mat-slide-toggle>
       </div>
 

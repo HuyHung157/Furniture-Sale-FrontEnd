@@ -94,10 +94,6 @@ export class ProductFormComponent implements OnInit {
     this.location.back();
   }
 
-  public changeStatus(e): void {
-    console.log(e);
-  }
-
   private showSuccessSnackBar(message?: string): void {
     const msg = message || 'Đã tạo thành công !';
     this.snackBar.open(msg, null, CommonConstant.SUCCESS_SNACKBAR_CONFIG);
@@ -105,7 +101,6 @@ export class ProductFormComponent implements OnInit {
 
   private getProductById() {
     this.productService.getProductById(this.productId).subscribe(res => {
-      console.log(res);
       this.product = res;
     });
   }

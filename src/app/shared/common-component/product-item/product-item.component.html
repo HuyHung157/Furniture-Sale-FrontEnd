@@ -12,9 +12,9 @@
       <span class="curent-price">{{ product.price | number:'1.0-3'}} VNĐ</span>
       <span class="price-unSale" *ngIf="product.price_before">{{ product.price_before | number:'1.0-3'}} VNĐ</span>
     </div>
-    <div class="product__item-rate" *ngIf="product.rate">
+    <div class="product__item-rate" *ngIf="listRate">
       <span class="fa fa-star checked" *ngFor="let i of listRate"></span>
-      <span class="fa fa-star"></span><span>{{product.vote}}</span>
+      <span class="fa fa-star"></span><span>( {{product.vote}} )</span>
     </div>
     <div class="product__item-addtocart">
       <button class="btn btn-fill-out btn-radius" (click)="addProductToCart(product)">

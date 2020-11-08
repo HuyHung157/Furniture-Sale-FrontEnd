@@ -38,9 +38,7 @@ export class CategoryFormComponent implements OnInit {
   submit(form) {
     this.submitted = true;
     if (form) {
-      console.log(form.value);
       const data = { ...form.value };
-      console.log(data);
     } else {
       form.markAllAsTouched();
     }
