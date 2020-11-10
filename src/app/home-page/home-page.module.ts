@@ -8,6 +8,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { ProductService } from '../admin-page/modules/product/services/product.service';
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
 import { StorageService } from '../shared/services/storage.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -15,7 +16,8 @@ import { StorageService } from '../shared/services/storage.service';
   declarations: [
     HomePageComponent,
     HomeComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

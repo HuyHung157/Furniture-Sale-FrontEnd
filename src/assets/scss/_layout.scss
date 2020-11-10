@@ -133,3 +133,8 @@ mat-form-field {
 .failure__snack-bar {
   background-color: $error;
 }
+
+.mat-badge-content {
+  background-color: $primary;
+  // color: $gray;
+}

@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="container">
+    <a routerLink="" class="logo">
+      <img src="assets/images/logo.png" alt="HHouse">
+    </a>
+
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+
+    <label class="menu-icon" for="menu-btn">
+      <span class="navicon"></span>
+    </label>
+
+    <ul class="menu">
+      <li><a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">HOME</a></li>
+      <li><a routerLink="about" routerLinkActive="active">GIỚI THIỆU</a></li>
+      <li><a routerLink="contact" routerLinkActive="active">LIÊN HỆ</a></li>
+      <li><a routerLink="auth/sign-in" routerLinkActive="active">ĐĂNG NHẬP</a></li>
+      <li><a routerLink="shopping-cart" routerLinkActive="active">
+          <span [matBadge]="totalQuantity" color="primary" class="material-icons"> shopping_cart
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

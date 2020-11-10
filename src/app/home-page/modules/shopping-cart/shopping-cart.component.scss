@@ -1,0 +1,55 @@
+@import "../../../../assets/scss/variables";
+
+.title-empty {
+  padding: 50px 0;
+  text-align: center;
+  font-size: 40px;
+}
+
+.shopping-cart__page {
+  padding: 24px;
+  table,
+  td,
+  th {
+    padding: 10px 15px;
+    border: 1px solid black;
+  }
+  .table-cart {
+    margin: 0 auto;
+    border-collapse: collapse;
+    tr {
+      border: 1px solid $black;
+    }
+    .group-quantity {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      button {
+        background-color: $gray-hover;
+        color: $white;
+      }
+    }
+
+    th {
+      text-transform: uppercase;
+    }
+
+    td {
+      button {
+        border: none;
+        outline: none;
+        margin: 0 auto;
+      }
+      .btn-delete {
+        background-color: $error;
+        color: $white;
+        padding: 10px;
+      }
+      .btn-checkout {
+        background-color: $success;
+        color: $white;
+        padding: 10px;
+      }
+    }
+  }
+}

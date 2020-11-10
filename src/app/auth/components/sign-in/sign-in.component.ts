@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
   login(formLogin) {
     if (formLogin.valid) {
       const value = formLogin.form.value;
-      console.log(value);
+      localStorage.setItem('user', value);
       this.router.navigate(['admin']);
 
     } else {

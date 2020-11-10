@@ -1,13 +1,5 @@
 @import "../../assets/scss/variables";
 
-.header {
-  .menu {
-    ::ng-deep .mat-badge-content {
-      background-color: $primary;
-      // color: $gray;
-    }
-  }
-}
 .content {
   margin-top: 76px;
 }

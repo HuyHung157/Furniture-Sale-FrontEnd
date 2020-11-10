@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/admin-page/modules/product/models/product.model';
+import { CartAction } from 'src/app/store/actions/cart.actions';
 
 @Component({
   selector: 'app-product-item',
@@ -11,35 +13,26 @@ export class ProductItemComponent implements OnInit {
   public listProductInCart = [];
   public listRate = [];
 
-  constructor() { }
+  products: Product[];
+
+  constructor(
+    private router: Router,
+    private cartStore: CartAction
+  ) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('listCart')) {
-      this.listProductInCart = this.getLocalStorage();
-    }
     this.listRate = Array(4).fill(1);
   }
 
-  public addProductToCart(product): void {
-    if (this.listProductInCart.length > 0) {
-      const isDuplicate = this.listProductInCart.some(row => row === product);
-      if (!isDuplicate) {
-        this.listProductInCart.push(product);
-        this.setLocalStorage();
-      }
-    } else {
-      this.listProductInCart.push(product);
-      this.setLocalStorage();
-    }
+
+  // Dynamic route for detail info when a product is clicked
+  clickedProduct(product) {
+    this.router.navigate(['/detail', product.id]);
   }
 
-  private getLocalStorage() {
-    const list = JSON.parse(localStorage.getItem('listCart'));
-    return list;
-  }
-
-  private setLocalStorage() {
-    localStorage.setItem('listCart', JSON.stringify(this.listProductInCart));
+  // When add to cart button is clicked
+  addToCart(product) {
+    this.cartStore.addToCart(product, 1);
   }
 
 }
