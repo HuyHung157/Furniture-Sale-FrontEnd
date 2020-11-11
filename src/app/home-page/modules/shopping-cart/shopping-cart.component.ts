@@ -56,7 +56,21 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     });
   }
 
+  private increment() {
+
+  }
+
+  private decrement() {
+
+  }
+
+  private reset() {
+
+  }
+
   ngOnDestroy() {
     this.cartSubscription.unsubscribe();
   }
+
+
 }
