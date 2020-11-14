@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListProductTopSell();
+
     this.slideBanner = [
       {
         image_src: 'https://chonoithat.vn/assets/library/files/WebBN.jpg',
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   public getListProductTopSell(): void {
-    this.slideTopSell = this.productService.getListProduct().subscribe(res => {
+    this.productService.getListProduct().subscribe(res => {
       this.slideTopSell = res;
       this.slideLivingRoom = res.slice(3, 100).reverse();
       this.slideBedRoom = res.slice(2, 100);

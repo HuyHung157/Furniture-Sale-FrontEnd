@@ -10,11 +10,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
-import { StoreModule } from '@ngrx/store';
-import { ACTIONS } from './store/actions';
-import { SERVICES } from './home-page/services';
-import { reducers, metaReducers } from './store/reducers';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,11 +22,7 @@ import { reducers, metaReducers } from './store/reducers';
     AppRoutingModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
-    StoreModule.forRoot(reducers,
-      // { metaReducers }
-    ),
   ],
-  providers: [SERVICES, ACTIONS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,65 @@
 @import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixin";
+
+// Slider
+.slick-slider {
+  width: 100%;
+  margin: auto;
+  margin-bottom: 30px;
+  position: relative;
+  .proudct-item {
+    .item {
+      width: 98%;
+    }
+  }
+  ::ng-deep .btn-slide {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: transparent;
+    border: none;
+    &.next-list {
+      right: -50px;
+    }
+    &.pre-list {
+      left: -50px;
+    }
+    &:hover {
+      i {
+        color: $primary;
+      }
+    }
+    i {
+      color: black;
+      font-size: 50px;
+    }
+  }
+  ::ng-deep .slick-dots {
+    position: absolute;
+    bottom: 0;
+    li {
+      button {
+        &::before {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+@include Responsive(MD) {
+  .slick-slider {
+    ::ng-deep .btn-slide {
+      &.next-list {
+        right: 0;
+      }
+      &.pre-list {
+        left: 0;
+      }
+    }
+  }
+}
 
 .list-product-carousel {
   .title-group {

@@ -9,6 +9,7 @@ import { ProductService } from '../admin-page/modules/product/services/product.s
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
 import { StorageService } from '../shared/services/storage.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProductComponent } from './modules/product/product.component';
 
 
 
@@ -17,7 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HomePageComponent,
     HomeComponent,
     ShoppingCartComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,
