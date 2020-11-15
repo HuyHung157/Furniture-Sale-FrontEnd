@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +18,9 @@ export class SignInComponent implements OnInit {
   public tooltipContent = 'Hiển thị mật khẩu';
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly authService: AuthService,
+    private readonly userService: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -45,4 +49,11 @@ export class SignInComponent implements OnInit {
     }
   }
 
+  signInByGoogle() {
+    this.userService.signInByGoogle();
+  }
+
+  signInByFacebook() {
+    alert('Sẽ sớm có tính năng này!');
+  }
 }

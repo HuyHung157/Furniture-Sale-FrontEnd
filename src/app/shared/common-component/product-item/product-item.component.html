@@ -16,7 +16,7 @@
       <span class="fa fa-star checked" *ngFor="let i of listRate"></span>
       <span class="fa fa-star"></span><span *ngIf="product.vote">( {{product.vote}} )</span>
     </div>
-    <div class="product__item-addtocart" *ngIf="!hideButton">
+    <div class="product__item-addtocart">
       <button class="btn btn-fill-out btn-radius" (click)="addToCart(product)">
         <i class="fa fa-shopping-basket"></i>Thêm vào giỏ hàng
       </button>

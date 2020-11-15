@@ -22,11 +22,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   ) { }
 
   removeProduct(product) {
-    this.cartStore.removeFromCart(product)
+    this.cartStore.removeFromCart(product);
   }
 
   checkout() {
-    alert('Sorry! Checkout will be coming soon!')
+    alert('Sorry! Checkout will be coming soon!');
   }
 
   getTotalPrice() {
@@ -57,7 +57,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   public increment() {
-
   }
 
   public decrement() {

@@ -36,23 +36,22 @@
                 </ng-container>
                 <button class="btn__submit-login" type="submit">Sign in</button>
                 <a class="link__create_account" routerLink="/auth/sign-up">Sign up here !</a>
-                <!-- <div class="social__contact">
-                        <ul class="contact__list contact__items">
-                            <li class="contact__item google">
-                                <a href="mailto:contact.tntt.nvhb@gmail.com?subject=Support From Website">
-                                    <i class="fab fa-google"></i>
-                                    <span>Liên hệ qua Email</span>
-                                </a>
-                            </li>
-                            <li class="contact__item facebook">
-                                <a href="https://www.facebook.com/%C4%90O%C3%80N-THI%E1%BA%BEU-NHI-TH%C3%81NH-TH%E1%BB%82-Gx-N%E1%BB%AE-V%C6%AF%C6%A0NG-H%C3%92A-B%C3%8CNH-444468152576275/"
-                                    target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                    <span>Liên hệ qua Fanpage</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> -->
+                <div class="social__contact">
+                    <ul class="contact__list contact__items">
+                        <li class="contact__item google">
+                            <a (click)="signInByGoogle()">
+                                <i class="fab fa-google"></i>
+                                <span>Đăng nhập bằng Email</span>
+                            </a>
+                        </li>
+                        <li class="contact__item facebook">
+                            <a (click)="signInByFacebook()">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Đăng nhập bằng Facebook</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </form>
     </div>

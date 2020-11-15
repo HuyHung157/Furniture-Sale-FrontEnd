@@ -13,7 +13,6 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   public listProductInCart = [];
   public listRate = [];
-  public hideButton = false;
 
   products: Product[];
 
@@ -32,7 +31,6 @@ export class ProductItemComponent implements OnInit {
 
   addToCart(product) {
     this.cartStore.addToCart(product, 1);
-    this.hideButton = true;
   }
 
 }
