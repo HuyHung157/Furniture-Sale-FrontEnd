@@ -9,6 +9,15 @@ import { SharedModule } from './shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SERVICES } from './home-page/services';
+import { ACTIONS } from './store/actions';
+import { StoreModule } from '@ngrx/store';
+import { AllEffects } from './store/effects';
+import { reducers } from './store/reducers';
 
 @NgModule({
   declarations: [
@@ -22,7 +31,18 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     AppRoutingModule,
     BrowserAnimationsModule,
     SlickCarouselModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    StoreModule.forRoot(reducers),
+    AllEffects,
   ],
+  exports: [
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+  ],
+  providers: [SERVICES, ACTIONS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

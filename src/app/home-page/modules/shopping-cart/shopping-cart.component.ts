@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CartAction } from 'src/app/store/actions/cart.actions';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -17,17 +18,42 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
+    private cartStore: CartAction,
   ) { }
 
   removeProduct(product) {
+    this.cartStore.removeFromCart(product)
   }
 
   checkout() {
-    alert('Sẽ sớm cập nhật tính năng này');
+    alert('Sorry! Checkout will be coming soon!')
+  }
+
+  getTotalPrice() {
+    const totalCost: Array<number> = [];
+    const quantity: Array<number> = [];
+    let intPrice: number;
+    let intQuantity: number;
+    this.cart.forEach((item, i) => {
+      intPrice = parseInt(item.price, 10);
+      intQuantity = parseInt(item.quantity, 10);
+      totalCost.push(intPrice);
+      quantity.push(intQuantity);
+    });
+
+    this.totalPrice = totalCost.reduce((acc, item) => {
+      return acc += item;
+    }, 0);
+    this.totalQuantity = quantity.reduce((acc, item) => {
+      return acc += item;
+    }, 0);
   }
 
   ngOnInit() {
-
+    this.cartSubscription = this.cartStore.getState().subscribe(res => {
+      this.cart = res.products;
+      this.getTotalPrice();
+    });
   }
 
   public increment() {
@@ -45,6 +71,4 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.cartSubscription.unsubscribe();
   }
-
-
 }
