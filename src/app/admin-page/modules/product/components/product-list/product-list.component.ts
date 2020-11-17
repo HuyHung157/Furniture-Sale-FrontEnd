@@ -47,7 +47,7 @@ export class ProductListComponent implements OnInit {
       data: {
         title: 'Xóa sản phẩm',
         message: 'Bạn có chắc chắn muốn xóa',
-        productName: `${product.name}`
+        itemName: `${product.name}`
       }
     });
 
@@ -74,7 +74,7 @@ export class ProductListComponent implements OnInit {
       'size',
       'color',
       'status',
-      'action',
+      'actions',
     ];
   }
 

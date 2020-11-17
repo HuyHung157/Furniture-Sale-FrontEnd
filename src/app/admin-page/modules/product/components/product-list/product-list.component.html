@@ -1,4 +1,4 @@
-<div class="product-list">
+<div class="product-list section-list">
   <div class="product-box">
     <div class="header-product">
       <h2 class="header-title">Danh sách sản phẩm</h2>
@@ -65,7 +65,7 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="action">
+        <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Chức năng</th>
           <td mat-cell *matCellDef="let element">
             <div class="row-group__button">
@@ -80,8 +80,6 @@
           (click)="gotoProductDetail(row)" matTooltip='Nhấn để xem chi tiết/chỉnh sửa'></tr>
       </table>
 
-
-      <!-- </ng-template> -->
     </div>
   </div>
 </div>

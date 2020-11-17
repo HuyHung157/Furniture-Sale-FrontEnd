@@ -9,25 +9,11 @@
     <div class="row-group">
       <!-- Name -->
       <div class="form-group">
-        <mat-label class="label-form">name </mat-label>
+        <mat-label class="label-form">Tên danh mục </mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput formControlName="name" required class="input-form" placeholder="abc">
+          <input matInput [(ngModel)]="category.name" formControlName="name" required class="input-form"
+            placeholder="Nhập tên danh mục">
           <mat-error *ngIf="createForm.controls.name.touched && createForm.controls.name.invalid || submitted">
-            Vui lòng điển thông tin
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <!-- Language -->
-      <div class="form-group">
-        <mat-label class="label-form">Language </mat-label>
-        <mat-form-field class="form-field" appearance="fill">
-          <mat-select formControlName="language" required class="input-form" placeholder="ABC">
-            <mat-option *ngFor="let lang of listLanguages" [value]="lang.value">
-              {{lang.label}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="createForm.controls.language.touched && createForm.controls.language.invalid || submitted">
             Vui lòng điển thông tin
           </mat-error>
         </mat-form-field>
@@ -35,21 +21,23 @@
     </div>
 
     <div class="row-group">
-      <!-- Category -->
+      <!-- Status Product -->
       <div class="form-group">
-        <mat-label class="label-form"> Category </mat-label>
+        <mat-label class="label-form">Trạng thái</mat-label>
+        <mat-slide-toggle [checked]="category.is_available" formControlName="is_available">
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="row-group">
+      <!-- Desciption -->
+      <div class="form-group">
+        <mat-label class="label-form">Ghi chú</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <mat-select formControlName="category" required class="input-form" placeholder="BCD">
-            <mat-option *ngFor="let lang of listLanguages" [value]="lang.value">
-              {{lang.label}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="createForm.controls.category.touched && createForm.controls.category.invalid || submitted">
-            Vui lòng điển thông tin
-          </mat-error>
+          <input matInput [(ngModel)]="category.description" formControlName="description" required class="input-form"
+            placeholder="Nhập chú thích">
         </mat-form-field>
       </div>
-
     </div>
 
     <!-- Btn-group -->

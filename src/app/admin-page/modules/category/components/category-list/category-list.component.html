@@ -1,10 +1,10 @@
-<div class="product-list">
-  <div class="product-box">
+<div class="category-list section-list">
+  <div class="category-box">
     <div class="header-product">
-      <h2 class="header-title"><span>Item List</span></h2>
+      <h2 class="header-title"><span>Danh sách danh mục</span></h2>
 
       <div class="btn-group-create">
-        <button mat-raised-button color="primary" (click)="addNew()">Tạo mới</button>
+        <button mat-raised-button class="primary" color="primary" (click)="addNew()">Tạo mới</button>
       </div>
 
     </div>
@@ -18,7 +18,7 @@
 
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Tên danh mục</th>
-          <td mat-cell *matCellDef="let element">{{ element.product_name }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="status">
@@ -26,19 +26,27 @@
           <td mat-cell *matCellDef="let element">
 
             <mat-slide-toggle [matTooltip]="!element?.is_available ? tooltipContent: ''"
-              [checked]="element.is_available" (click)="changeStatus(element)" toggleChange="">
+              [checked]="element.is_available" [disabled]="true">
             </mat-slide-toggle>
 
           </td>
         </ng-container>
 
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Chức năng</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="row-group__button">
+              <button mat-flat-button color="warn" class="btn-delete"
+                (click)="goToDelete($event , element)">Xóa</button>
+            </div>
+          </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row mat-row class="web-admin" *matRowDef="let row; columns: displayedColumns"
-          (click)="gotoProductDetail(row)"></tr>
+        <tr mat-row mat-row class="web-admin" style="cursor: pointer;" *matRowDef="let row; columns: displayedColumns"
+          (click)="gotoCategoryDetail(row)" matTooltip='Nhấn để xem chi tiết/chỉnh sửa'></tr>
       </table>
 
-
-      <!-- </ng-template> -->
     </div>
   </div>
 </div>

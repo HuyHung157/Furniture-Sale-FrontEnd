@@ -1,0 +1,37 @@
+@import "./variables";
+@import "./mixin";
+
+$width-page: 1190px;
+
+.section-list {
+  .header-product {
+    max-width: $width-page;
+    margin: 0 auto;
+    @include flex($justify-content: space-between);
+    .header-title {
+      color: $primary;
+      font-size: 30px;
+    }
+    .btn-group-create {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+  }
+  .table-list-content {
+    overflow-x: auto;
+    max-width: $width-page;
+    width: 100%;
+    margin: 0 auto;
+    border-spacing: 0;
+    border: 1px solid gray;
+    th {
+      &:last-child {
+        text-align: right;
+      }
+    }
+    .row-group__button {
+      justify-content: flex-end;
+    }
+  }
+}

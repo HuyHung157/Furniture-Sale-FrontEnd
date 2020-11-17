@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import firebase from 'firebase/app';
+import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs/operators';
+import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +13,8 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth,
+    private readonly router: Router,
+    private readonly toastr: ToastrService
   ) { }
 
   GoogleAuth() {
@@ -19,10 +25,11 @@ export class AuthService {
   AuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider)
       .then((result) => {
-        console.log(result);
-        console.log('You have been successfully logged in!');
+        localStorage.setItem('user', JSON.stringify(result));
+        this.toastr.success('Đăng nhập thành công!');
+        this.router.navigate(['admin']);
       }).catch((error) => {
-        console.log(error);
+        this.toastr.error(error);
       });
   }
 

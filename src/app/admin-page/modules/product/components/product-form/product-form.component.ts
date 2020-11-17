@@ -3,10 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
-import { ModeForm } from '../../enums/product.enum';
-import { Product } from '../../models/product.model';
+import { ModeForm } from 'src/app/shared/enums/product.enum';
+import { CategoryService } from '../../../category/services/category.service';
 import { ProductService } from '../../services/product.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -15,53 +18,51 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductFormComponent implements OnInit {
   public product: any = {};
+  public category: any;
   public createForm: FormGroup;
   public submitted = false;
-  public category;
   public productId: string;
   public mode = ModeForm.MODE_CREATE;
-  public callback;
+
+  title = 'cloudsStorage';
+  selectedFile: File = null;
+  fb;
+  downloadURL: Observable<string>;
 
   constructor(
     private formBuilder: FormBuilder,
     private readonly location: Location,
     private readonly route: ActivatedRoute,
     private readonly snackBar: MatSnackBar,
-    private readonly productService: ProductService
-  ) { }
-
-  ngOnInit(): void {
-    this.callback = this.route.snapshot.queryParams?.callback;
-    this.config();
-  }
-
-  private config(): void {
-    this.productId = this.route.snapshot.paramMap.get('id');
-    // if (!isNaN(Number(this.productId))) {
-    if (this.productId) {
-      this.mode = ModeForm.MODE_UPDATE;
-    }
-    this.category = [
-      {
-        value: '1',
-        label: 'Bán chạy'
-      },
-      {
-        value: '2',
-        label: 'Phòng ngủ'
-      }
-    ];
+    private readonly productService: ProductService,
+    private readonly categoryService: CategoryService,
+    private readonly storage: AngularFireStorage
+  ) {
     this.createForm = this.formBuilder.group({
-      category: ['', Validators.required],
+      category: this.formBuilder.array(['', Validators.required]),
       name: ['', Validators.required],
       // product_code: ['', Validators.required],
-      price: ['', Validators.required],
       price_before: [''],
+      price: ['', Validators.required],
       size: ['', Validators.required],
       color: ['', Validators.required],
       description: [''],
-      is_available: [''],
+      is_available: [false],
       image_url: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+    this.config();
+  }
+
+  private async config() {
+    this.productId = this.route.snapshot.paramMap.get('id');
+    if (this.productId) {
+      this.mode = ModeForm.MODE_UPDATE;
+    }
+    await this.categoryService.getListCategory().subscribe(res => {
+      this.category = res;
     });
 
     if (this.mode === ModeForm.MODE_UPDATE) {
@@ -69,9 +70,37 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
+  // File
+  onFileSelected(event) {
+    const n = Date.now();
+    const file = event.target.files[0];
+    console.log(file);
+    const filePath = `product/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`product/${file.name}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
+
   public submit(form): void {
     this.submitted = true;
-    if (form) {
+    if (form.valid) {
       if (this.mode === ModeForm.MODE_CREATE) {
         const data = { ...form.value };
         this.productService.createItemProduct(data).subscribe(res => {

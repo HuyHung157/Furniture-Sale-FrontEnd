@@ -7,7 +7,6 @@ import { DataService } from './services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
-
 @NgModule({
   declarations: [],
   imports: [

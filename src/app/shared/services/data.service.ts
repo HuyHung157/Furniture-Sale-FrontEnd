@@ -20,7 +20,11 @@ export class DataService {
   }
 
   public put(uri: string, input?) {
-    return this.http.put(HOST + this.path + uri, JSON.stringify(input)).pipe(map((res) => res));
+    return this.http.put(HOST + this.path + uri, JSON.stringify(input), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).pipe(map((res) => res));
   }
 
   public delete(uri: string) {

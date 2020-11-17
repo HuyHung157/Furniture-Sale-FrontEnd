@@ -9,8 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CommonComponentModule } from 'src/app/shared/common-component/common-component.module';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-
-
+import { CategoryService } from '../category/services/category.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +28,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
   providers: [
     DataService,
     ProductService,
+    CategoryService
   ]
 })
 export class ProductModule { }

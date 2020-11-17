@@ -18,7 +18,7 @@ import { ACTIONS } from './store/actions';
 import { StoreModule } from '@ngrx/store';
 import { AllEffects } from './store/effects';
 import { reducers } from './store/reducers';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +34,12 @@ import { reducers } from './store/reducers';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton: true
+    }),
     StoreModule.forRoot(reducers),
     AllEffects,
   ],

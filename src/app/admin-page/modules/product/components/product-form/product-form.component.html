@@ -10,8 +10,8 @@
           <mat-form-field class="form-field" appearance="fill">
             <mat-select formControlName="category" [(ngModel)]="product.category" required class="input-form"
               placeholder="Lựa chọn danh mục" multiple>
-              <mat-option *ngFor="let categoryItem of category" [value]="categoryItem.value">
-                {{categoryItem.label}}
+              <mat-option *ngFor="let categoryItem of category" [value]="categoryItem.id">
+                {{categoryItem.name}}
               </mat-option>
             </mat-select>
             <mat-error
@@ -35,8 +35,7 @@
       </div>
 
       <div class="row-group">
-
-        <!-- Product Code -->
+        <!-- Price before sale -->
         <div class="form-group">
           <mat-label class="label-form">Giá chưa giảm</mat-label>
           <mat-form-field class="form-field" appearance="fill">
@@ -44,6 +43,7 @@
               class="input-form" placeholder="Nhập giá trước giảm">
           </mat-form-field>
         </div>
+        <!-- Product Code -->
         <!-- <div class="form-group">
           <mat-label class="label-form">Mã Sản Phẩm</mat-label>
           <mat-form-field class="form-field" appearance="fill">
@@ -129,6 +129,10 @@
           </mat-error>
         </mat-form-field>
       </div>
+
+      <!-- Image -->
+      <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+      <!--End Image -->
 
       <!-- Btn-group -->
       <div class="row-group__button end">
