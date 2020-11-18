@@ -26,7 +26,6 @@ export class ProductFormComponent implements OnInit {
 
   title = 'cloudsStorage';
   selectedFile: File = null;
-  fb;
   downloadURL: Observable<string>;
 
   constructor(
@@ -39,7 +38,7 @@ export class ProductFormComponent implements OnInit {
     private readonly storage: AngularFireStorage
   ) {
     this.createForm = this.formBuilder.group({
-      category: this.formBuilder.array(['', Validators.required]),
+      category: ['', Validators.required],
       name: ['', Validators.required],
       // product_code: ['', Validators.required],
       price_before: [''],
@@ -47,7 +46,7 @@ export class ProductFormComponent implements OnInit {
       size: ['', Validators.required],
       color: ['', Validators.required],
       description: [''],
-      is_available: [false],
+      is_available: [true],
       image_url: ['', Validators.required],
     });
   }
@@ -72,30 +71,29 @@ export class ProductFormComponent implements OnInit {
 
   // File
   onFileSelected(event) {
-    const n = Date.now();
+    console.log(event.target.files);
     const file = event.target.files[0];
     console.log(file);
     const filePath = `product/${file.name}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`product/${file.name}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.fb = url;
-            }
-            console.log(this.fb);
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
-        }
-      });
+    // const fileRef = this.storage.ref(filePath);
+    // const task = this.storage.upload(`product/${file.name}`, file);
+    // task
+    //   .snapshotChanges()
+    //   .pipe(
+    //     finalize(() => {
+    //       this.downloadURL = fileRef.getDownloadURL();
+    //       this.downloadURL.subscribe(url => {
+    //         if (url) {
+    //           console.log(url);
+    //         }
+    //       });
+    //     })
+    //   )
+    //   .subscribe(url => {
+    //     if (url) {
+    //       console.log(url);
+    //     }
+    //   });
   }
 
   public submit(form): void {

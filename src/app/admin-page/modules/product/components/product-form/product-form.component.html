@@ -131,7 +131,18 @@
       </div>
 
       <!-- Image -->
-      <input type="file" id="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off" />
+      <div class="form-group">
+
+        <mat-label for='import-file' class="label-form">Đường dẫn hình ảnh</mat-label>
+        <mat-form-field class="form-field" appearance="fill">
+          <input matInput [(ngModel)]="product.image_url" formControlName="image_url" required class="input-form"
+            id="import-file" #userPhoto>
+          <mat-error
+            *ngIf="createForm.controls.image_url.touched && createForm.controls.image_url.invalid || submitted">
+            Vui lòng điển thông tin
+          </mat-error>
+        </mat-form-field>
+      </div>
       <!--End Image -->
 
       <!-- Btn-group -->
