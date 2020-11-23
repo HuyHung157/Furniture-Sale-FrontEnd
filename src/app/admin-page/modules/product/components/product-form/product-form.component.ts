@@ -69,7 +69,8 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  // File
+
+  // TODO Upload file After Submit form (success upload file to firebase)
   onFileSelected(event) {
     console.log(event.target.files);
     const file = event.target.files[0];
