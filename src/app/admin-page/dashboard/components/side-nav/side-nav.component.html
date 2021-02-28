@@ -22,8 +22,8 @@
                         <i [class]="action.icon"></i>
                         &nbsp;&nbsp;
                         <span *ngIf="action.name" [@animateText]="linkText ? 'show' : 'hide'">{{ action?.name }} </span>
-
                     </a>
+
                     <!-- If this menu has sub menus -->
                     <ng-template #subMenu>
                         <mat-expansion-panel (opened)="true" (closed)="false">
