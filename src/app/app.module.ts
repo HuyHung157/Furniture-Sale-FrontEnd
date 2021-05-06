@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { AllEffects } from './store/effects';
 import { reducers } from './store/reducers';
 import { ToastrModule } from 'ngx-toastr';
+import { GraphQLModule } from './shared/modules/gql/gql.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    GraphQLModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',

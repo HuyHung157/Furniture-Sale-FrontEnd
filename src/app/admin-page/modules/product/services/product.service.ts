@@ -3,13 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
+import { ProductGqlService } from './product.gql.service';
 
 @Injectable()
 export class ProductService {
 
   constructor(
     private dataService: DataService,
+    private readonly productGqlService: ProductGqlService
   ) { }
+
+  getProducts(input) {
+    return this.productGqlService.getProducts(input);
+  }
 
   public getListProduct(): Observable<any> {
     return this.dataService.get('/product')
