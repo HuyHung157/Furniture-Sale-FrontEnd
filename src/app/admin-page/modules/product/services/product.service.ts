@@ -5,12 +5,14 @@ import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 import { ProductGqlService } from './product.gql.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductService {
 
   constructor(
     private dataService: DataService,
-    private readonly productGqlService: ProductGqlService
+    private productGqlService: ProductGqlService
   ) { }
 
   getProducts(input) {

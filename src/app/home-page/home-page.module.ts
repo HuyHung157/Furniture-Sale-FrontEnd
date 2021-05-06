@@ -10,6 +10,7 @@ import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.com
 import { StorageService } from '../shared/services/storage.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './modules/product/product.component';
+import { ProductGqlService } from '../admin-page/modules/product/services/product.gql.service';
 
 
 
@@ -27,6 +28,7 @@ import { ProductComponent } from './modules/product/product.component';
     HomePageRoutingModule,
   ],
   providers: [
+    ProductGqlService,
     ProductService,
     StorageService
   ]

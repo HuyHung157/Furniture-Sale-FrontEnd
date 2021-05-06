@@ -31,15 +31,6 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getListProduct();
     this.config();
-    const input = {
-      paging: {
-        pageIndex: 1,
-        pageSize: 10
-      }
-    };
-    this.productService.getProducts(input).subscribe(res => {
-      console.log(res);
-    })
   }
 
   public addNew(): void {

@@ -11,12 +11,14 @@ const queryGetProducts = gql`
         name
         index
         type
-        categoryIds
       }
     }
   }
 `;
-@Injectable()
+
+@Injectable({
+  providedIn: 'root',
+})
 export class ProductGqlService {
 
   constructor(protected readonly apollo: Apollo) { }
