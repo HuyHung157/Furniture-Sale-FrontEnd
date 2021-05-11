@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { CartAction } from 'src/app/store/actions/cart.actions';
 import { ProductService } from '../../services/product.service';
-
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -18,11 +16,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   constructor(
     private productService: ProductService,
-    private cartStore: CartAction,
   ) { }
 
   removeProduct(product) {
-    this.cartStore.removeFromCart(product);
+    console.log(product);
   }
 
   checkout() {
@@ -50,10 +47,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.cartSubscription = this.cartStore.getState().subscribe(res => {
-      this.cart = res.products;
-      this.getTotalPrice();
-    });
+   
   }
 
   public increment() {
