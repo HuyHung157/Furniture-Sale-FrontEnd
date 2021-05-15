@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SERVICES } from './home-page/services';
 import { GraphQLModule } from './shared/modules/gql/gql.module';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { GraphQLModule } from './shared/modules/gql/gql.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     GraphQLModule,
+    ToastrModule.forRoot(),
   ],
   exports: [
     AngularFireModule,

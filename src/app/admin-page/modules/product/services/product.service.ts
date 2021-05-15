@@ -16,18 +16,27 @@ export class ProductService {
   ) { }
 
   getProducts(input) {
-    return this.productGqlService.getProducts(input);
+    return this.productGqlService.getProducts(input).pipe(
+      map((res: any) => res?.data?.getProductList)
+    );
   }
 
+  getProductById(id: string) {
+    return this.productGqlService.getProductById(id).pipe(
+      map((res: any) => res?.data?.getProductById)
+    );
+  }
+
+  // RestAPI
   public getListProduct(): Observable<any> {
     return this.dataService.get('/product')
       .pipe(map((data: any) => data));
   }
 
-  public getProductById(id): Observable<any> {
-    return this.dataService.get(`/product/${id}`)
-      .pipe(map((data: any) => data));
-  }
+  // public getProductById(id): Observable<any> {
+  //   return this.dataService.get(`/product/${id}`)
+  //     .pipe(map((data: any) => data));
+  // }
 
   public createItemProduct(input): Observable<any> {
     return this.dataService.post('/product', input)

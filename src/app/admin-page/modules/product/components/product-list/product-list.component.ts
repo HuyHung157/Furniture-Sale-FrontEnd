@@ -83,9 +83,15 @@ export class ProductListComponent implements OnInit {
   }
 
   private getListProduct(): void {
-    this.productService.getListProduct()
-      .subscribe((res: any) => {
-        this.pureData = res;
+    const input = {
+      paging: {
+        pageIndex: 1,
+        pageSize: 10
+      }
+    };
+      this.productService.getProducts(input).subscribe(res => {
+        console.log(res);
+        this.pureData = res.items
       });
   }
 

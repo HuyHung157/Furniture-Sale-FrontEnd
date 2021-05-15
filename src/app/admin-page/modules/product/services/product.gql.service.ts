@@ -16,6 +16,28 @@ const queryGetProducts = gql`
   }
 `;
 
+const queryGetProductById = gql`
+  query getProductById($id: String!) {
+    getProductById(id: $id) {
+      id
+      name
+      type
+      index
+      description
+      price
+      referencePrice
+      pictureUrl
+      categories{
+        category{
+          id
+          name
+          type
+        }
+      }
+    }
+  }
+`;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,7 +45,7 @@ export class ProductGqlService {
 
   constructor(protected readonly apollo: Apollo) { }
 
-  getProducts(input) {
+  public getProducts(input) {
     return this.apollo.query({
       query: queryGetProducts,
       variables: {
@@ -34,5 +56,15 @@ export class ProductGqlService {
     // .pipe(
     //   map(({ data }: any) => data.getOrders as OrderResponse)
     // );
+  }
+
+  public getProductById(id: string){
+    return this.apollo.query({
+      query: queryGetProductById,
+      variables: {
+        id,
+      },
+      fetchPolicy: 'network-only',
+    });
   }
 }
