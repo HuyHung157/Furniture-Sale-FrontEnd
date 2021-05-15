@@ -36,6 +36,15 @@ export class HomeComponent implements OnInit {
         image_alt: 'banner-2'
       },
     ];
+    const input = {
+      paging: {
+        pageIndex: 1,
+        pageSize: 10
+      }
+    };
+    this.productService.getProducts(input).subscribe(res => {
+      console.log(res);
+    });
   }
 
   public getListProductTopSell(): void {
