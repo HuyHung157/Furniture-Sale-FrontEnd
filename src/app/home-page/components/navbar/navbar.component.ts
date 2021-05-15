@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartAction } from 'src/app/store/actions/cart.actions';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

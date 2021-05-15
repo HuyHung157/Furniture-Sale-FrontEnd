@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
   public titleBedRoom = 'phòng ngủ';
   public titleKitchen = 'nhà bếp';
 
-  constructor(
-    private readonly productService: ProductService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.getListProductTopSell();
@@ -39,12 +37,12 @@ export class HomeComponent implements OnInit {
   }
 
   public getListProductTopSell(): void {
-    this.productService.getListProduct().subscribe(res => {
-      this.slideTopSell = res;
-      this.slideLivingRoom = res.slice(3, 100).reverse();
-      this.slideBedRoom = res.slice(2, 100);
-      this.slideKitchen = res.slice().reverse();
-    });
+    // this.productService.getListProduct().subscribe(res => {
+    //   this.slideTopSell = res;
+    //   this.slideLivingRoom = res.slice(3, 100).reverse();
+    //   this.slideBedRoom = res.slice(2, 100);
+    //   this.slideKitchen = res.slice().reverse();
+    // });
   }
 
 }
