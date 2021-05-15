@@ -90,6 +90,7 @@ export class ProductListComponent implements OnInit {
       }
     };
       this.productService.getProducts(input).subscribe(res => {
+        //TODO mapping data to list
         console.log(res);
         this.pureData = res.items
       });
