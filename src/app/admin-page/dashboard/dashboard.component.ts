@@ -13,9 +13,7 @@ export class DashboardComponent implements OnInit {
   name = 'Angular';
   public onSideNavChange: boolean;
 
-  constructor(
-    private sideNavService: SidenavService
-  ) {
+  constructor(private sideNavService: SidenavService) {
     this.sideNavService.sideNavState$.subscribe(res => {
       this.onSideNavChange = res;
     });
