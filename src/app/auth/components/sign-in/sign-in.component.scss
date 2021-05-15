@@ -66,7 +66,7 @@
           input {
             border: none;
             height: 100%;
-            width: 100%;
+            width: auto;
             font-size: 17px;
             outline: none;
 
@@ -140,16 +140,14 @@
           .contact__list {
             display: flex;
             .contact__item {
+              margin: 15px auto 10px;
               color: white;
               transition: all 0.5s;
+              padding: 10px 20px 10px 12px;
               &:hover {
                 cursor: pointer;
               }
               a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 8px 16px;
                 width: 100%;
                 color: white;
                 font-size: 17px;

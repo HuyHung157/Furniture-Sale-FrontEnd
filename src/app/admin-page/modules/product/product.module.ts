@@ -10,7 +10,6 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { CommonComponentModule } from 'src/app/shared/common-component/common-component.module';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { CategoryService } from '../category/services/category.service';
-import { ProductGqlService } from './services/product.gql.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { ProductGqlService } from './services/product.gql.service';
   providers: [
     DataService,
     ProductService,
-    ProductGqlService,
     CategoryService
   ]
 })

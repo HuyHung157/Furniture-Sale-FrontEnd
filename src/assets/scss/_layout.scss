@@ -31,7 +31,6 @@ $width-tag: 300px;
 
 // Input
 mat-form-field {
-
   &.mat-form-field-appearance-fill {
     &.ng-invalid {
       &.ng-touched {
@@ -145,11 +144,6 @@ mat-form-field {
     @include flex($justify-content: flex-start);
     .title {
       @include font(bold, $x-large, 1.23, $primary);
-    }
-    @media screen and(max-width: 450px) {
-      .title {
-        @include font(bold, $large, 1.23, $primary);
-      }
     }
   }
 }
