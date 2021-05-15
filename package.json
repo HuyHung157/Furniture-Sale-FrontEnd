@@ -1,5 +1,5 @@
 {
-  "name": "furniture-sale-fe",
+  "name": "furniture-sale",
   "version": "0.0.0",
   "engines": {
     "node": "v13.12.0",
@@ -30,7 +30,6 @@
     "@angular/platform-browser-dynamic": "~10.2.3",
     "@angular/router": "~10.2.3",
     "@angular/service-worker": "^10.0.2",
-    "@apollo/client": "^3.3.18",
     "@ckeditor/ckeditor5-angular": "^2.0.1",
     "@ckeditor/ckeditor5-build-classic": "^23.1.0",
     "apollo-angular": "^2.4.0",
@@ -42,6 +41,9 @@
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.15",
     "moment": "^2.29.1",
+    "ngrx-store-logger": "^0.2.4",
+    "ngx-content-loading": "^0.1.3",
+    "ngx-facebook": "^3.0.0-0",
     "ngx-image-cropper": "^3.2.1",
     "ngx-slick-carousel": "^0.5.1",
     "ngx-toastr": "^13.1.0",
@@ -54,7 +56,7 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1002.3",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "^10.2.0",
     "@angular/compiler-cli": "^10.2.3",
     "@types/jasmine": "~3.5.0",

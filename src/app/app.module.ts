@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { SharedModule } from './shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +14,10 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SERVICES } from './home-page/services';
-import { GraphQLModule } from './shared/modules/gql/gql.module';
+import { ACTIONS } from './store/actions';
+import { StoreModule } from '@ngrx/store';
+import { AllEffects } from './store/effects';
+import { reducers } from './store/reducers';
 import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
@@ -29,15 +34,21 @@ import { ToastrModule } from 'ngx-toastr';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    GraphQLModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton: true
+    }),
+    StoreModule.forRoot(reducers),
+    AllEffects,
   ],
   exports: [
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [SERVICES],
+  providers: [SERVICES, ACTIONS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

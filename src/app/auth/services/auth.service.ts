@@ -5,20 +5,17 @@ import firebase from 'firebase/app';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { pipe } from 'rxjs';
-import { Injector } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private toastr: ToastrService;
+
   constructor(
     public afAuth: AngularFireAuth,
     private readonly router: Router,
-    injector: Injector
-  ) { 
-    this.toastr = injector.get(ToastrService);
-  }
+    private readonly toastr: ToastrService
+  ) { }
 
   GoogleAuth() {
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());

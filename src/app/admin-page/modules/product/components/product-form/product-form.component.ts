@@ -60,10 +60,9 @@ export class ProductFormComponent implements OnInit {
     if (this.productId) {
       this.mode = ModeForm.MODE_UPDATE;
     }
-    //TODO get CategoryList
-    // await this.categoryService.getListCategory().subscribe(res => {
-    //   this.category = res;
-    // });
+    await this.categoryService.getListCategory().subscribe(res => {
+      this.category = res;
+    });
 
     if (this.mode === ModeForm.MODE_UPDATE) {
       this.getProductById();
@@ -130,7 +129,6 @@ export class ProductFormComponent implements OnInit {
 
   private getProductById() {
     this.productService.getProductById(this.productId).subscribe(res => {
-      console.log(res)
       this.product = res;
     });
   }

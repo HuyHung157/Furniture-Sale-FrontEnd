@@ -3,40 +3,23 @@ import { Injectable } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
-import { ProductGqlService } from './product.gql.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProductService {
 
   constructor(
     private dataService: DataService,
-    private productGqlService: ProductGqlService
   ) { }
 
-  getProducts(input) {
-    return this.productGqlService.getProducts(input).pipe(
-      map((res: any) => res?.data?.getProductList)
-    );
-  }
-
-  getProductById(id: string) {
-    return this.productGqlService.getProductById(id).pipe(
-      map((res: any) => res?.data?.getProductById)
-    );
-  }
-
-  // RestAPI
   public getListProduct(): Observable<any> {
     return this.dataService.get('/product')
       .pipe(map((data: any) => data));
   }
 
-  // public getProductById(id): Observable<any> {
-  //   return this.dataService.get(`/product/${id}`)
-  //     .pipe(map((data: any) => data));
-  // }
+  public getProductById(id): Observable<any> {
+    return this.dataService.get(`/product/${id}`)
+      .pipe(map((data: any) => data));
+  }
 
   public createItemProduct(input): Observable<any> {
     return this.dataService.post('/product', input)

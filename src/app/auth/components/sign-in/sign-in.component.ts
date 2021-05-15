@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 
@@ -22,7 +21,6 @@ export class SignInComponent implements OnInit {
     private readonly router: Router,
     private readonly authService: AuthService,
     private readonly userService: UserService,
-    private readonly toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +42,6 @@ export class SignInComponent implements OnInit {
     if (formLogin.valid) {
       const value = formLogin.form.value;
       localStorage.setItem('user', value);
-      this.toastr.success('Đăng nhập thành công!');
       this.router.navigate(['admin']);
 
     } else {
