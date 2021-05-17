@@ -10,6 +10,8 @@ import { CategoryService } from '../../../category/services/category.service';
 import { ProductService } from '../../services/product.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { FormField } from 'src/app/shared/interfaces/form-field.interface';
+import { FavieImageTemp } from 'src/app/shared/common-component/image-uploader/image-uploader.component';
 
 @Component({
   selector: 'app-product-form',
@@ -27,6 +29,10 @@ export class ProductFormComponent implements OnInit {
   title = 'cloudsStorage';
   selectedFile: File = null;
   downloadURL: Observable<string>;
+
+  public field: FormField;
+  public formInitValues;
+  public allowEditPicture: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -68,6 +74,21 @@ export class ProductFormComponent implements OnInit {
     if (this.mode === ModeForm.MODE_UPDATE) {
       this.getProductById();
     }
+    const a = {
+      key: 'image_url',
+      labelOutSide: 'image product',
+      required: true,
+      validators: [Validators.required],
+      iconImage: 'assets/icons/bx_bxs-image-add.svg',
+      limitImages: 1,
+      title: 'upload',
+      aspectRatio: {
+        ratioWidth: 3,
+        ratioHeight: 1,
+      },
+    } as FormField;
+    this.field = a;
+    this.allowEditPicture = true;
   }
 
 
@@ -96,6 +117,11 @@ export class ProductFormComponent implements OnInit {
     //       console.log(url);
     //     }
     //   });
+  }
+
+  public setImagesChange(images: FavieImageTemp[], formControl) {
+    formControl.setValue(images);
+    console.log(this.createForm.value)
   }
 
   public submit(form): void {

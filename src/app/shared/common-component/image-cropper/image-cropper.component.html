@@ -1,0 +1,24 @@
+<section class="image-cropper__section">
+  <!-- <favie-label [label]="field?.labelOutSide" [required]="field?.required"></favie-label> -->
+  <h1 *ngIf='field?.labelOutSide' [class.required]="field?.required">{{field?.labelOutSide}}</h1>
+
+  <div fxLayout="row">
+    <app-image-uploader #imageUploader *ngIf="!field?.disablePictureManagement" [class.hidden]="!canUpload"
+      [label]="field?.label" [iconImage]="field?.iconImage" [limitImages]="field?.limitImages || 1"
+      [images]="field?.initValue || []" (imagesChange)="setImagesChange($event)">
+    </app-image-uploader>
+
+    <div fxLayoutGap="8px" fxLayout="row">
+      <div class="image-cropper__preview" *ngFor="let image of cropperImagesPreview; index as i" cdkDrag>
+        <img class="picture__preview" [src]="image?.src" />
+        <div class="preview-image__actions">
+          <div (click)="remove(i)" *ngIf="!field?.disablePictureManagement">
+            <i class="preview-image__action" *ngIf="!field?.iconRemovePreviewPicture?.imageSrc"
+              [ngClass]="getIconClass()"></i>
+            <img *ngIf="field?.iconRemovePreviewPicture?.imageSrc" [src]="field?.iconRemovePreviewPicture?.imageSrc" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
