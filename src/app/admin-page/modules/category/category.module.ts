@@ -15,7 +15,7 @@ import { CategoryRoutingModule } from './category-routing.module';
     CategoryRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     CategoryComponent,

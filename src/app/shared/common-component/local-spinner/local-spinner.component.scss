@@ -1,0 +1,50 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359.99deg);
+  }
+}
+
+/* Absolute Center Spinner */
+
+@mixin lindicator($loading-size) {
+  display: inline-block;
+  animation: spin 2s infinite linear;
+  width: $loading-size;
+  height: $loading-size;
+  &:before {
+    width: $loading-size;
+    height: $loading-size;
+    display: inline-block;
+    content: "";
+    color: lightblue;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj4NCiAgPGRlZnM+DQogICAgPHN0eWxlPg0KICAgICAgLmNscy0xIHsNCiAgICAgICAgZmlsbDogIzAwOGVjYzsNCiAgICAgIH0NCg0KICAgICAgLmNscy0yIHsNCiAgICAgICAgZmlsbDogbm9uZTsNCiAgICAgIH0NCiAgICA8L3N0eWxlPg0KICA8L2RlZnM+DQogIDx0aXRsZT5sb2FkaW5nPC90aXRsZT4NCiAgPGcgaWQ9IkxheWVyXzIiIGRhdGEtbmFtZT0iTGF5ZXIgMiI+DQogICAgPGcgaWQ9IkxheWVyXzEtMiIgZGF0YS1uYW1lPSJMYXllciAxIj4NCiAgICAgIDxnPg0KICAgICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xLDQwbDkuNzUtOS43NUwyMC41LDQwWk02NC4zOCw1My43MWwuMy0uNDYsMy4yLDEuNjgtLjMuNjFBMzEuNzMsMzEuNzMsMCwwLDEsNTUuOTIsNjcuMzUsMzAuOSwzMC45LDAsMCwxLDQwLDcxLjY5YTMwLjUxLDMwLjUxLDAsMCwxLTIyLjQtOS4yOUEzMC41MSwzMC41MSwwLDAsMSw4LjMxLDQwYTMxLjA2LDMxLjA2LDAsMCwxLC42MS02LjRMOS4wNywzM2wzLjY2Ljc2LS4xNS42MUEzNi44MywzNi44MywwLDAsMCwxMiw0MCwyNywyNywwLDAsMCwyMC4yLDU5LjgsMjcsMjcsMCwwLDAsNDAsNjhhMjcuNDMsMjcuNDMsMCwwLDAsMTQtMy44MUEyNy44MywyNy44MywwLDAsMCw2NC4zOCw1My43MVpNNDAsOC4zMWEzMC41NCwzMC41NCwwLDAsMSwyMi4zOSw5LjI5QTMwLjUzLDMwLjUzLDAsMCwxLDcxLjY5LDQwYTMxLjIyLDMxLjIyLDAsMCwxLS42MSw2LjRsLS4xNS42MS0zLjY2LS43Ni4xNS0uNjFBMzcuMTcsMzcuMTcsMCwwLDAsNjgsNDAsMjcsMjcsMCwwLDAsNTkuOCwyMC4yLDI3LDI3LDAsMCwwLDQwLDEyYTI3LjQ0LDI3LjQ0LDAsMCwwLTE0LDMuODFBMjcuODIsMjcuODIsMCwwLDAsMTUuNjIsMjYuMjlsLS4zLjQ2LTMuMi0xLjY4LjMtLjYxQTMxLjcsMzEuNywwLDAsMSwyNC4wOCwxMi42NSwzMC44OCwzMC44OCwwLDAsMSw0MCw4LjMxWk01OS41LDQwSDc5bC05Ljc1LDkuNzVaIi8+DQogICAgICAgIDxyZWN0IGNsYXNzPSJjbHMtMiIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIi8+DQogICAgICA8L2c+DQogICAgPC9nPg0KICA8L2c+DQo8L3N2Zz4NCg==");
+    background-position: center center;
+    background-size: 100% 100%;
+  }
+}
+
+.local-spinner__wrapper {
+  position: relative;
+  width: 100%;
+  &.loading::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 10000000;
+    width: 100%;
+    height: 100%;
+  }
+  min-height: 40px;
+  .localSpinner {
+    position: absolute;
+    z-index: 11;
+    top: 50%;
+    left: 50%;
+    @include lindicator(40px);
+    margin-left: -(40px / 2);
+    margin-top: -(40px / 2);
+  }
+}

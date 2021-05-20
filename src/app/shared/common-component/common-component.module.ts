@@ -9,6 +9,9 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { ImageCropperDialogComponent } from './image-cropper-dialog/image-cropper-dialog.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { LocalSpinnerComponent } from './local-spinner/local-spinner.component';
 
 const components: Type<any>[] = [
   BannerCarouselComponent,
@@ -17,7 +20,8 @@ const components: Type<any>[] = [
   ConfirmDialogComponent,
   ImageUploaderComponent,
   ImageCropperComponent,
-  ImageCropperDialogComponent
+  ImageCropperDialogComponent,
+  LocalSpinnerComponent
 ]
 
 @NgModule({
@@ -25,7 +29,9 @@ const components: Type<any>[] = [
   imports: [
     CommonModule,
     SlickCarouselModule,
-    ImageCropperModule
+    ImageCropperModule,
+    FlexLayoutModule,
+    MatButtonModule
   ],
   exports: [ components ],
 })

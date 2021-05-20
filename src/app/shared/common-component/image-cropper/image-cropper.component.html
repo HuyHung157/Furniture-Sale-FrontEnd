@@ -13,8 +13,11 @@
         <img class="picture__preview" [src]="image?.src" />
         <div class="preview-image__actions">
           <div (click)="remove(i)" *ngIf="!field?.disablePictureManagement">
-            <i class="preview-image__action" *ngIf="!field?.iconRemovePreviewPicture?.imageSrc"
+            <i class="preview-image__action" *ngIf="!field?.iconRemovePreviewPicture?.imageSrc else defaultIcon"
               [ngClass]="getIconClass()"></i>
+              <ng-template #defaultIcon>
+                <i class='fas fa-times-circle'></i>
+              </ng-template>
             <img *ngIf="field?.iconRemovePreviewPicture?.imageSrc" [src]="field?.iconRemovePreviewPicture?.imageSrc" />
           </div>
         </div>

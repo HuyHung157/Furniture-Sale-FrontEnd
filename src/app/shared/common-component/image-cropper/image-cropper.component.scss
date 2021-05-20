@@ -1,0 +1,49 @@
+@import "../../../../assets/scss/variables";
+
+$image-cropper-width: 64px !default;
+$image-cropper-height: 64px !default;
+
+.image-cropper__section {
+  .image-cropper__preview {
+    position: relative;
+    border-radius: $normal-border-radius;
+    overflow: hidden;
+
+    img {
+      &.picture__preview {
+        height: $image-cropper-height;
+        width: auto;
+      }
+    }
+
+    .preview-image__actions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background-image: $upload-image-hover-overlay-background;
+      cursor: pointer;
+
+      .preview-image__action {
+        color: $white;
+      }
+    }
+  }
+
+  .preview-image__actions {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .preview-image__actions {
+      visibility: visible;
+    }
+  }
+
+  .hidden {
+    display: none !important;
+  }
+}

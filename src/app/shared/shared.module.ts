@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { DataService } from './services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [],

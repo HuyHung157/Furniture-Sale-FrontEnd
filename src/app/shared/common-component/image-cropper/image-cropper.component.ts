@@ -107,7 +107,7 @@ export class ImageCropperComponent extends Subscribable {
 
   public getIconClass() {
     return (
-      this.field?.iconRemovePreviewPicture?.iconClass || 'icon-cancel-circle'
+      this.field?.iconRemovePreviewPicture?.iconClass || 'fas fa-times-circle icon-cancel-circle'
     );
   }
 
