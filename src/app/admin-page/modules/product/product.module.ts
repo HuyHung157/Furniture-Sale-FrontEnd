@@ -16,9 +16,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     SharedModule,
-    ProductRoutingModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
+    ProductRoutingModule,
     FlexLayoutModule
   ],
   declarations: [

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { empty } from 'rxjs';
-import { concatMap } from 'rxjs/operators';
+import { empty, Subject } from 'rxjs';
+import { concatMap, takeUntil } from 'rxjs/operators';
 import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
 import { ProductService } from '../../services/product.service';
@@ -19,6 +19,8 @@ export class ProductListComponent implements OnInit {
   public displayedColumns;
   public tooltipContent: string;
 
+  unsubscribe$ = new Subject<any>();
+
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
@@ -30,6 +32,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getListProduct();
     this.config();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
   }
 
   public addNew(): void {
@@ -56,7 +62,9 @@ export class ProductListComponent implements OnInit {
         const $ = isDeleteItem ? this.productService.deleteProduct(product.id) : empty();
         return $;
       }),
-    ).subscribe(() => {
+    )
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(() => {
       this.getListProduct(),
         this.showSuccessSnackBar();
     });
@@ -68,7 +76,7 @@ export class ProductListComponent implements OnInit {
       'id',
       // 'product_code',
       'name',
-      'price_before',
+      'referencePrice',
       'price',
       'size',
       'color',
@@ -86,11 +94,10 @@ export class ProductListComponent implements OnInit {
     const input = {
       paging: {
         pageIndex: 1,
-        pageSize: 10
+        pageSize: 20
       }
     };
       this.productService.getProducts(input).subscribe(res => {
-        console.log(res);
         this.pureData = res.items
       });
   }

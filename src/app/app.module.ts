@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SERVICES } from './home-page/services';
 import { GraphQLModule } from './shared/modules/gql/gql.module';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

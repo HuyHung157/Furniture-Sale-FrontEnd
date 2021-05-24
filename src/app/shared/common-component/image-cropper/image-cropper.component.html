@@ -3,9 +3,15 @@
   <h1 *ngIf='field?.labelOutSide' [class.required]="field?.required">{{field?.labelOutSide}}</h1>
 
   <div fxLayout="row">
-    <app-image-uploader #imageUploader *ngIf="!field?.disablePictureManagement" [class.hidden]="!canUpload"
-      [label]="field?.label" [iconImage]="field?.iconImage" [limitImages]="field?.limitImages || 1"
-      [images]="field?.initValue || []" (imagesChange)="setImagesChange($event)">
+    <app-image-uploader #imageUploader 
+    *ngIf="!field?.disablePictureManagement" 
+    [class.hidden]="!canUpload"
+    [label]="field?.label" 
+    [icon]="field?.icon"
+    [iconImage]="field?.iconImage" 
+    [limitImages]="field?.limitImages || 1"
+    [images]="field?.initValue || []" 
+    (imagesChange)="setImagesChange($event)">
     </app-image-uploader>
 
     <div fxLayoutGap="8px" fxLayout="row">

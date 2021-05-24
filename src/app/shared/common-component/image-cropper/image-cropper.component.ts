@@ -5,7 +5,7 @@ import { FormField } from '../../interfaces/form-field.interface';
 import { Layouts, ResponsiveLayoutService } from '../../services/responsive-layout.service';
 import { Subscribable } from '../base-component/subscribable';
 import { ImageCropperDialogComponent } from '../image-cropper-dialog/image-cropper-dialog.component';
-import { FavieImageTemp, ImageUploaderComponent } from '../image-uploader/image-uploader.component';
+import { ImageTemp, ImageUploaderComponent } from '../image-uploader/image-uploader.component';
 
 @Component({
   selector: 'app-image-cropper',
@@ -39,12 +39,11 @@ export class ImageCropperComponent extends Subscribable {
     return this.cropperImagesPreview.length < this.field?.limitImages;
   }
 
-  public setImagesChange(image: FavieImageTemp[]) {
+  public setImagesChange(image: ImageTemp[]) {
     if (!image.length) {
       return;
     }
 
-    // TODO: STEVEN: Refactor image-cropper
     this.imageUploader.remove(0);
     let dialogConfig = new MatDialogConfig();
     if (!this.currentLayout || this.currentLayout === Layouts.MOBILE) {
@@ -52,7 +51,10 @@ export class ImageCropperComponent extends Subscribable {
         maxWidth: '600px',
         minWidth: '450px',
         disableClose: true,
-        data: { image: image[0], title: this.field.title },
+        data: { 
+          image: image[0], 
+          title: this.field.title 
+        },
       };
     } else {
       dialogConfig = {
@@ -117,7 +119,7 @@ export class ImageCropperComponent extends Subscribable {
     }
   }
 
-  onInit() {
+  ngOnInit() {
     this.initForm();
 
     this.subscribe(

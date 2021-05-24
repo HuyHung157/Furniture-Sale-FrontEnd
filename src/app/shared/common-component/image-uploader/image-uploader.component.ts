@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { CommonConstant } from '../../constants/common.constant';
 
-export interface FavieImageTemp {
+export interface ImageTemp {
   file?: File;
   src?: any;
   event?: any;
@@ -16,18 +16,18 @@ export interface FavieImageTemp {
 })
 export class ImageUploaderComponent implements OnInit {
   @Input() label: string;
+  @Input() icon: string;
   @Input() iconImage: string;
   @Input() limitImages = 3;
-  @Input() images: FavieImageTemp[] = [];
+  @Input() images: ImageTemp[] = [];
   @Input() labelOutSide: string;
+  @Input() showActions = true;
 
-  @Output() imagesChange: EventEmitter<FavieImageTemp[]> = new EventEmitter<
-    FavieImageTemp[]
+  @Output() imagesChange: EventEmitter<ImageTemp[]> = new EventEmitter<
+  ImageTemp[]
   >();
 
   @ViewChild('fileInputElement') fileInputElement: ElementRef;
-
-  private LABEL_DEFAULT = 'Import file';
 
   get canUpload() {
     return this.images && this.images.length < this.limitImages;
@@ -59,7 +59,6 @@ export class ImageUploaderComponent implements OnInit {
     const readFile = (file) => {
       if (file.size > environment.imageUploadMaximumFileSize) {
         this.matSnackBar.open(
-          // $localize`:@@file.checkSize:File size must be under 3 MB!`,
           'File size must be under 3 MB!',
           null,
           CommonConstant.FAILURE_SNACKBAR_CONFIG

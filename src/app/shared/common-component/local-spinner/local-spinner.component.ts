@@ -19,7 +19,6 @@ export class LocalSpinnerComponent implements OnInit {
       this.localSpinnerService
         .registerComponent(this.componentId)
         .subscribe((loading: boolean) => {
-          console.log(loading);
           this.showSpinner = loading;
         });
     }

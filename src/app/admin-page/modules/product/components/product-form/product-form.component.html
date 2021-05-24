@@ -9,13 +9,13 @@
           <div class="form-group">
             <mat-label class="label-form"> Danh mục </mat-label>
             <mat-form-field class="form-field" appearance="fill">
-              <mat-select formControlName="category" class="input-form" placeholder="Lựa chọn danh mục" multiple>
-                <mat-option *ngFor="let categoryItem of category" [value]="categoryItem.id">
-                  {{categoryItem.name}}
+              <mat-select  [(value)]="createForm.value['categoryIds']"  formControlName="categoryIds" class="input-form" placeholder="Lựa chọn danh mục" multiple>
+                <mat-option *ngFor="let category of categories" [value]="category.value">
+                  {{category.label}}
                 </mat-option>
               </mat-select>
               <mat-error
-                *ngIf="createForm.controls.category.touched && createForm.controls.category.invalid || submitted">
+                *ngIf="createForm.controls.categoryIds.touched && createForm.controls.categoryIds.invalid || submitted">
                 Vui lòng điển thông tin
               </mat-error>
             </mat-form-field>
@@ -36,10 +36,10 @@
         <div class="row-group">
           <!-- Price before sale -->
           <div class="form-group">
-            <mat-label class="label-form">Giá chưa giảm</mat-label>
+            <mat-label class="label-form">Giá tham khảo</mat-label>
             <mat-form-field class="form-field" appearance="fill">
-              <input matInput formControlName="price_before" type="number" class="input-form"
-                placeholder="Nhập giá trước giảm">
+              <input matInput formControlName="referencePrice" type="number" class="input-form"
+                placeholder="Nhập giá tham khảo">
             </mat-form-field>
           </div>
           <!-- Product Code -->
@@ -102,7 +102,7 @@
         <!-- Status Product -->
         <div class="form-group">
           <mat-label class="label-form">Trạng thái</mat-label>
-          <mat-slide-toggle [checked]="product?.is_available" formControlName="is_available">
+          <mat-slide-toggle formControlName="isActive">
           </mat-slide-toggle>
         </div>
 
