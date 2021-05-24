@@ -1,0 +1,20 @@
+@import "../../../../assets/scss/variables";
+
+.image-cropper-dialog__section{
+  .title{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .btn-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+      &:first-child{
+        margin-left: 8px;
+      }
+    }
+  }
+}

@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/admin-page/modules/product/models/product.model';
-import { CartAction } from 'src/app/store/actions/cart.actions';
-
 
 @Component({
   selector: 'app-product-item',
@@ -18,7 +16,6 @@ export class ProductItemComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cartStore: CartAction
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +27,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   addToCart(product) {
-    this.cartStore.addToCart(product, 1);
+    console.log('add', product)
   }
 
 }

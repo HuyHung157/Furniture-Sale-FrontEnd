@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiUrl: 'http://localhost:8080/graphql',
   production: false,
   firebase: {
     apiKey: 'AIzaSyDcUfGECTgMUtMI4sySPKMHbITsaRPVvT0',
@@ -14,6 +15,7 @@ export const environment = {
     appId: '1:891263951476:web:ff727c3ab713d4cc062721',
     measurementId: 'G-C3XFVRJB9J'
   },
+  imageUploadMaximumFileSize: 3145728,
 };
 
 /*

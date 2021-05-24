@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartAction } from 'src/app/store/actions/cart.actions';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,7 +11,7 @@ export class NavbarComponent implements OnInit {
   public totalQuantity: any;
 
   constructor(
-    private cartStore: CartAction
+
   ) { }
 
   getTotalPrice() {
@@ -31,10 +29,6 @@ export class NavbarComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.cartStore.getState().subscribe(res => {
-      this.cart = res;
-      this.getTotalPrice();
-    });
   }
 
 

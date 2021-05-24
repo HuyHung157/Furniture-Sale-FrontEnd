@@ -1,0 +1,48 @@
+<section class="upload-pictures__section m__b--16">
+  <!-- <favie-label [label]="labelOutSide"></favie-label> -->
+  <h1 *ngIf='labelOutSide'>{{labelOutSide}}</h1>
+
+  <input
+    type="file"
+    accept="image/png,image/jpeg"
+    hidden
+    #fileInputElement
+    (change)="onUploadedFiles($event)"
+  />
+
+  <div class="preview-image-container">
+    <div class="preview-image" *ngIf="canUpload">
+      <div
+        class="m__r--8 import-zone import-zone--pointer import-zone--small d__flex flex__direction--column align__items--center justify__content--center border-radius--8 favie__pointer"
+        (click)="triggerUpload()"
+      >
+        <div class="icon" *ngIf="iconImage">
+          <img [src]="iconImage" />
+        </div>
+
+        <div
+          class="label font__size--medium text--gray text-center"
+          *ngIf="label"
+        >
+          {{ label }}
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="preview-image m__r--8"
+      *ngFor="let image of images; let i = index"
+      cdkDrag
+    >
+      <div class="preview-image__content">
+        <img [src]="image.src" />
+        <div class="preview-image__actions">
+          <i
+            class="preview-image__action icon-cancel-circle fas fa-times-circle"
+            (click)="remove(i)"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

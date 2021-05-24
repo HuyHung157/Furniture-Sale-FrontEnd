@@ -1,0 +1,40 @@
+<section class="image-cropper-dialog__section form-container">
+  <div fxLayoutAlign="center center" class="m__b--16">
+    <h1 class='title' *ngIf="data?.title">{{ data?.title ? data.title : 'Cắt hình ảnh' }}</h1>
+  </div>
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="aspectRatio"
+    format="png,jpeg,jpg"
+    (imageCropped)="imageCropped($event)"
+    (loadImageFailed)="loadImageFailed()"
+    [cropperMinWidth]="64"
+    [alignImage]="'center'"
+  ></image-cropper>
+
+  <div
+    class="m__t--32 btn-group"
+    fxLayout="row-reverse"
+    fxLayout.lt-sm="column"
+    fxLayoutGap="16px"
+    fxLayoutAlign="space-around center"
+  >
+    <button
+      class='primary'
+      mat-raised-button
+      type="submit"
+      (click)="confirmImage()"
+    >
+      Confirm
+    </button>
+    <button
+      class="secondary_btn secondary"
+      mat-stroked-button
+      type="button"
+      (click)="close()"
+    >
+      Cancel
+    </button>
+  </div>
+</section>

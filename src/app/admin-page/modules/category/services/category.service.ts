@@ -2,13 +2,27 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
+import { CategoryGqlService } from './cateogry.gql.service';
 
 @Injectable()
 export class CategoryService {
 
   constructor(
     private dataService: DataService,
+    private readonly categoryGqlService: CategoryGqlService
   ) { }
+
+  getAllCategories(): Observable<any> {
+    return this.categoryGqlService.getAllCategories().pipe(
+      map((res: any) => res?.data?.getCategoryList)
+    );
+  }
+
+  getCategoriesWithPaging(input): Observable<any> {
+    return this.categoryGqlService.getCategoriesWithPaging(input).pipe(
+      map((res: any) => res?.data?.getCategoryListWithPaging)
+    );
+  }
 
   public getListCategory(): Observable<any> {
     return this.dataService.get('/category')

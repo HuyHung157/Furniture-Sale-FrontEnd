@@ -1,0 +1,4 @@
+<div class="local-spinner__wrapper full-height" [class.loading]="showSpinner">
+  <div *ngIf="showSpinner" class="localSpinner"></div>
+  <ng-content></ng-content>
+<div>

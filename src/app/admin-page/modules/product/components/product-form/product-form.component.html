@@ -1,53 +1,52 @@
 <section>
   <div content class="form-product form__page container-section">
     <h2 class="title">Tạo sản phẩm mới</h2>
-    <form [formGroup]="createForm" (submit)="submit(createForm)" class="form-section ">
+    <app-local-spinner [componentId]="spinnerId">
+      <form [formGroup]="createForm" (submit)="submit(createForm)" class="form-section ">
 
-      <div class="row-group">
-        <!-- Category -->
-        <div class="form-group">
-          <mat-label class="label-form"> Category </mat-label>
-          <mat-form-field class="form-field" appearance="fill">
-            <mat-select formControlName="category" [(ngModel)]="product.category" required class="input-form"
-              placeholder="Lựa chọn danh mục" multiple>
-              <mat-option *ngFor="let categoryItem of category" [value]="categoryItem.id">
-                {{categoryItem.name}}
-              </mat-option>
-            </mat-select>
-            <mat-error
-              *ngIf="createForm.controls.category.touched && createForm.controls.category.invalid || submitted">
-              Vui lòng điển thông tin
-            </mat-error>
-          </mat-form-field>
+        <div class="row-group">
+          <!-- Category -->
+          <div class="form-group">
+            <mat-label class="label-form"> Danh mục </mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <mat-select  [(value)]="createForm.value['categoryIds']"  formControlName="categoryIds" class="input-form" placeholder="Lựa chọn danh mục" multiple>
+                <mat-option *ngFor="let category of categories" [value]="category.value">
+                  {{category.label}}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="createForm.controls.categoryIds.touched && createForm.controls.categoryIds.invalid || submitted">
+                Vui lòng điển thông tin
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Name -->
+          <div class="form-group">
+            <mat-label class="label-form">Tên Sản Phẩm</mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <input matInput formControlName="name" class="input-form" placeholder="Nhập tên sản phẩm">
+              <mat-error *ngIf="createForm.controls.name.touched && createForm.controls.name.invalid || submitted">
+                Vui lòng điển thông tin
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
 
-        <!-- Name -->
-        <div class="form-group">
-          <mat-label class="label-form">Tên Sản Phẩm</mat-label>
-          <mat-form-field class="form-field" appearance="fill">
-            <input matInput [(ngModel)]="product.name" formControlName="name" required class="input-form"
-              placeholder="Nhập tên sản phẩm">
-            <mat-error *ngIf="createForm.controls.name.touched && createForm.controls.name.invalid || submitted">
-              Vui lòng điển thông tin
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row-group">
-        <!-- Price before sale -->
-        <div class="form-group">
-          <mat-label class="label-form">Giá chưa giảm</mat-label>
-          <mat-form-field class="form-field" appearance="fill">
-            <input matInput [(ngModel)]="product.price_before" formControlName="price_before" type="number"
-              class="input-form" placeholder="Nhập giá trước giảm">
-          </mat-form-field>
-        </div>
-        <!-- Product Code -->
-        <!-- <div class="form-group">
+        <div class="row-group">
+          <!-- Price before sale -->
+          <div class="form-group">
+            <mat-label class="label-form">Giá tham khảo</mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <input matInput formControlName="referencePrice" type="number" class="input-form"
+                placeholder="Nhập giá tham khảo">
+            </mat-form-field>
+          </div>
+          <!-- Product Code -->
+          <!-- <div class="form-group">
           <mat-label class="label-form">Mã Sản Phẩm</mat-label>
           <mat-form-field class="form-field" appearance="fill">
-            <input matInput [(ngModel)]="product.product_code" formControlName="product_code" required
+            <input matInpu formControlName="product_code"
               class="input-form" placeholder="Nhập mã sản phẩm">
             <mat-error
               *ngIf="createForm.controls.product_code.touched && createForm.controls.product_code.invalid || submitted">
@@ -56,102 +55,103 @@
           </mat-form-field>
         </div> -->
 
-        <!-- Price -->
-        <div class="form-group">
-          <mat-label class="label-form">Giá hiện tại</mat-label>
-          <mat-form-field class="form-field" appearance="fill">
-            <input matInput [(ngModel)]="product.price" formControlName="price" type="number" class="input-form"
-              placeholder="Nhập giá sản phẩm" required>
-            <mat-error *ngIf="createForm.controls.price.touched && createForm.controls.price.invalid || submitted">
-              Vui lòng điển thông tin
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row-group">
-        <!-- Size -->
-        <div class="form-group">
-          <mat-label class="label-form">Kích thước</mat-label>
-          <mat-form-field class="form-field" appearance="fill">
-            <input matInput [(ngModel)]="product.size" formControlName="size" required class="input-form"
-              placeholder="Nhập kích thước sản phẩm">
-            <mat-error *ngIf="createForm.controls.size.touched && createForm.controls.size.invalid || submitted">
-              Vui lòng điển thông tin
-            </mat-error>
-          </mat-form-field>
+          <!-- Price -->
+          <div class="form-group">
+            <mat-label class="label-form">Giá hiện tại</mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <input matInput formControlName="price" type="number" class="input-form" placeholder="Nhập giá sản phẩm">
+              <mat-error *ngIf="createForm.controls.price.touched && createForm.controls.price.invalid || submitted">
+                Vui lòng điển thông tin
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
 
-        <!-- Color -->
+        <div class="row-group">
+          <!-- Size -->
+          <div class="form-group">
+            <mat-label class="label-form">Kích thước</mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <input matInput formControlName="size" class="input-form" placeholder="Nhập kích thước sản phẩm">
+              <mat-error *ngIf="createForm.controls.size.touched && createForm.controls.size.invalid || submitted">
+                Vui lòng điển thông tin
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Color -->
+          <div class="form-group">
+            <mat-label class="label-form">Màu sắc</mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <input matInput formControlName="color" class="input-form" placeholder="Nhập màu sắc">
+              <mat-error *ngIf="createForm.controls.color.touched && createForm.controls.color.invalid || submitted">
+                Vui lòng điển thông tin
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Desciption -->
         <div class="form-group">
-          <mat-label class="label-form">Màu sắc</mat-label>
+          <mat-label class="label-form">Ghi chú</mat-label>
           <mat-form-field class="form-field" appearance="fill">
-            <input matInput [(ngModel)]="product.color" formControlName="color" required class="input-form"
-              placeholder="Nhập màu sắc">
-            <mat-error *ngIf="createForm.controls.color.touched && createForm.controls.color.invalid || submitted">
-              Vui lòng điển thông tin
-            </mat-error>
+            <input matInput formControlName="description" class="input-form" placeholder="Nhập chú thích">
           </mat-form-field>
         </div>
-      </div>
 
-      <!-- Desciption -->
-      <div class="form-group">
-        <mat-label class="label-form">Ghi chú</mat-label>
-        <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="product.description" formControlName="description" required class="input-form"
-            placeholder="Nhập chú thích">
-        </mat-form-field>
-      </div>
+        <!-- Status Product -->
+        <div class="form-group">
+          <mat-label class="label-form">Trạng thái</mat-label>
+          <mat-slide-toggle formControlName="isActive">
+          </mat-slide-toggle>
+        </div>
 
-      <!-- Status Product -->
-      <div class="form-group">
-        <mat-label class="label-form">Trạng thái</mat-label>
-        <mat-slide-toggle [checked]="product.is_available" formControlName="is_available">
-        </mat-slide-toggle>
-      </div>
-
-      <!-- Preview image -->
-      <div *ngIf="product.image_url" class="preview-image">
+        <!-- Preview image -->
+        <!-- <div *ngIf="product.image_url" class="preview-image">
         <mat-label class="label-form">Hình ảnh xem trước</mat-label>
         <img style="max-height: 100px; width: auto;" [src]="product.image_url" alt="Hình ảnh xem trước">
-      </div>
+      </div> -->
 
-      <!-- Source Image -->
-      <div class="form-group">
+        <app-image-cropper [formInitValues]="formInitValues" [field]="field"
+          (imageAfterCropper)="setImagesChange($event,  createForm.controls[field.key])">
+        </app-image-cropper>
+
+        <!-- Source Image -->
+        <!-- <div class="form-group">
         <mat-label class="label-form">Đường dẫn hình ảnh</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="product.image_url" formControlName="image_url" required class="input-form"
+          <input matInput [(ngModel)]="product.image_url" formControlName="image_url" class="input-form"
             placeholder="Nhập nguồn hình ảnh">
           <mat-error
             *ngIf="createForm.controls.image_url.touched && createForm.controls.image_url.invalid || submitted">
             Vui lòng điển thông tin
           </mat-error>
         </mat-form-field>
-      </div>
+      </div> -->
 
-      <!-- Image -->
-      <div class="form-group">
+        <!-- Image -->
+        <!-- <div class="form-group">
 
         <mat-label for='import-file' class="label-form">Đường dẫn hình ảnh</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="product.image_url" formControlName="image_url" required class="input-form"
+          <input matInput [(ngModel)]="product.image_url" formControlName="image_url" class="input-form"
             id="import-file" #userPhoto>
           <mat-error
             *ngIf="createForm.controls.image_url.touched && createForm.controls.image_url.invalid || submitted">
             Vui lòng điển thông tin
           </mat-error>
         </mat-form-field>
-      </div>
-      <!--End Image -->
+      </div> -->
+        <!--End Image -->
 
-      <!-- Btn-group -->
-      <div class="row-group__button end">
-        <button class="btn-cancel secondary pink" mat-stroked-button color="secondary" (click)="cancel()">
-          Cancel</button>
-        <button type="submit" class="btn-submit primary" mat-raised-button color="primary"> Submit </button>
-      </div>
-    </form>
+        <!-- Btn-group -->
+        <div class="row-group__button end">
+          <button class="btn-cancel secondary pink" mat-stroked-button color="secondary" (click)="cancel()">
+            Cancel</button>
+          <button type="submit" class="btn-submit primary" mat-raised-button color="primary"> Submit </button>
+        </div>
+      </form>
+    </app-local-spinner>
   </div>
 
 </section>
