@@ -6,6 +6,7 @@ import { empty, Subject } from 'rxjs';
 import { concatMap, takeUntil } from 'rxjs/operators';
 import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
+import { InputGetProductList } from '../../interfaces/product.inteface';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -73,6 +74,7 @@ export class ProductListComponent implements OnInit {
 
   private config(): void {
     this.displayedColumns = [
+      'index',
       'id',
       // 'product_code',
       'name',
@@ -91,7 +93,7 @@ export class ProductListComponent implements OnInit {
   }
 
   private getListProduct(): void {
-    const input = {
+    const input: InputGetProductList = {
       paging: {
         pageIndex: 1,
         pageSize: 20

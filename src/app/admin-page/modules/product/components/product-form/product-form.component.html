@@ -34,6 +34,20 @@
         </div>
 
         <div class="row-group">
+          <!-- Index -->
+          <div class="form-group">
+            <mat-label class="label-form">Thứ tự danh mục</mat-label>
+            <mat-form-field class="form-field" appearance="fill">
+              <input type="number" matInput formControlName="index" required class="input-form"
+                placeholder="Nhập thứ tự danh mục">
+              <mat-error *ngIf="createForm.controls.index.touched && createForm.controls.index.invalid || submitted">
+                Vui lòng điển thông tin
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row-group">
           <!-- Price before sale -->
           <div class="form-group">
             <mat-label class="label-form">Giá tham khảo</mat-label>

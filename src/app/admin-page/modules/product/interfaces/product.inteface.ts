@@ -1,7 +1,12 @@
+import { BaseInputGetList } from "src/app/shared/interfaces/input-list.interface";
+
+export interface InputGetProductList extends BaseInputGetList {
+}
+
 export interface InputCreateProduct {
   name: string;
   type?: string;
-  index?: number;
+  index: number;
   description?: string;
   price?: number;
   referencePrice?: number;
@@ -17,7 +22,7 @@ export interface InputUpdateProduct {
   id: string;
   name: string;
   type?: string;
-  index?: number;
+  index: number;
   description?: string;
   price?: number;
   referencePrice?: number;

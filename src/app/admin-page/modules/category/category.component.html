@@ -1,8 +1,10 @@
 <div class="category-page admin-page__header">
-  <button (click)="goBack()" class="btn-back">
-    <i class="fa fa-chevron-circle-left"></i>
-  </button>
-  <h1>Danh mục</h1>
+  <div class="head">
+      <button (click)="goBack()" class="btn-back">
+          <i class="fa fa-chevron-circle-left"></i>
+      </button>
+      <h1 class="title">Danh mục</h1>
+  </div>
   <hr>
   <router-outlet></router-outlet>
 </div>

@@ -11,7 +11,10 @@ const queryGetCategoryList = gql`
         name
         index
         type
+        pictureUrl
+        iconFa
         description
+        isActive
       }
     }
   }
@@ -26,8 +29,53 @@ const queryGetCategoriesWithPaging = gql`
         name
         index
         type
+        pictureUrl
+        iconFa
         description
+        isActive
       }
+    }
+  }
+`;
+
+const queryGetCategoryById = gql`
+  query getCategoryById($id: String!) {
+    getCategoryById(id: $id) {
+      id
+      name
+      index
+      type
+      pictureUrl
+      iconFa
+      description
+      isActive
+    }
+  }
+`;
+
+const mutationCreateCategory = gql`
+  mutation createCategory($input: CategoryCreateRequestType!) {
+    createCategory(input: $input) {
+      message
+      statusCode
+    }
+  }
+`;
+
+const mutationUpdateCategory = gql`
+  mutation updateCategory($input: CategoryUpdateRequestType!) {
+    updateCategory(input: $input) {
+      message
+      statusCode
+    }
+  }
+`;
+
+const mutationDeleteCategory = gql`
+  mutation deleteCategory($id: String!) {
+    deleteCategory(id: $id) {
+      message
+      statusCode
     }
   }
 `;
@@ -46,13 +94,50 @@ export class CategoryGqlService {
     });
   }
 
-  public getCategoriesWithPaging(input: any){
+  public getCategoriesWithPaging(input: any) {
     return this.apollo.query({
       query: queryGetCategoriesWithPaging,
       variables: {
         input,
       },
       fetchPolicy: 'network-only',
+    });
+  }
+
+  public getCategoryById(id: string) {
+    return this.apollo.query({
+      query: queryGetCategoryById,
+      variables: {
+        id,
+      },
+      fetchPolicy: 'network-only',
+    });
+  }
+
+  public createCategory(input: any) {
+    return this.apollo.mutate({
+      mutation: mutationCreateCategory,
+      variables: {
+        input,
+      }
+    });
+  }
+
+  public updateCategory(input: any) {
+    return this.apollo.mutate({
+      mutation: mutationUpdateCategory,
+      variables: {
+        input,
+      }
+    });
+  }
+
+  public deleteCategory(id: string) {
+    return this.apollo.mutate({
+      mutation: mutationDeleteCategory,
+      variables: {
+        id,
+      }
     });
   }
 }

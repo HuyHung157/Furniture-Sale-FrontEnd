@@ -1,8 +1,7 @@
 <section>
-  Create Product
-</section>
-<div content class="form-product form__page">
-  <h2 class="title-form"> Sản phẩm </h2>
+  <div content class="form-category form__page container-section">
+    <h2 class="title">Tạo danh mục mới</h2>
+    <app-local-spinner [componentId]="spinnerId">
 
   <form [formGroup]="createForm" (submit)="submit(createForm)" class="form-section">
 
@@ -18,13 +17,53 @@
           </mat-error>
         </mat-form-field>
       </div>
+
+      <!-- Type -->
+      <div class="form-group">
+        <mat-label class="label-form">Loại danh mục </mat-label>
+        <mat-form-field class="form-field" appearance="fill">
+          <input matInput [(ngModel)]="category.type" formControlName="type" class="input-form"
+            placeholder="Nhập loại danh mục">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row-group">
+      <!-- Index -->
+      <div class="form-group">
+        <mat-label class="label-form">Thứ tự danh mục</mat-label>
+        <mat-form-field class="form-field" appearance="fill">
+          <input type="number" matInput [(ngModel)]="category.index" formControlName="index" required class="input-form"
+            placeholder="Nhập thứ tự danh mục">
+          <mat-error *ngIf="createForm.controls.index.touched && createForm.controls.index.invalid || submitted">
+            Vui lòng điển thông tin
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row-group">
+      <!-- Icon -->
+      <div class="form-group">
+        <mat-label class="label-form">Icon <i>(Font Awesome icon)</i></mat-label>
+        <mat-form-field class="form-field" appearance="fill">
+          <input matInput [(ngModel)]="category.icon" formControlName="icon" class="input-form"
+            placeholder="Nhập Icon">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-label class="label-form">Preview Icon</mat-label>
+        <i style='color:black; font-size: 40px;' class='fa fab fas' [ngClass]='category.icon'></i>
+      </div>
     </div>
 
     <div class="row-group">
       <!-- Status Product -->
       <div class="form-group">
         <mat-label class="label-form">Trạng thái</mat-label>
-        <mat-slide-toggle [checked]="category.is_available" formControlName="is_available">
+        <mat-slide-toggle formControlName="isActive">
         </mat-slide-toggle>
       </div>
     </div>
@@ -34,7 +73,7 @@
       <div class="form-group">
         <mat-label class="label-form">Ghi chú</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="category.description" formControlName="description" required class="input-form"
+          <input matInput [(ngModel)]="category.description" formControlName="description" class="input-form"
             placeholder="Nhập chú thích">
         </mat-form-field>
       </div>
@@ -46,4 +85,7 @@
       <button type="submit" class="primary submit" mat-raised-button color="primary"> Submit </button>
     </div>
   </form>
+</app-local-spinner>
 </div>
+
+</section>
