@@ -152,7 +152,10 @@ export class ProductFormComponent implements OnInit {
               this.showSuccessSnackBar();
               this.location.back();
             },
-            (error) => { }
+            (error) => {
+              const msg = ErrorUtil.getGqlErorMessage(error);
+              this.snackBar.open(msg, null, CommonConstant.FAILURE_SNACKBAR_CONFIG);
+            }
           );
       } catch (err) {
         const msg = ErrorUtil.getGqlErorMessage(err);

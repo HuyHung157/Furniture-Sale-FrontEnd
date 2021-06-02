@@ -69,7 +69,7 @@ export class CategoryFormComponent implements OnInit {
         const input = this.mode === ModeForm.MODE_CREATE
           ? data
           : await this.formatFormUpdate(data);
-          
+
         const categoryFormAction$ =
           this.mode === ModeForm.MODE_CREATE
             ? this.categoryService.createCategory(input)
@@ -77,10 +77,16 @@ export class CategoryFormComponent implements OnInit {
 
         categoryFormAction$
           .pipe(takeUntil(this.unsubscribe$))
-          .subscribe((res) => {
-            this.showSuccessSnackBar();
-            this.location.back();
-          })
+          .subscribe(
+            (res) => {
+              this.showSuccessSnackBar();
+              this.location.back();
+            },
+            (error) => {
+              const msg = ErrorUtil.getGqlErorMessage(error);
+              this.snackBar.open(msg, null, CommonConstant.FAILURE_SNACKBAR_CONFIG);
+            }
+          )
       } catch (err) {
         const msg = ErrorUtil.getGqlErorMessage(err);
         this.snackBar.open(msg, null, CommonConstant.FAILURE_SNACKBAR_CONFIG);
