@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { empty, Subject } from 'rxjs';
+import { empty, Subject, Observable } from 'rxjs';
 import { concatMap, takeUntil } from 'rxjs/operators';
+import { BasePaginationComponent } from 'src/app/shared/common-component/base-component/base-pagination.component';
 import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
+import { InputGetProductList } from '../../interfaces/product.inteface';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -13,9 +17,13 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent extends BasePaginationComponent<any> implements OnInit {
+  dataSource = new MatTableDataSource<any>([]);
 
-  public pureData;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  public totalItems;
+  public currentPageSize = 1;
   public displayedColumns;
   public tooltipContent: string;
 
@@ -27,11 +35,14 @@ export class ProductListComponent implements OnInit {
     public readonly dialog: MatDialog,
     private readonly snackBar: MatSnackBar,
     private readonly productService: ProductService,
-  ) { }
+  ) { 
+    super();
+  }
 
-  ngOnInit(): void {
-    this.getListProduct();
+  async ngOnInit() {
+    await this.getListProduct();
     this.config();
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy() {
@@ -63,17 +74,17 @@ export class ProductListComponent implements OnInit {
         return $;
       }),
     )
-    .pipe(takeUntil(this.unsubscribe$))
-    .subscribe(() => {
-      this.getListProduct(),
-        this.showSuccessSnackBar();
-    });
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => {
+        this.getListProduct(),
+          this.showSuccessSnackBar();
+      });
 
   }
 
   private config(): void {
     this.displayedColumns = [
-      'id',
+      'index',
       // 'product_code',
       'name',
       'referencePrice',
@@ -90,16 +101,27 @@ export class ProductListComponent implements OnInit {
     this.snackBar.open(msg, null, CommonConstant.SUCCESS_SNACKBAR_CONFIG);
   }
 
-  private getListProduct(): void {
-    const input = {
+  private async getListProduct(): Promise<void> {
+    const input: InputGetProductList = {
       paging: {
         pageIndex: 1,
         pageSize: 20
       }
     };
-      this.productService.getProducts(input).subscribe(res => {
-        this.pureData = res.items
-      });
+    await this.productService.getProducts(input).subscribe(res => {
+      this.dataSource = res.items;
+      this.totalItems = res.totalItems;
+    });
+  }
+
+  protected internalLoadData(): Observable<any> {
+    const input: InputGetProductList = {
+      paging: {
+        pageIndex: 1,
+        pageSize: 20
+      }
+    };
+    return this.productService.getProducts(input);
   }
 
 }

@@ -56,6 +56,7 @@ export class ProductFormComponent implements OnInit {
     this.createForm = this.formBuilder.group({
       categoryIds: ['', Validators.required],
       name: ['', Validators.required],
+      index: ['', Validators.required],
       // product_code: ['', Validators.required],
       referencePrice: [''],
       price: ['', Validators.required],
@@ -151,7 +152,10 @@ export class ProductFormComponent implements OnInit {
               this.showSuccessSnackBar();
               this.location.back();
             },
-            (error) => { }
+            (error) => {
+              const msg = ErrorUtil.getGqlErorMessage(error);
+              this.snackBar.open(msg, null, CommonConstant.FAILURE_SNACKBAR_CONFIG);
+            }
           );
       } catch (err) {
         const msg = ErrorUtil.getGqlErorMessage(err);

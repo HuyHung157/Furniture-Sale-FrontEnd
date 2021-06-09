@@ -1,0 +1,77 @@
+@import "variables";
+
+.custom-paginator {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  ::ng-deep .paginator-page-size {
+    .mat-form-field {
+      margin: 0;
+
+      .mat-form-field-wrapper {
+        border: none;
+        .mat-form-field-infix {
+          padding: 8px;
+        }
+        .mat-select-arrow {
+          color: $primary;
+        }
+      }
+    }
+
+    .mat-paginator-range-actions {
+      display: none;
+    }
+  }
+
+  .paginator-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .mat-icon {
+        color: $primary;
+      }
+
+      &[disabled] {
+        .mat-icon {
+          color: gray;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .paginator-page-numbers {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .paginator-page-number {
+        width: 30px;
+        height: 30px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.clickable {
+          cursor: pointer;
+          background: rgba(228, 228, 228, 0.5);
+        }
+
+        &.active {
+          background: $primary;
+          color: $white;
+        }
+      }
+    }
+  }
+}

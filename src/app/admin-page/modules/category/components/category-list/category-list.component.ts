@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { empty } from 'rxjs';
-import { concatMap } from 'rxjs/operators';
+import { empty, Subject } from 'rxjs';
+import { concatMap, takeUntil } from 'rxjs/operators';
 import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
+import { InputGetCategoryList } from '../../interfaces/category.interface';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
@@ -19,6 +20,8 @@ export class CategoryListComponent implements OnInit {
   public displayedColumns;
   public tooltipContent: string;
 
+  unsubscribe$ = new Subject<any>();
+
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
@@ -30,11 +33,17 @@ export class CategoryListComponent implements OnInit {
   ngOnInit(): void {
     this.getListCategory();
     this.displayedColumns = [
+      'index',
       'id',
       'name',
+      'type',
       'status',
       'actions'
     ];
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
   }
 
   public addNew(): void {
@@ -46,9 +55,18 @@ export class CategoryListComponent implements OnInit {
   }
 
   private getListCategory() {
-    this.categoryService.getListCategory()
+    const input: InputGetCategoryList = {
+      paging: {
+        pageIndex: 1,
+        pageSize: 20
+      }
+    };
+
+    this.categoryService.getCategoriesWithPaging(input)
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res: any) => {
-        this.pureData = res;
+        console.log(res)
+        this.pureData = res.items;
       });
   }
 
