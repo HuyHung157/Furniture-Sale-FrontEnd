@@ -12,6 +12,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { LocalSpinnerComponent } from './local-spinner/local-spinner.component';
+import { CustomPaginationComponent } from './custom-pagination/custom-pagination.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 const components: Type<any>[] = [
   BannerCarouselComponent,
@@ -21,7 +24,8 @@ const components: Type<any>[] = [
   ImageUploaderComponent,
   ImageCropperComponent,
   ImageCropperDialogComponent,
-  LocalSpinnerComponent
+  LocalSpinnerComponent,
+  CustomPaginationComponent
 ]
 
 @NgModule({
@@ -31,7 +35,9 @@ const components: Type<any>[] = [
     SlickCarouselModule,
     ImageCropperModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule,
+    MatIconModule
   ],
   exports: [ components ],
 })

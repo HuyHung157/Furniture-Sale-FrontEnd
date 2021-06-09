@@ -1,0 +1,25 @@
+<div class="custom-paginator">
+    <div class="paginator-page-size" *ngIf="pageSizeOptions">
+      <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="changePageOption($event)">
+      </mat-paginator>
+    </div>
+  
+    <div class="paginator-actions">
+      <button class="nav previous" mat-icon-button [disabled]="isPreviousPageDisabled" (click)="previousPage()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+  
+      <div class="paginator-page-numbers">
+        <button class="paginator-page-number" *ngFor="let number of pageNumbers"
+          [class.clickable]="isPageNumberClickable(number)" [class.active]="isPageNumberActive(number)"
+          (click)="selectPage(number)">
+          <span>{{ number || "..." }}</span>
+        </button>
+      </div>
+  
+      <button class="nav next" mat-icon-button [disabled]="isNextPageDisabled" (click)="nextPage()">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </div>
