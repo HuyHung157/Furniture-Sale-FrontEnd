@@ -1,4 +1,4 @@
-import { Component, Directive, OnInit } from '@angular/core';
+import { Directive, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export abstract class BasePaginationComponent<T> implements OnInit {
 
   protected maxPage = 1;
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.reload();
   }
 
@@ -36,16 +36,16 @@ export abstract class BasePaginationComponent<T> implements OnInit {
     this.isLoading = true;
     this.internalLoadData().subscribe((paginatedList: any) => {
       this.firstLoad = false;
-      if (!paginatedList.items || !paginatedList.items.length) {
+      if (!paginatedList?.items || !paginatedList?.items?.length) {
         this.emptyResultHandler();
         return;
       }
 
       // Calculate page count
       this.maxPage = Math.floor((this.total + 10 - 1) / 10);
-      this.total = paginatedList.totalItems;
+      this.total = paginatedList?.totalItems;
 
-      this.dataSource.data = [...paginatedList.items];
+      this.dataSource.data = [...paginatedList?.items];
 
       this.afterLoadData();
       this.isLoading = false;

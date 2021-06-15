@@ -8,6 +8,7 @@ import { empty, Subject, Observable } from 'rxjs';
 import { concatMap, takeUntil } from 'rxjs/operators';
 import { BasePaginationComponent } from 'src/app/shared/common-component/base-component/base-pagination.component';
 import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
+import { BasePaginator } from 'src/app/shared/common-component/custom-pagination/interfaces/paginator.interface';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
 import { InputGetProductList } from '../../interfaces/product.inteface';
 import { ProductService } from '../../services/product.service';
@@ -17,13 +18,11 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent extends BasePaginationComponent<any> implements OnInit {
-  dataSource = new MatTableDataSource<any>([]);
+export class ProductListComponent extends BasePaginationComponent<any> {
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
+  public listProduct = [];
   public totalItems;
-  public currentPageSize = 1;
+  public paging: BasePaginator;
   public displayedColumns;
   public tooltipContent: string;
 
@@ -35,14 +34,14 @@ export class ProductListComponent extends BasePaginationComponent<any> implement
     public readonly dialog: MatDialog,
     private readonly snackBar: MatSnackBar,
     private readonly productService: ProductService,
-  ) { 
+  ) {
     super();
   }
 
   async ngOnInit() {
+    this.configPagination();
     await this.getListProduct();
     this.config();
-    this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy() {
@@ -82,6 +81,16 @@ export class ProductListComponent extends BasePaginationComponent<any> implement
 
   }
 
+  changePage(event) {
+    const isPageSizeChange = event.pageSize === this.paging.pageSize;
+    const newPagination = { ...this.paging };
+    newPagination.pageIndex = !isPageSizeChange ? 0 : event.pageIndex;
+    newPagination.pageSize = event.pageSize;
+    this.paging = newPagination;
+
+    this.getListProduct();
+  }
+
   private config(): void {
     this.displayedColumns = [
       'index',
@@ -96,6 +105,14 @@ export class ProductListComponent extends BasePaginationComponent<any> implement
     ];
   }
 
+  private configPagination() {
+    this.paging = {
+      pageSize: 5,
+      pageIndex: 0,
+      pageSizeOptions: [5, 10, 20, 100]
+    }
+  }
+
   private showSuccessSnackBar(message?: string): void {
     const msg = message || 'Đã xóa thành công !';
     this.snackBar.open(msg, null, CommonConstant.SUCCESS_SNACKBAR_CONFIG);
@@ -104,12 +121,12 @@ export class ProductListComponent extends BasePaginationComponent<any> implement
   private async getListProduct(): Promise<void> {
     const input: InputGetProductList = {
       paging: {
-        pageIndex: 1,
-        pageSize: 20
+        pageIndex: this.paging.pageIndex + 1,
+        pageSize: this.paging.pageSize
       }
     };
     await this.productService.getProducts(input).subscribe(res => {
-      this.dataSource = res.items;
+      this.listProduct = res.items;
       this.totalItems = res.totalItems;
     });
   }
@@ -117,10 +134,11 @@ export class ProductListComponent extends BasePaginationComponent<any> implement
   protected internalLoadData(): Observable<any> {
     const input: InputGetProductList = {
       paging: {
-        pageIndex: 1,
-        pageSize: 20
+        pageIndex: this.paging.pageIndex,
+        pageSize: this.paging.pageSize
       }
     };
+    debugger;
     return this.productService.getProducts(input);
   }
 
