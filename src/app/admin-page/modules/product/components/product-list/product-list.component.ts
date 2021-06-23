@@ -138,7 +138,6 @@ export class ProductListComponent extends BasePaginationComponent<any> {
         pageSize: this.paging.pageSize
       }
     };
-    debugger;
     return this.productService.getProducts(input);
   }
 

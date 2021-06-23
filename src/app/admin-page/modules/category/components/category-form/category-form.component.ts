@@ -49,9 +49,11 @@ export class CategoryFormComponent implements OnInit {
       name: ['', Validators.required],
       type: [''],
       index: [0, Validators.required],
+      indexHome: [''],
+      isActive: [true],
+      isShowHome: [false],
       icon: [''],
       // category_code: [''],
-      isActive: [true],
       description: ['']
     });
 

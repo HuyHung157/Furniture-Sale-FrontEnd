@@ -16,13 +16,13 @@ export class ProductService {
     private productGqlService: ProductGqlService
   ) { }
 
-  public getProducts(input: InputGetProductList) {
+  public getProducts(input: InputGetProductList): Observable<any> {
     return this.productGqlService.getProducts(input).pipe(
       map((res: any) => res?.data?.getProductList)
     );
   }
 
-  public getProductById(id: string) {
+  public getProductById(id: string): Observable<any> {
     return this.productGqlService.getProductById(id).pipe(
       map((res: any) => res?.data?.getProductById)
     );

@@ -15,6 +15,8 @@ const queryGetCategoryList = gql`
         iconFa
         description
         isActive
+        indexHome
+        isShowHome
       }
     }
   }
@@ -33,6 +35,8 @@ const queryGetCategoriesWithPaging = gql`
         iconFa
         description
         isActive
+        indexHome
+        isShowHome
       }
     }
   }
@@ -49,6 +53,8 @@ const queryGetCategoryById = gql`
       iconFa
       description
       isActive
+      indexHome
+      isShowHome
     }
   }
 `;

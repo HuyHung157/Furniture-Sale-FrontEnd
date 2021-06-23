@@ -41,6 +41,31 @@
         </mat-form-field>
       </div>
 
+      <!-- Index -->
+      <div class="form-group">
+        <mat-label class="label-form">Thứ tự danh mục ở trang chủ</mat-label>
+        <mat-form-field class="form-field" appearance="fill">
+          <input type="number" matInput [(ngModel)]="category.indexHome" formControlName="indexHome" class="input-form"
+            placeholder="Nhập thứ tự danh mục">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row-group">
+      <!-- Status Product -->
+      <div class="form-group">
+        <mat-label class="label-form">Trạng thái</mat-label>
+        <mat-slide-toggle formControlName="isActive">
+        </mat-slide-toggle>
+      </div>
+
+      <!-- Status Show In Home -->
+      <div class="form-group">
+        <mat-label class="label-form">Hiển thị ở trang chủ</mat-label>
+        <mat-slide-toggle formControlName="isShowHome">
+        </mat-slide-toggle>
+      </div>
     </div>
 
     <div class="row-group">
@@ -56,15 +81,6 @@
       <div class="form-group">
         <mat-label class="label-form">Preview Icon</mat-label>
         <i style='color:black; font-size: 40px;' class='fa fab fas' [ngClass]='category.icon'></i>
-      </div>
-    </div>
-
-    <div class="row-group">
-      <!-- Status Product -->
-      <div class="form-group">
-        <mat-label class="label-form">Trạng thái</mat-label>
-        <mat-slide-toggle formControlName="isActive">
-        </mat-slide-toggle>
       </div>
     </div>
 
