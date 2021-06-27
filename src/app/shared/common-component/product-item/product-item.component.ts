@@ -1,18 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/admin-page/modules/product/models/product.model';
-
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
-  @Input() product: Product;
+  @Input() product: any;
   public listProductInCart = [];
   public listRate = [];
 
-  products: Product[];
+  products: any[];
 
   constructor(
     private router: Router,
@@ -22,11 +20,17 @@ export class ProductItemComponent implements OnInit {
     this.listRate = Array(4).fill(1);
   }
 
-  clickedProduct(product) {
-    this.router.navigate(['/detail', product.id]);
+  public onClickAddToFavorite(product){
+    console.log('Favorite', product)
   }
 
-  addToCart(product) {
+  public onClickProduct(product) {
+    console.log('detail')
+    // this.router.navigate(['/detail', product.id]);
+  }
+
+  public addToCart(product, event) {
+    event.preventDefault();
     console.log('add', product)
   }
 

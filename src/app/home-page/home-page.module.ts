@@ -4,32 +4,25 @@ import { HomePageRoutingModule } from './home-page-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { HomePageComponent } from './home-page.component';
 import { HomeComponent } from './modules/home/home.component';
-import { ProductService } from '../admin-page/modules/product/services/product.service';
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
-import { StorageService } from '../shared/services/storage.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './modules/product/product.component';
-import { ProductGqlService } from '../admin-page/modules/product/services/product.gql.service';
-
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    HomePageComponent,
     HomeComponent,
+    HomePageComponent,
     ShoppingCartComponent,
     NavbarComponent,
-    ProductComponent
+    ProductComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     HomePageRoutingModule,
-  ],
-  providers: [
-    ProductGqlService,
-    ProductService,
-    StorageService
   ]
 })
 export class HomePageModule { }

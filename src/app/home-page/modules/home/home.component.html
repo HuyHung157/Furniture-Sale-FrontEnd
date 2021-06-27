@@ -1,14 +1,7 @@
 <app-banner-carousel class="banner" [slides]="slideBanner"></app-banner-carousel>
 
-<!-- Top Sale -->
-<app-list-product-carousel [listTitle]="titleTopSale" [listProduct]="slideTopSell"></app-list-product-carousel>
-
-<!-- Living Room -->
-
-<app-list-product-carousel [listTitle]="titleLivingRoom" [listProduct]="slideLivingRoom"></app-list-product-carousel>
-
-<!-- Bed Room -->
-<app-list-product-carousel [listTitle]="titleBedRoom" [listProduct]="slideBedRoom"></app-list-product-carousel>
-
-<!-- Kitchen -->
-<app-list-product-carousel [listTitle]="titleKitchen" [listProduct]="slideKitchen"></app-list-product-carousel>
+<div class="group-list-carousel">
+  <div class="list-item" *ngFor="let itemCate of listCategory">
+    <app-list-product-carousel [listTitle]="itemCate.name" [listProduct]="itemCate.products"></app-list-product-carousel>
+  </div>
+</div>

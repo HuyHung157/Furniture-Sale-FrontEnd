@@ -60,9 +60,9 @@ export class CategoryListComponent extends BasePaginationComponent<any> {
 
   private configPagination() {
     this.paging = {
-      pageSize: 5,
+      pageSize: 10,
       pageIndex: 0,
-      pageSizeOptions: [5, 10, 20, 100]
+      pageSizeOptions: [10, 20, 100]
     }
   }
 

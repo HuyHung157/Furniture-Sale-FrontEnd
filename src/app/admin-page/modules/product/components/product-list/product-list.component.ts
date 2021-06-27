@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { empty, Subject, Observable } from 'rxjs';
 import { concatMap, takeUntil } from 'rxjs/operators';
@@ -10,7 +8,7 @@ import { BasePaginationComponent } from 'src/app/shared/common-component/base-co
 import { ConfirmDialogComponent } from 'src/app/shared/common-component/confirm-dialog/confirm-dialog.component';
 import { BasePaginator } from 'src/app/shared/common-component/custom-pagination/interfaces/paginator.interface';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
-import { InputGetProductList } from '../../interfaces/product.inteface';
+import { InputGetProductList } from '../../interfaces/product-form.interface';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -107,9 +105,9 @@ export class ProductListComponent extends BasePaginationComponent<any> {
 
   private configPagination() {
     this.paging = {
-      pageSize: 5,
+      pageSize: 10,
       pageIndex: 0,
-      pageSizeOptions: [5, 10, 20, 100]
+      pageSizeOptions: [10, 20, 100]
     }
   }
 

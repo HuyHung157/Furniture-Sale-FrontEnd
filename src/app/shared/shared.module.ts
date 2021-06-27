@@ -19,7 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SlickCarouselModule,
   ],
   providers: [
-    DataService
+    DataService,
   ],
   exports: [
     CommonComponentModule,

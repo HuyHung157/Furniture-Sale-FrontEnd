@@ -5,8 +5,8 @@
     </h2>
 
     <ngx-slick-carousel class="slick-slider container" #slickModal="slick-carousel" [config]="slideConfig">
-        <div ngxSlickItem class="item" *ngFor="let product of listProduct">
-            <app-product-item [product]="product"></app-product-item>
+        <div ngxSlickItem class="item" *ngFor="let productItem of listProduct">
+            <app-product-item [product]="productItem.product"></app-product-item>
         </div>
     </ngx-slick-carousel>
 

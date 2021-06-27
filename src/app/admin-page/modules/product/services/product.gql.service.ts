@@ -1,7 +1,7 @@
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Injectable } from '@angular/core';
-import { InputCreateProduct, InputUpdateProduct } from '../interfaces/product.inteface';
+import { InputCreateProduct, InputUpdateProduct } from '../interfaces/product-form.interface';
 
 const queryGetProducts = gql`
   query getProductList($input: ProductListRequestType!) {

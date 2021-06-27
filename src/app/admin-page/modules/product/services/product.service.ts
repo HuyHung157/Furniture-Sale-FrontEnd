@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
-import { InputCreateProduct, InputGetProductList, InputUpdateProduct } from '../interfaces/product.inteface';
+import { InputCreateProduct, InputGetProductList, InputUpdateProduct } from '../interfaces/product-form.interface';
 import { ProductGqlService } from './product.gql.service';
 
 @Injectable({

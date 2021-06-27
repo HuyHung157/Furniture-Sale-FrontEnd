@@ -10,7 +10,7 @@
       <div class="form-group">
         <mat-label class="label-form">Tên danh mục </mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="category.name" formControlName="name" required class="input-form"
+          <input matInput formControlName="name" required class="input-form"
             placeholder="Nhập tên danh mục">
           <mat-error *ngIf="createForm.controls.name.touched && createForm.controls.name.invalid || submitted">
             Vui lòng điển thông tin
@@ -22,7 +22,7 @@
       <div class="form-group">
         <mat-label class="label-form">Loại danh mục </mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="category.type" formControlName="type" class="input-form"
+          <input matInput formControlName="type" class="input-form"
             placeholder="Nhập loại danh mục">
         </mat-form-field>
       </div>
@@ -33,7 +33,7 @@
       <div class="form-group">
         <mat-label class="label-form">Thứ tự danh mục</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input type="number" matInput [(ngModel)]="category.index" formControlName="index" required class="input-form"
+          <input type="number" matInput formControlName="index" required class="input-form"
             placeholder="Nhập thứ tự danh mục">
           <mat-error *ngIf="createForm.controls.index.touched && createForm.controls.index.invalid || submitted">
             Vui lòng điển thông tin
@@ -45,7 +45,7 @@
       <div class="form-group">
         <mat-label class="label-form">Thứ tự danh mục ở trang chủ</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input type="number" matInput [(ngModel)]="category.indexHome" formControlName="indexHome" class="input-form"
+          <input type="number" matInput formControlName="indexHome" class="input-form"
             placeholder="Nhập thứ tự danh mục">
         </mat-form-field>
       </div>
@@ -73,7 +73,7 @@
       <div class="form-group">
         <mat-label class="label-form">Icon <i>(Font Awesome icon)</i></mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="category.icon" formControlName="icon" class="input-form"
+          <input matInput formControlName="iconFa" class="input-form"
             placeholder="Nhập Icon">
         </mat-form-field>
       </div>
@@ -89,7 +89,7 @@
       <div class="form-group">
         <mat-label class="label-form">Ghi chú</mat-label>
         <mat-form-field class="form-field" appearance="fill">
-          <input matInput [(ngModel)]="category.description" formControlName="description" class="input-form"
+          <input matInput formControlName="description" class="input-form"
             placeholder="Nhập chú thích">
         </mat-form-field>
       </div>
