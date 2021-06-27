@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
 import { InputGetCategoryList } from '../interfaces/category.interface';
-import { CategoryGqlService } from './cateogry.gql.service';
+import { CategoryGqlService } from './category.gql.service';
 
 @Injectable()
 export class CategoryService {

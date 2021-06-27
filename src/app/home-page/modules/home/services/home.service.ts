@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CategoryGqlService } from 'src/app/admin-page/modules/category/services/cateogry.gql.service';
+import { CategoryGqlService } from 'src/app/admin-page/modules/category/services/category.gql.service';
 
 @Injectable()
 export class HomeService {
