@@ -15,7 +15,8 @@ import { ImageTemp } from 'src/app/shared/common-component/image-uploader/image-
 import { ErrorUtil } from 'src/app/util/error.util';
 import { LocalSpinnerService } from 'src/app/shared/services/local-spinner.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
-import { InputCreateProduct } from '../../interfaces/product.inteface';
+import { InputCreateProduct } from '../../interfaces/product-form.interface';
+import { AppRoutingConstants } from 'src/app/constants/app-routing.constant';
 
 @Component({
   selector: 'app-product-form',
@@ -40,10 +41,13 @@ export class ProductFormComponent implements OnInit {
   public formInitValues;
   public allowEditPicture: boolean;
 
+  private readonly ROUTE_BACK_LIST_COMMAND = AppRoutingConstants.PRODUCT_LIST;
+
   unsubscribe$ = new Subject<any>();
 
   constructor(
     private formBuilder: FormBuilder,
+    private readonly router: Router,
     private readonly location: Location,
     private readonly route: ActivatedRoute,
     private readonly snackBar: MatSnackBar,
@@ -51,7 +55,7 @@ export class ProductFormComponent implements OnInit {
     private readonly categoryService: CategoryService,
     private readonly storage: AngularFireStorage,
     private readonly localSpinnerService: LocalSpinnerService,
-    private readonly firebaseService: FirebaseService
+    private readonly firebaseService: FirebaseService,
   ) {
     this.createForm = this.formBuilder.group({
       categoryIds: ['', Validators.required],
@@ -169,7 +173,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   public cancel(): void {
-    this.location.back();
+    this.router.navigate(this.ROUTE_BACK_LIST_COMMAND);
   }
 
   private async handleUploadImage(data) {

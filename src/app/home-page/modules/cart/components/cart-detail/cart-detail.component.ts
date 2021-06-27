@@ -1,16 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-@Component({
-  selector: 'app-shopping-cart',
-  templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss']
-})
-export class ShoppingCartComponent implements OnInit {
+import { Component, OnInit } from '@angular/core';
 
+@Component({
+  selector: 'app-cart-detail',
+  templateUrl: './cart-detail.component.html',
+  styleUrls: ['./cart-detail.component.scss']
+})
+export class CartDetailComponent implements OnInit {
   public cart = [];
   public totalPrice: number;
   public totalQuantity: number;
-  public cartSubscription: Subscription;
 
   constructor(
   ) { }
@@ -57,5 +55,4 @@ export class ShoppingCartComponent implements OnInit {
   public reset() {
 
   }
-
 }

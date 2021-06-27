@@ -9,7 +9,7 @@
 
     </div>
     <div content class="table-list-content">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="listProduct">
 
         <ng-container matColumnDef="index">
           <th mat-header-cell *matHeaderCellDef>STT</th>
@@ -78,11 +78,11 @@
           (click)="gotoProductDetail(row)" matTooltip='Nhấn để xem chi tiết/chỉnh sửa'></tr>
       </table>
 
-      <custom-pagination  [length]="totalItems" 
-      [pageIndex]="currentPage - 1" 
-      [pageSize]="currentPageSize"
-      [pageSizeOptions]="pageSizeOptions" 
-      (page)="changePage($event)"></custom-pagination>
+      <custom-pagination [length]="totalItems" 
+        [pageIndex]="paging.pageIndex" 
+        [pageSize]="paging.pageSize"
+        [pageSizeOptions]="paging.pageSizeOptions" 
+        (page)="changePage($event)"></custom-pagination>
 
     </div>
   </div>

@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import { Injectable } from '@angular/core';
 
 const queryGetCategoryList = gql`
-  query getCategoryList {
-    getCategoryList {
+  query getListCategory {
+    getListCategory {
       totalItems
       items{
         id
@@ -15,14 +15,16 @@ const queryGetCategoryList = gql`
         iconFa
         description
         isActive
+        indexHome
+        isShowHome
       }
     }
   }
 `;
 
 const queryGetCategoriesWithPaging = gql`
-  query getCategoryListWithPaging($input: BaseSearchInput!) {
-    getCategoryListWithPaging(input: $input) {
+  query getListCategoryWithPaging($input: BaseSearchInput!) {
+    getListCategoryWithPaging(input: $input) {
       totalItems
       items{
         id
@@ -33,6 +35,40 @@ const queryGetCategoriesWithPaging = gql`
         iconFa
         description
         isActive
+        indexHome
+        isShowHome
+      }
+    }
+  }
+`;
+
+const queryGetListCategoryShowHome = gql`
+  query getListCategoryShowHome{
+    getListCategoryShowHome{
+      totalItems
+      items{
+        id
+        name
+        index
+        indexHome
+        iconFa
+        pictureUrl
+        description
+        products{
+          id
+          product{
+            name
+            index
+            size
+            color
+            price
+            discount
+            referencePrice
+            pictureUrl
+            isActive
+            createdAt
+          }
+        }
       }
     }
   }
@@ -49,6 +85,8 @@ const queryGetCategoryById = gql`
       iconFa
       description
       isActive
+      indexHome
+      isShowHome
     }
   }
 `;
@@ -110,6 +148,13 @@ export class CategoryGqlService {
       variables: {
         id,
       },
+      fetchPolicy: 'network-only',
+    });
+  }
+
+  public getListCategoryShowHome() {
+    return this.apollo.query({
+      query: queryGetListCategoryShowHome,
       fetchPolicy: 'network-only',
     });
   }

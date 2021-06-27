@@ -9,11 +9,16 @@
 
     </div>
     <div content class="table-list-content">
-      <table mat-table [dataSource]="pureData">
+      <table mat-table [dataSource]="listCategory">
 
         <ng-container matColumnDef="index">
           <th mat-header-cell *matHeaderCellDef>STT</th>
           <td mat-cell *matCellDef="let element">{{ element.index }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="indexHome">
+          <th mat-header-cell *matHeaderCellDef>STT Home</th>
+          <td mat-cell *matCellDef="let element">{{ element.indexHome }}</td>
         </ng-container>
 
         <ng-container matColumnDef="id">
@@ -56,6 +61,12 @@
         <tr mat-row mat-row class="web-admin" style="cursor: pointer;" *matRowDef="let row; columns: displayedColumns"
           (click)="gotoCategoryDetail(row)" matTooltip='Nhấn để xem chi tiết/chỉnh sửa'></tr>
       </table>
+
+      <custom-pagination [length]="totalItems" 
+        [pageIndex]="paging.pageIndex" 
+        [pageSize]="paging.pageSize"
+        [pageSizeOptions]="paging.pageSizeOptions" 
+        (page)="changePage($event)"></custom-pagination>
 
     </div>
   </div>

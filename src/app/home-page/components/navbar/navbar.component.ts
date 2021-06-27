@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppRoutingConstants } from 'src/app/constants/app-routing.constant';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,11 +10,22 @@ export class NavbarComponent implements OnInit {
 
   public cart: any = [];
 
-  public totalQuantity: any;
+  public totalQuantity: number = 0;
 
   constructor(
-
+    private readonly router: Router,
   ) { }
+
+  public ngOnInit(): void {
+
+  }
+
+  public goToCartDetail(): void{
+    if(this.totalQuantity <= 0){
+      return;
+    }
+    this.router.navigate(AppRoutingConstants.CART_DETAIL)
+  }
 
   getTotalPrice() {
     const quantity: Array<number> = [];
@@ -28,8 +41,8 @@ export class NavbarComponent implements OnInit {
     }, 0);
 
   }
-  ngOnInit() {
-  }
+
+
 
 
 }

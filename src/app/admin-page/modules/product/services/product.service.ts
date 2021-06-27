@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/shared/services/data.service';
-import { InputCreateProduct, InputGetProductList, InputUpdateProduct } from '../interfaces/product.inteface';
+import { InputCreateProduct, InputGetProductList, InputUpdateProduct } from '../interfaces/product-form.interface';
 import { ProductGqlService } from './product.gql.service';
 
 @Injectable({
@@ -16,13 +16,13 @@ export class ProductService {
     private productGqlService: ProductGqlService
   ) { }
 
-  public getProducts(input: InputGetProductList) {
+  public getProducts(input: InputGetProductList): Observable<any> {
     return this.productGqlService.getProducts(input).pipe(
       map((res: any) => res?.data?.getProductList)
     );
   }
 
-  public getProductById(id: string) {
+  public getProductById(id: string): Observable<any> {
     return this.productGqlService.getProductById(id).pipe(
       map((res: any) => res?.data?.getProductById)
     );

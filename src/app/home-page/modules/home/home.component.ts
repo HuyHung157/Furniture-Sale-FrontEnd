@@ -1,25 +1,24 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Product } from 'src/app/admin-page/modules/product/models/product.model';
-import { ProductService } from 'src/app/admin-page/modules/product/services/product.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { HomeService } from './services/home.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [HomeService]
 })
 export class HomeComponent implements OnInit {
   public isBanner = true;
   public slideBanner = [];
-  public slideTopSell;
-  public slideLivingRoom;
-  public slideBedRoom;
-  public slideKitchen;
-  public titleTopSale = 'bán chạy';
-  public titleLivingRoom = 'phòng khách';
-  public titleBedRoom = 'phòng ngủ';
-  public titleKitchen = 'nhà bếp';
+  public listCategory = [];
 
-  constructor() { }
+  unsubscribe$ = new Subject<any>();
+
+  constructor(
+    private readonly homeService: HomeService
+  ) { }
 
   ngOnInit(): void {
     this.getListProductTopSell();
@@ -36,13 +35,18 @@ export class HomeComponent implements OnInit {
     ];
   }
 
+  ngOnDestroy(): void{
+    this.unsubscribe$.next();
+  }
+
   public getListProductTopSell(): void {
-    // this.productService.getListProduct().subscribe(res => {
-    //   this.slideTopSell = res;
-    //   this.slideLivingRoom = res.slice(3, 100).reverse();
-    //   this.slideBedRoom = res.slice(2, 100);
-    //   this.slideKitchen = res.slice().reverse();
-    // });
+    this.homeService.getCategoryShowHome()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        (res) => {
+          this.listCategory = res.items;
+        }
+      )
   }
 
 }

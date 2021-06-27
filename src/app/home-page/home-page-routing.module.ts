@@ -24,9 +24,9 @@ const routes: Routes = [
         component: ContactComponent
       },
       {
-        path: 'shopping-cart',
-        component: ShoppingCartComponent
-      }
+        path: 'cart',
+        loadChildren: () => import('./modules/cart/cart.module').then((m) => m.CartModule),
+      },
     ]
   },
 ];

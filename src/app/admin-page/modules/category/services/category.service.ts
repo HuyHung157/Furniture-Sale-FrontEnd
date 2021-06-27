@@ -15,13 +15,13 @@ export class CategoryService {
 
   public getAllCategories(): Observable<any> {
     return this.categoryGqlService.getAllCategories().pipe(
-      map((res: any) => res?.data?.getCategoryList)
+      map((res: any) => res?.data?.getListCategory)
     );
   }
 
   public getCategoriesWithPaging(input: InputGetCategoryList): Observable<any> {
     return this.categoryGqlService.getCategoriesWithPaging(input).pipe(
-      map((res: any) => res?.data?.getCategoryListWithPaging)
+      map((res: any) => res?.data?.getListCategoryWithPaging)
     );
   }
 

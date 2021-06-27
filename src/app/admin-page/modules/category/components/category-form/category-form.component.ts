@@ -2,9 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AppRoutingConstants } from 'src/app/constants/app-routing.constant';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
 import { ModeForm } from 'src/app/shared/enums/product.enum';
 import { LocalSpinnerService } from 'src/app/shared/services/local-spinner.service';
@@ -25,13 +26,16 @@ export class CategoryFormComponent implements OnInit {
   public mode = ModeForm.MODE_CREATE;
   public spinnerId = 'product-form-spinner-id';
 
+  private readonly ROUTE_BACK_LIST_COMMAND = AppRoutingConstants.CATEGORY_LIST;
+
   unsubscribe$ = new Subject<any>();
 
   constructor(
     private formBuilder: FormBuilder,
+    private readonly router: Router,
     private readonly location: Location,
-    private readonly snackBar: MatSnackBar,
     private readonly route: ActivatedRoute,
+    private readonly snackBar: MatSnackBar,
     private readonly categoryService: CategoryService,
     private readonly localSpinnerService: LocalSpinnerService,
   ) { }
@@ -49,9 +53,11 @@ export class CategoryFormComponent implements OnInit {
       name: ['', Validators.required],
       type: [''],
       index: [0, Validators.required],
-      icon: [''],
-      // category_code: [''],
+      indexHome: [''],
       isActive: [true],
+      isShowHome: [false],
+      iconFa: [''],
+      // category_code: [''],
       description: ['']
     });
 
@@ -100,7 +106,7 @@ export class CategoryFormComponent implements OnInit {
   }
 
   public cancel(): void {
-    this.location.back();
+    this.router.navigate(this.ROUTE_BACK_LIST_COMMAND);
   }
 
   private async formatFormUpdate(data) {
@@ -116,7 +122,10 @@ export class CategoryFormComponent implements OnInit {
   private getCategoryById() {
     this.categoryService.getCategoryById(this.categoryId)
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(res => { this.category = res; });
+      .subscribe(res => { 
+        this.category = res; 
+        this.createForm.patchValue(res);
+      });
   }
 
 }
