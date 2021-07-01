@@ -57,6 +57,7 @@ const queryGetListCategoryShowHome = gql`
         products{
           id
           product{
+            id
             name
             index
             size

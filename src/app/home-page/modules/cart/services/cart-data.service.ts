@@ -54,7 +54,7 @@ export class CartDataService {
     this.setCartItems(items);
   }
 
-  public removeItemFromCart(id: string, quantity: number) {
+  public reduceItemFromCart(id: string, quantity: number) {
     if (quantity <= 0) {
       return;
     }
@@ -98,9 +98,15 @@ export class CartDataService {
     );
   }
 
+  public getCartNumberOfItem(): Observable<number> {
+    return this.getCartItems().pipe(
+      map(items => items.length)
+    );
+  }
+
   public getCartTotalCost(): Observable<number> {
     return this.getCartItems().pipe(
-      map(items => items.reduce((total, item) => total, 0)),
+      map(items => items.reduce((total, item) => total + (item.price * item.quantity) , 0)),
     );
   }
 

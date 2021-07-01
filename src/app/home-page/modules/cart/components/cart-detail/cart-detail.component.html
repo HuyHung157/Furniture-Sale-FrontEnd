@@ -1,61 +1,72 @@
-<div *ngIf="cart.length <= 0 ; else TableCart">
-  <h3 class="title-empty">Không có sản phẩm trong giỏ hàng!</h3>
-</div>
+<section class='cart-detail__section'>
+  <h1 class='title-page'> Giỏ hàng </h1>
 
-<ng-template #TableCart>
-  <div class="shopping-cart__page">
-    <div class="container-section">
-      <table class="table table-cart">
-        <thead>
-          <tr>
-            <th>STT</th>
-            <th>Tên sản phẩm</th>
-            <th>Đơn giá</th>
-            <th>Số lượng</th>
-            <th>Hình ảnh</th>
-            <th>Thao tác</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let product of cart; let i = index">
-            <td>
-              <h4>{{i + 1}}</h4>
-            </td>
-            <td>
-              <h4>{{product.name}}</h4>
-            </td>
-            <td>
-              <h4>{{product.price | number:'1.0-3'}} VNĐ</h4>
-            </td>
-            <td>
-              <div class="group-quantity">
-                <button>-</button>
-                <h4>{{product.quantity}}</h4>
-                <button>+</button>
-              </div>
-            </td>
-
-            <td><img src={{product.image_url}} width="100" height="100" /></td>
-            <td>
-              <button (click)="removeProduct(product)" class="btn btn-delete">Xóa sản phẩm</button>
-            </td>
-          </tr>
-
-          <tr class="row-checkout">
-
-            <td colspan="2">
-              <h4>Tổng số sản phẩm: {{totalQuantity}}</h4>
-            </td>
-            <td colspan="3">
-              <h4>Tổng tiền: {{totalPrice | number:'1.0-3'}} VNĐ</h4>
-            </td>
-            <td>
-              <button (click)="checkout()" class="btn btn-checkout">Thanh toán</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div *ngIf="cart.length <= 0 ; else TableCart">
+    <h3 class="title-empty">Không có sản phẩm trong giỏ hàng!</h3>
   </div>
-</ng-template>
+  
+  <ng-template #TableCart>
+    <div class="shopping-cart__page">
+      <div class="container-section">
+        <table class="table table-cart">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên sản phẩm</th>
+              <th>Đơn giá</th>
+              <th>Số lượng</th>
+              <th>Hình ảnh</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let product of cart; let i = index">
+              <td>
+                <h4>{{i + 1}}</h4>
+              </td>
+              <td>
+                <h4>{{product.name}}</h4>
+              </td>
+              <td>
+                <h4>{{product.price | number:'1.0-3'}} VNĐ</h4>
+              </td>
+              <td>
+                <div class="group-quantity">
+                  <button (click)='decrement(product)' >-</button>
+                  <h4>{{product.quantity}}</h4>
+                  <button (click)='increment(product)'>+</button>
+                </div>
+              </td>
+  
+              <td><img src={{product.pictureUrl}} width="100" height="100" /></td>
+              <td class='cell-control'>
+                <button (click)="removeProduct(product)" title="Xóa sản phẩm" class="btn btn-delete">
+                  <i class="fa fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+  
+            <tr class="row-checkout">
+              <td colspan="2">
+                <h4>Tổng số sản phẩm: {{totalQuantity}}</h4>
+              </td>
+              <td colspan="4">
+                <h4 class='total-cost'>
+                  <span class='cost-text'> Tổng tiền:  </span>
+                  <span class='cost-number'> {{totalCost | number:'1.0-3'}} VNĐ </span>
+                </h4>
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+        <button (click)="checkout()" class="btn btn-checkout">
+          <i class="fa fa-cash-register"></i>
+          <span> Đặt hàng </span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</section>

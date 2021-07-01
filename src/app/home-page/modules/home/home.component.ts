@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     ];
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     this.unsubscribe$.next();
   }
 

@@ -3,6 +3,7 @@ import { Product } from 'src/app/admin-page/modules/product/interfaces/product.i
 import { CartItem } from '../services/cart-data.service';
 
 export class CartUtil {
+  
   public static productToCartItem(product: Product, quantity: number = 0): CartItem {
     const item: any = {
       id: product.id,
@@ -14,6 +15,7 @@ export class CartUtil {
     };
     return this.updateItemPrice(item);
   }
+
   public static cloneCartItemWithQuantity(cartItem: CartItem, quantity: number): CartItem {
     const item: any = { ...cartItem, quantity };
     return this.updateItemPrice(item);

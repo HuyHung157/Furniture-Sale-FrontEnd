@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AppRoutingConstants } from 'src/app/constants/app-routing.constant';
+import { CartDataService } from '../../modules/cart/services/cart-data.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,35 +13,38 @@ export class NavbarComponent implements OnInit {
 
   public cart: any = [];
 
-  public totalQuantity: number = 0;
+  public totalItem: number = 0;
+  public unSubscribe$ = new Subject();
 
   constructor(
     private readonly router: Router,
+    private readonly cartDataService: CartDataService,
   ) { }
 
   public ngOnInit(): void {
-
+    this.initSubscription();
   }
 
-  public goToCartDetail(): void{
-    if(this.totalQuantity <= 0){
+  public ngOnDestroy() {
+    this.unSubscribe$.next();
+  }
+
+  public goToCartDetail(): void {
+    if (this.totalItem <= 0) {
       return;
     }
     this.router.navigate(AppRoutingConstants.CART_DETAIL)
   }
 
-  getTotalPrice() {
-    const quantity: Array<number> = [];
-    let intQuantity: number;
+  private initSubscription() {
 
-    this.cart.products.forEach((item, i) => {
-      intQuantity = parseInt((item.quantity), 10);
-      quantity.push(intQuantity);
-    });
+    this.cartDataService.getCartTotalItem()
+    .pipe(
+      takeUntil(this.unSubscribe$)
+    ).subscribe(total => {
+      this.totalItem = total
+    })
 
-    this.totalQuantity = quantity.reduce((acc, item) => {
-      return acc += item;
-    }, 0);
 
   }
 
