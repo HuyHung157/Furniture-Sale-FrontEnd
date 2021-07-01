@@ -4,6 +4,8 @@ import { HomePageComponent } from './home-page.component';
 import { AboutComponent } from './modules/about/about.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { HomeComponent } from './modules/home/home.component';
+import { PolicyRegulationComponent } from './modules/policy-regulation/policy-regulation.component';
+import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
@@ -22,6 +24,14 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent
+      },
+      {
+        path: 'privacy-policy',
+        component: PrivacyPolicyComponent
+      },
+      {
+        path: 'policy-regulation',
+        component: PolicyRegulationComponent
       },
       {
         path: 'cart',

@@ -8,6 +8,8 @@ import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductComponent } from './modules/product/product.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
+import { PolicyRegulationComponent } from './modules/policy-regulation/policy-regulation.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { FooterComponent } from './components/footer/footer.component';
     ShoppingCartComponent,
     NavbarComponent,
     ProductComponent,
-    FooterComponent
+    FooterComponent,
+    PrivacyPolicyComponent,
+    PolicyRegulationComponent
   ],
   imports: [
     CommonModule,

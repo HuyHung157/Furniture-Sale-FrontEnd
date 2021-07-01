@@ -8,7 +8,9 @@ export class AppRoutingConstants {
   /* ----------------------------------------- */
   public static readonly ABOUT_PAGE = AppRoutingConstants.APP.concat('about');
   public static readonly CONTACT_PAGE = AppRoutingConstants.APP.concat('contact');
-  
+  public static readonly PRIVACY_POLICY_PAGE = AppRoutingConstants.APP.concat('privacy-policy');
+  public static readonly POLICY_REGULATION_PAGE = AppRoutingConstants.APP.concat('policy-regulation');
+
   public static readonly SHOPPING_CART_PAGE = AppRoutingConstants.APP.concat('cart');
   public static readonly CART_DETAIL = AppRoutingConstants.SHOPPING_CART_PAGE.concat('detail');
 

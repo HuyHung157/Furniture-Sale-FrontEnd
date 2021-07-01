@@ -4,10 +4,13 @@
 $width-footer__item: 370px;
 
 .footer {
-  background-color: #202325;
+  background-color: $brown;
+  color: $secondary;
   padding: 16px;
+  a, button{
+    color: $secondary;
+  }
   .footer__top {
-    color: #fff;
     .row {
       display: flex;
       flex-direction: row;
@@ -20,21 +23,14 @@ $width-footer__item: 370px;
         h6.footer__top-title {
           font-weight: 600;
           letter-spacing: 0.3px;
-          color: #fff;
           text-transform: capitalize;
           font-size: 18px;
           margin: 10px 0;
         }
         .footer__top-list {
-          li {
-            // margin-bottom: 15px;
-            a {
-              color: $white;
-              &:hover {
-                color: $primary;
-              }
-            }
-          }
+          // li {
+          //   margin-bottom: 5px;
+          // }
         }
         .list-social_icons {
           margin-top: 8px;
@@ -49,22 +45,15 @@ $width-footer__item: 370px;
               width: 40px;
               height: 40px;
               border-radius: 50%;
+              border: 1.5px solid $secondary;
               display: flex;
               align-items: center;
               justify-content: center;
               transition: all 0.3s;
               cursor: pointer;
-              &.sc_facebook {
-                background: #3b5998;
-                &:hover {
-                  background: #4d71bf;
-                }
-              }
-              &.sc_google {
-                background: #dd4b39;
-                &:hover {
-                  background: #fa5a45;
-                }
+              color: $secondary;
+              &:hover {
+                border-color: $secondary-hover;
               }
             }
           }
@@ -96,7 +85,6 @@ $width-footer__item: 370px;
               -moz-transform: translateY(-50%);
               -webkit-transform: translateY(-50%);
               transform: translateY(-50%);
-              color: #fff;
               font-size: 20px;
               right: 5px;
               border: 0;
@@ -126,13 +114,16 @@ $width-footer__item: 370px;
     align-items: center;
     justify-content: space-between;
     .copyright {
-      color: #fff;
       font-size: 16px;
       line-height: 28px;
       .brand {
         font-size: 18px;
-        color: $primary;
         font-weight: bold;
+        color: $secondary;
+        transition: all 0.3s;
+        &:hover{
+          color: $primary;
+        }
       }
     }
     .footer_payment {
