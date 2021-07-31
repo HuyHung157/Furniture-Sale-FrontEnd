@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActionEnum } from '../../enums/action.enum';
-import { FormField } from '../../interfaces/form-field.interface';
-import { Layouts, ResponsiveLayoutService } from '../../services/responsive-layout.service';
+import { ActionEnum } from 'src/app/shared/enums/action.enum';
+import { FormField } from 'src/app/shared/interfaces/form-field.interface';
+import { Layouts, ResponsiveLayoutService } from 'src/app/shared/services/responsive-layout.service';
 import { Subscribable } from '../base-component/subscribable';
 import { ImageCropperDialogComponent } from '../image-cropper-dialog/image-cropper-dialog.component';
 import { ImageTemp, ImageUploaderComponent } from '../image-uploader/image-uploader.component';

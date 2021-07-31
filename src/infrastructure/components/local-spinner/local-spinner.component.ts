@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LocalSpinnerService } from '../../services/local-spinner.service';
+import { LocalSpinnerService } from '../../../app/shared/services/local-spinner.service';
 
 @Component({
   selector: 'app-local-spinner',

@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -39,7 +40,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 // Material Popups & Modals
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -49,7 +50,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { CommonConstant } from '../shared/constants/common.constant';
+import { CommonConstant } from '../../../app/shared/constants/common.constant';
 
 const modules: Type<any>[] = [
   CommonModule,
@@ -63,6 +64,8 @@ const modules: Type<any>[] = [
     MatAutocompleteModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatNativeDateModule, 
+    MatMomentDateModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,

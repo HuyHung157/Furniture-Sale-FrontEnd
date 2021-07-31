@@ -11,6 +11,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { CategoryService } from '../category/services/category.service';
 import { ProductGqlService } from './services/product.gql.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     ProductRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    InfrastructureModule
   ],
   declarations: [
     ProductComponent,

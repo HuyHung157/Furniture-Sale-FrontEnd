@@ -2,7 +2,7 @@ import { Directive, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { CommonConstant } from '../../constants/common.constant';
+import { CommonConstant } from '../../../app/shared/constants/common.constant';
 
 @Directive()
 export abstract class BasePaginationComponent<T> implements OnInit {

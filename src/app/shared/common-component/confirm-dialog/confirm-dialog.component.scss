@@ -1,5 +1,5 @@
-@import "../../../../assets/scss/variables";
-@import "../../../../assets/scss/mixin";
+@import "src/assets/scss/variables";
+@import "src/assets/scss/mixin";
 ::ng-deep mat-dialog-container {
   min-width: 350px;
   background-color: $white;

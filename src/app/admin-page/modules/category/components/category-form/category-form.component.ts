@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AppRoutingConstants } from 'src/app/constants/app-routing.constant';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
-import { ModeForm } from 'src/app/shared/enums/product.enum';
+import { ModeForm } from 'src/app/shared/enums/mode-form.enum';
 import { LocalSpinnerService } from 'src/app/shared/services/local-spinner.service';
 import { ErrorUtil } from 'src/app/util/error.util';
 import { CategoryService } from '../../services/category.service';

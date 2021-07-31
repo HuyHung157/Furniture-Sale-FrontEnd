@@ -8,6 +8,7 @@ import { CategoryService } from './services/category.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryRoutingModule } from './category-routing.module';
+import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { CategoryRoutingModule } from './category-routing.module';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    InfrastructureModule
   ],
   declarations: [
     CategoryComponent,

@@ -31,24 +31,48 @@ $width-tag: 300px;
 
 // Input
 mat-form-field {
-
+  .group-input {
+    display: flex;
+  }
   &.mat-form-field-appearance-fill {
     &.ng-invalid {
       &.ng-touched {
         .mat-form-field-flex {
           border: 1px solid $error;
         }
+        i {
+          color: $error;
+        }
+        input {
+          &::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: $error;
+            opacity: 1; /* Firefox */
+          }
+          &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $error;
+          }
+          &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: $error;
+          }
+        }
       }
     }
     .mat-form-field-wrapper {
-      margin-bottom: 0.5em;
+      margin-bottom: 0.6em;
       padding-bottom: 1.5em;
+      width: 100%;
       .mat-form-field-flex {
         border-bottom: unset;
         border: 1px solid $black;
         border-radius: 5px;
         padding: 0.75em;
         background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         .mat-form-field-infix {
           border-top: unset;
           padding: unset;
@@ -63,7 +87,7 @@ mat-form-field {
         }
       }
       .mat-form-field-subscript-wrapper {
-        margin-top: 0.2em;
+        margin-top: 0.1em;
       }
     }
   }
@@ -87,6 +111,49 @@ mat-form-field {
   &.mat-checked {
     .mat-slide-toggle-bar {
       background: $primary;
+    }
+  }
+}
+
+//stepper
+.mat-horizontal-content-container {
+  margin-top: 20px;
+}
+.mat-horizontal-stepper-header-container {
+  .mat-horizontal-stepper-header {
+    border-radius: 50%;
+    height: 50px;
+    padding: 0 12px;
+    .mat-step-icon {
+      margin-right: 0;
+      background: $primary;
+    }
+    .mat-step-label {
+      min-width: unset;
+    }
+  }
+  .mat-stepper-horizontal-line {
+    margin: 0;
+  }
+}
+
+// calendar
+.mat-datepicker-toggle-active {
+  color: $primary;
+}
+.mat-form-field-flex{
+  position: relative;
+  .mat-form-field-suffix{
+    position: absolute;
+    right: 5px;
+  }
+}
+
+//icon
+.mat-form-field:not(.mat-form-field-appearance-legacy) {
+  .mat-form-field-suffix {
+    .mat-icon-button {
+
     }
   }
 }

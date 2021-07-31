@@ -10,6 +10,7 @@ import { ProductComponent } from './modules/product/product.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 import { PolicyRegulationComponent } from './modules/policy-regulation/policy-regulation.component';
+import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { PolicyRegulationComponent } from './modules/policy-regulation/policy-re
     CommonModule,
     SharedModule,
     HomePageRoutingModule,
+    InfrastructureModule
   ]
 })
 export class HomePageModule { }

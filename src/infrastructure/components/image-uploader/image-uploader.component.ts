@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
-import { CommonConstant } from '../../constants/common.constant';
+import { CommonConstant } from '../../../app/shared/constants/common.constant';
 
 export interface ImageTemp {
   file?: File;

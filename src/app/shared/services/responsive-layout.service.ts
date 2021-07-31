@@ -2,7 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Subscribable } from '../common-component/base-component/subscribable';
+import { Subscribable } from '../../../infrastructure/components/base-component/subscribable';
 
 export enum Layouts {
   MOBILE,

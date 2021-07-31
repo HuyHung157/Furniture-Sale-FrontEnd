@@ -2,8 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { CommonConstant } from '../../constants/common.constant';
-import { ActionEnum } from '../../enums/action.enum';
+import { CommonConstant } from 'src/app/shared/constants/common.constant';
+import { ActionEnum } from 'src/app/shared/enums/action.enum';
+
 
 @Component({
   selector: 'app-image-cropper-dialog',
