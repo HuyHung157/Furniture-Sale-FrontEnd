@@ -1,0 +1,129 @@
+@import "src/assets/scss/variables";
+@import "src/assets/scss/mixin";
+
+.page__sign-up {
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+  .page__sign-up-container {
+    .form__sign-up {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px 0 80px;
+      border-radius: 50px;
+      box-shadow: 0 2px 10px -3px $gray;
+      text-align: center;
+      .form__container {
+        width: 90%;
+        margin: 0 auto;
+        .sign-up__brand {
+          // font-family: "Yeseva One", cursive;
+          display: block;
+          font-family: "Nunito", sans-serif;
+          font-size: 30px;
+          font-weight: 700;
+          text-decoration: none;
+          color: $primary;
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            color: black !important;
+            font-size: 26.5px;
+          }
+        }
+        .sign-up__headingSubtext {
+          font-size: 17px;
+          padding-top: 10px !important;
+        }
+        sign-up__link{
+          text-align: center;
+        }
+        .sign-up_img {
+          width: 100px;
+          padding: 15px;
+          margin: 30px auto 20px !important;
+          box-shadow: 0 5px 10px -7px black;
+          border-radius: 50%;
+        }
+        .sign-up__heading {
+          color: black;
+          .sign-up__headingText {
+            font-size: 40px;
+            line-height: 45px;
+          }
+        }
+
+        button.btn__sign-up {
+          border-radius: 100px;
+          width: 80%;
+          height: 50px;
+          font-size: 20px;
+          box-shadow: 0 2px 10px -3px gray;
+          background-color: gray !important;
+          color: white !important;
+          border: none !important;
+          outline: none;
+          letter-spacing: 2px;
+          cursor: pointer;
+          transition: all 0.3s;
+          &.w-65{
+            width: 65%;
+          }
+          &:hover {
+            background-color: $primary !important;
+          }
+          &:focus {
+            background-color: $primary !important;
+          }
+          // &:disabled {
+          //   cursor: no-drop;
+          // }
+        }
+        .link__create_account {
+          text-align: center;
+          color: $primary;
+          text-decoration: none;
+          padding: 8px !important;
+          margin-top: 12px;
+          display: block;
+          transition: all 0.3s;
+          &:hover {
+            color: $primary;
+          }
+        }
+
+      }
+    }
+    .group-action{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      > *{
+        margin-right: 8px;
+      }
+    }
+
+    ::ng-deep mat-form-field.mat-form-field-appearance-fill{
+      .mat-form-field-wrapper{
+        .mat-form-field-flex {
+          border-radius: 20px;
+        }
+      }
+    }
+
+  }
+}
+
+@include Responsive(MD) {
+  .page__sign-up {
+    .page__sign-up-container {
+      .form_sign-up {
+      }
+    }
+  }
+}

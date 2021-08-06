@@ -11,6 +11,9 @@
     }
   }
   .form-group {
+    &.phone-prefix{
+      width: 35%;
+    }
     mat-label {
       margin-bottom: 0;
     }

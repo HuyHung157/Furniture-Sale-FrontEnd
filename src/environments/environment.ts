@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'http://localhost:8080/graphql',
   production: false,
+  apiUrl: 'http://localhost:8080/graphql',
+  defaultLanguage: 'vi',
+  supportedLanguages: ['vi'],
   firebase: {
     apiKey: 'AIzaSyDcUfGECTgMUtMI4sySPKMHbITsaRPVvT0',
     authDomain: 'furniture-sale-managements.firebaseapp.com',

@@ -96,7 +96,7 @@ export class ProductFormComponent implements OnInit {
       this.getProductById();
     }
 
-    const a = {
+    const pictureFiled = {
       key: 'pictures',
       labelOutSide: 'Hình ảnh sản phẩm',
       required: true,
@@ -109,7 +109,7 @@ export class ProductFormComponent implements OnInit {
         ratioHeight: 1,
       },
     } as FormField;
-    this.field = a;
+    this.field = pictureFiled;
     this.allowEditPicture = true;
   }
 

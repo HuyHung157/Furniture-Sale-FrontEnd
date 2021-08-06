@@ -6,9 +6,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { InputCreateProduct, InputGetProductList, InputUpdateProduct } from '../interfaces/product-form.interface';
 import { ProductGqlService } from './product.gql.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProductService {
 
   constructor(

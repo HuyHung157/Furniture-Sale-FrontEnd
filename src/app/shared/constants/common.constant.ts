@@ -4,6 +4,8 @@ export class CommonConstant {
   public static readonly SUPER_ADMIN_ROLE = 'SUPER_ADMIN';
   public static readonly FIREBASE_USER_CREDENTIAL = 'FIREBASE_USER_CREDENTIAL';
 
+  public static readonly PHONE_CODE_VIETNAMESE = '+84';
+
   // Paging
   public static readonly PAGING_PAGE_SIZE = 10;
   public static readonly PAGING_PAGE_INDEX = 1;
@@ -43,5 +45,6 @@ export class CommonConstant {
 
   // Pattern
   public static readonly PATTERN_PHONE_NUMBER = /^\d{10}$/;
+  public static readonly PHONE_NUMBER_REGEX = /^[0-9\-\+]{9,15}$/;
   public static readonly URL_YOUTUBE = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})?$/
 }

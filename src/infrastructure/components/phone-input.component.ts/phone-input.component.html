@@ -1,0 +1,39 @@
+<div class="phone-input__section">
+  <form [formGroup]="phoneNumberFormGroup" >
+    
+    <mat-label *ngIf="field?.labelOutSide" >
+      <span> {{ field.labelOutSide }} </span>
+      <span class="asterisk" *ngIf="field?.required">*</span>
+    </mat-label>
+
+    <div class="row-group">
+      <div class="form-group phone-prefix">
+        <mat-form-field class="phone-prefix" appearance="fill">
+          <mat-select formControlName="phoneNumberPrefix" [(value)]="selected">
+            <mat-select-trigger>
+              <span class="flag">{{ selected?.flag }}</span>
+              <span>({{selected?.dial_code}})</span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let opt of countries" [value]="opt">
+              <span class="flag">{{opt.flag}} </span>
+              <span class="code-country"> ({{opt.dial_code}}) </span>
+              <span>{{opt.name}} </span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="phone-number" appearance="fill">
+          <input matInput
+            class="input-form input__phone-number" 
+            formControlName="phoneNumber"
+            [placeholder]="field?.placeholder"
+            (focusout)="validate(field?.required)"
+            type="text" [required]="field?.required" />
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+</div>

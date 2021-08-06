@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+declare var require: any;
 
 export interface CountryType {
-  value: string;
-  label: string;
+  dial_code: string;
+  name: string;
+  flag?: any;
+  code?: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -13,10 +16,10 @@ export class CountryService {
     if (!this.countries) {
       const importCountries = require('../json/country_dial_info.json');
       this.countries = importCountries.map((country) => ({
-        value: country.code,
-        label: country.name,
-        flat: country.flag,
-        code: country.dial_code
+        dial_code: country.dial_code,
+        name: country.name,
+        flag: country.flag,
+        code: country.code
       }));
     }
     return this.countries;
@@ -35,7 +38,7 @@ export class CountryService {
 
   public getDialCodeCountries() {
     if (!this.countries) {
-      const importCountries = require('../jsons/country_dial_info.json');
+      const importCountries = require('../json/country_dial_info.json');
       this.countries = importCountries.map((country) => ({
         value: country.dial_code,
         label: country.code,

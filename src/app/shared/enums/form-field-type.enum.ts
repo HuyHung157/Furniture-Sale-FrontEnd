@@ -19,4 +19,5 @@ export enum FormFieldType {
   SECTION_HEADER,
   PRICE,
   TEMPLATE_REF,
+  PHONE,
 }

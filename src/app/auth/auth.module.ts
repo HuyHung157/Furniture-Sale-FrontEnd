@@ -5,16 +5,23 @@ import { SharedModule } from '../shared/shared.module';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.module';
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     SharedModule,
+    FormsModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    AuthRoutingModule,
+    InfrastructureModule
+  ],
+  declarations: [
+    SignInComponent, 
+    SignUpComponent,
+    UserProfileComponent,
+  ],
+  providers: []
 })
 export class AuthModule { }

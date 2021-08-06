@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -14,6 +13,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { GraphQLModule } from './shared/modules/gql/gql.module';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    SharedModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GraphQLModule,
+    SharedModule,
+    InfrastructureModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    SlickCarouselModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    GraphQLModule,
+    TranslateModule.forRoot(),
     ToastrModule.forRoot(),
   ],
   exports: [

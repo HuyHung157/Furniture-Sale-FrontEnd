@@ -6,6 +6,8 @@ import { MaterialModule } from '../../infrastructure/modules/material/material.m
 import { DataService } from './services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { DataVNService } from './services/data-vn/data-vn.service';
+import { DataVNGqlService } from './services/data-vn/data-vn.gql.service';
 
 @NgModule({
   declarations: [],
@@ -19,6 +21,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   ],
   providers: [
     DataService,
+    DataVNGqlService,
+    DataVNService
   ],
   exports: [
     CommonComponentModule,
