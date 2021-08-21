@@ -53,10 +53,10 @@ export class SignInComponent implements OnInit {
         .subscribe(res => {
           console.log(res);
           localStorage.setItem('user', res?.token);
+          this.toastr.success('Đăng nhập thành công!');
+          this.router.navigate(['admin']);
         })
       
-      // this.toastr.success('Đăng nhập thành công!');
-      // this.router.navigate(['admin']);
 
     } else {
       this.formLoginGroup.form.markAllAsTouched();

@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  fe:
+    container_name: furniture-fe
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes: 
+      - ./furniture-sale/:/usr/src/app
+    ports:
+      - "4200:80"

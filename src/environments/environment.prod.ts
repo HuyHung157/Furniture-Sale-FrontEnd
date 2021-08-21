@@ -1,5 +1,8 @@
 export const environment = {
   production: true,
+  apiUrl: 'http://localhost:8080/graphql',
+  defaultLanguage: 'vi',
+  supportedLanguages: ['vi'],
   firebase: {
     apiKey: 'AIzaSyDcUfGECTgMUtMI4sySPKMHbITsaRPVvT0',
     authDomain: 'furniture-sale-managements.firebaseapp.com',
