@@ -16,7 +16,8 @@ export class TokenInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    const token = this.userService.getToken();
+    // const token = this.userService.getToken();
+    const token = '';
     // const refreshToken = this.userService.getRefreshToken();
 
     let headers = request.headers;

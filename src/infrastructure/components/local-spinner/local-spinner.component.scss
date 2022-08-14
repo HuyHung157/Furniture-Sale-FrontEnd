@@ -44,7 +44,7 @@
     top: 50%;
     left: 50%;
     @include lindicator(40px);
-    margin-left: -(40px / 2);
-    margin-top: -(40px / 2);
+    margin-left: -calc(40px / 2);
+    margin-top: -calc(40px / 2);
   }
 }

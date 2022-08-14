@@ -3,6 +3,7 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
+import { LocalStorageService } from './shared/services/localstorage.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -27,14 +28,21 @@ export const MY_FORMATS = {
   ]
 })
 export class AppComponent implements OnInit{
-  
+  public name;
   constructor(
     private readonly translateService: TranslateService,
-    private adapter: DateAdapter<any>
+    private readonly localStorageService: LocalStorageService,
+    private adapter: DateAdapter<any>,
   ){}
 
   ngOnInit(): void{
     this.initTranslation();
+    this.getUserInfo();
+  }
+
+  private getUserInfo(){
+    const a = this.localStorageService.getItem("user");
+    console.log(a);
   }
 
   private initTranslation(){

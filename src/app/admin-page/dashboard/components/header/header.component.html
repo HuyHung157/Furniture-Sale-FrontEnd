@@ -9,11 +9,12 @@
 
     <div class="group-action__user">
         <mat-menu #menu="matMenu">
-            <button class="btn" mat-menu-item routerLink="/personal-info"><i class="fa fa-user-cog"></i> Thông tin tài
-                khoản</button>
-            <button class="btn" mat-menu-item routerLink="/change-password"><i class="fa fa-key"></i> Đổi mật
-                khẩu</button>
-            <button class="btn" mat-menu-item (click)="logout()"><i class="fa fa-power-off"></i> Đăng xuất</button>
+            <button class="btn" mat-menu-item routerLink="/personal-info">
+                <i class="fa fa-user-cog"></i> Thông tin tài khoản</button>
+            <button class="btn" mat-menu-item routerLink="/change-password">
+                <i class="fa fa-key"></i> Đổi mật khẩu</button>
+            <button class="btn" mat-menu-item (click)="logout()">
+                <i class="fa fa-power-off"></i> Đăng xuất</button>
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="menu" class=" btn_user">
             <!-- <img class="header__avatar" src="/assets/img/boss.png" alt="" /> -->

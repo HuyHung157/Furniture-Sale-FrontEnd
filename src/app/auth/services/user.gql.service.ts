@@ -18,6 +18,22 @@ mutation signIn($input: SignInRequestType!){
   }
 }`;
 
+const mutationSignInWithProvider = gql`
+mutation signInWithProvider($input: SignUpByProviderRequestType!){
+  signInWithProvider(input: $input){
+    token
+    refreshToken
+  }
+}`;
+
+const queryCheckEmailExisted = gql`
+query checkEmailUsed($email: String!) {
+  checkEmailUsed(email: $email) {
+      isEmailUsed
+    }
+  }
+`;
+
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +57,26 @@ export class UserGqlService {
       variables: {
         input,
       }
+    });
+  }
+
+
+  public signInWithProvider(input) {
+    return this.apollo.mutate({
+      mutation: mutationSignInWithProvider,
+      variables: {
+        input,
+      }
+    })
+  }
+
+  public checkEmailExisted(email) {
+    return this.apollo.query({
+      query: queryCheckEmailExisted,
+      variables: {
+        email,
+      },
+      fetchPolicy: 'network-only',
     });
   }
 

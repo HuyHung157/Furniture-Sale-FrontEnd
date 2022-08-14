@@ -3,12 +3,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { BehaviorSubject, pipe } from 'rxjs';
 import { Injector } from '@angular/core';
-import { BROWSER_STORAGE } from './user.service';
 import { CommonConstant } from 'src/app/shared/constants/common.constant';
 import jwtDecode from 'jwt-decode';
+import { UserGqlService } from './user.gql.service';
+import { LocalStorageService } from 'src/app/shared/services/localstorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,32 +23,19 @@ export class AuthService {
   private logged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
-    @Inject(BROWSER_STORAGE) public storage: Storage,
     public afAuth: AngularFireAuth,
     private readonly router: Router,
+    private readonly localStorageService: LocalStorageService,
+    private readonly authLocalGqlService: UserGqlService,
     injector: Injector
   ) { 
     this.toastr = injector.get(ToastrService);
   }
 
-  loginWithGoogle() {
-    return this.authLogin(new firebase.auth.GoogleAuthProvider());
-  }
-
-  // Auth logic to run auth providers
-  authLogin(provider) {
-    return this.afAuth.signInWithPopup(provider)
-      .then((result) => {
-        localStorage.setItem('user', JSON.stringify(result));
-        this.toastr.success('Đăng nhập thành công!');
-        this.router.navigate(['admin']);
-      }).catch((error) => {
-        this.toastr.error(error);
-      });
-  }
+  
 
   public setUserToken(signin: { token: string }) {
-    this.storage.setItem(CommonConstant.USER_TOKEN, JSON.stringify(signin));
+    this.localStorageService.setItem(CommonConstant.USER_TOKEN, JSON.stringify(signin));
     this.setUser(signin);
   }
 
@@ -55,8 +43,15 @@ export class AuthService {
     return this.token;
   }
 
+  public checkEmailExisted(email: string) {
+    return this.authLocalGqlService.checkEmailExisted(email)
+    .pipe(
+      map( (res: any) => res.data.checkEmailUsed )
+    );
+  }
+
   private refreshUserToken() {
-    const userToken = this.storage.getItem(CommonConstant.USER_TOKEN);
+    const userToken = this.localStorageService.getItem(CommonConstant.USER_TOKEN);
     if (userToken) {
       const token = JSON.parse(userToken);
       this.setUser(token);
@@ -70,7 +65,7 @@ export class AuthService {
   }
 
   public clearUserToken() {
-    this.storage.removeItem(CommonConstant.USER_TOKEN);
+    this.localStorageService.removeItem(CommonConstant.USER_TOKEN);
     this.token = undefined;
   }
 

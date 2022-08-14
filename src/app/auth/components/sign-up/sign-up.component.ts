@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject, timer } from 'rxjs';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { FormFieldType } from 'src/app/shared/enums/form-field-type.enum';
 import { GenderEnum } from 'src/app/shared/enums/gender.enum';
 import { FormField } from 'src/app/shared/interfaces/form-field.interface';
@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import moment from 'moment';
 import { splitPhoneNumber } from 'src/infrastructure/utils/phone.util';
+import { FirebaseService } from 'src/app/shared/services/firebase.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -44,6 +45,7 @@ export class SignUpComponent implements OnInit {
     private readonly dataVNService: DataVNService,
     private readonly toastr: ToastrService,
     private readonly _formBuilder: FormBuilder,
+    private readonly firebaseService: FirebaseService
   ) {
   }
 
@@ -82,12 +84,25 @@ export class SignUpComponent implements OnInit {
         ...this.secondFormGroup.value,
         ...this.thirdFormGroup.value,
       }
-      console.log(valueForm)
       const dataInput = await this.formatFormInput(valueForm);
+
+      const userCredential = await this.firebaseService.createUserWithEmailAndPassword(
+        valueForm.email,
+        valueForm.password
+      ).then(res => {}).catch(err => {
+        this.toastr.error(err.message);
+      });
+
+      delete valueForm.password;
+
       this.userService.signUp(dataInput)
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(res => {
+        .subscribe(
+          (res) => {
           console.log(res);
+          (error) => {
+            this.toastr.error(error.message);
+          }
         })
 
 
@@ -116,9 +131,9 @@ export class SignUpComponent implements OnInit {
     //   confirmPassword: ['', [Validators.required, confirmPasswordNotMatch() ] ],
     // });
     this.firstFormGroup = this._formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email], [this.isEmailExist()]],
       password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required, confirmPasswordNotMatch()]],
     });
     this.secondFormGroup = this._formBuilder.group({
       firstName: ['', Validators.required],
@@ -153,6 +168,18 @@ export class SignUpComponent implements OnInit {
       phoneNumber,
     }
     return dataInput;
+  }
+
+  private isEmailExist(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors> => {
+      const valueEmail = control.value;
+      return timer(500).pipe(
+        switchMap(() => this.authService.checkEmailExisted(valueEmail)),
+        map(res => {
+          return res.isEmailUsed ? {exist: true} : null;
+        })
+      );
+    };
   }
 
   private initData() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/shared/services/localstorage.service';
 import { onMainContentChange } from './animations/animations';
 import { SidenavService } from './services/sidenav.service';
 
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
   public onSideNavChange: boolean;
 
   constructor(
-    private sideNavService: SidenavService
+    private sideNavService: SidenavService,
+    private readonly localStorageService: LocalStorageService,
   ) {
     this.sideNavService.sideNavState$.subscribe(res => {
       this.onSideNavChange = res;
@@ -22,7 +24,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserToken();
+  }
 
+  private getUserToken(){
+    const a = this.localStorageService.getItem("user");
+    console.log(a);
   }
 
 }

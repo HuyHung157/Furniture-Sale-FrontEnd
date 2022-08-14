@@ -26,6 +26,7 @@
                         (firstFormGroup.controls.email.dirty  || firstFormGroup.controls.email.touched)">
                           <span *ngIf='firstFormGroup.controls.email.errors.required'>Vui lòng nhập email</span>
                           <span *ngIf='firstFormGroup.controls.email.errors.email'>Sai định dạng Email. Vd: email@gmail.com</span>
+                          <span *ngIf='firstFormGroup.controls.email.errors.exist'>Email đã tồn tại</span>
                         </mat-error>
                       </mat-form-field>
                     </div>

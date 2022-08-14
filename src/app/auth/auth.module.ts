@@ -7,6 +7,11 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.module';
+import { ErrorInterceptor } from '../interceptors/error.interceptor';
+import { UserService } from './services/user.service';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AuthResolver } from './resolvers/auth.resolver';
 
 @NgModule({
   imports: [
@@ -21,7 +26,13 @@ import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.
     SignInComponent, 
     SignUpComponent,
     UserProfileComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
   ],
-  providers: []
+  providers: [
+    ErrorInterceptor,
+    UserService,
+    AuthResolver
+  ]
 })
 export class AuthModule { }

@@ -47,16 +47,19 @@ export class SignInComponent implements OnInit {
   async login(formLogin) {
     if (formLogin.valid) {
       const value = formLogin.form.value;
-      
+
       this.userService.signIn(value)
         .pipe(takeUntil(this.unsubscribe$))
-        .subscribe(res => {
-          console.log(res);
-          localStorage.setItem('user', res?.token);
-          this.toastr.success('Đăng nhập thành công!');
-          this.router.navigate(['admin']);
-        })
-      
+        .subscribe(
+          (res) => {
+            localStorage.setItem('user', res?.token);
+            this.toastr.success('Đăng nhập thành công!');
+            this.router.navigate(['admin']);
+          },
+          (error) => {
+            this.toastr.error(error.message, "Đăng nhập thất bại!");
+          }
+        );
 
     } else {
       this.formLoginGroup.form.markAllAsTouched();
@@ -68,6 +71,6 @@ export class SignInComponent implements OnInit {
   }
 
   signInByFacebook() {
-    alert('Sẽ sớm có tính năng này!');
+    this.userService.signInByFacebook();
   }
 }
