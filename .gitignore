@@ -2,6 +2,7 @@
 
 # App after build 
 /angularapp
+.angular
 
 # compiled output
 /dist

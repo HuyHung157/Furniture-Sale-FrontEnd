@@ -11,7 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HeaderComponent implements OnInit {
   @Input() sidenav: MatSidenav;
-  public firstName = 'Hùng';
+  // TODO: update real data
+  public firstName = 'ADMIN';
 
   constructor(
     private readonly router: Router,

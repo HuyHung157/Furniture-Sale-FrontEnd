@@ -6,6 +6,7 @@ import { ContactComponent } from './modules/contact/contact.component';
 import { HomeComponent } from './modules/home/home.component';
 import { PolicyRegulationComponent } from './modules/policy-regulation/policy-regulation.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
+import { ProductDetailComponent } from './modules/product-detail/product-detail.component';
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'product-detail/:id',
+        component: ProductDetailComponent
       },
       {
         path: 'about',

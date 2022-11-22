@@ -1,4 +1,4 @@
-$primary-font: "Baloo Tamma 2", cursive;
+$primary-font: "Source Sans Pro", sans-serif;
 $secondary-font: "futu", Arial, Tahoma, sans-serif;
 $third-font: "Source Sans Pro", sans-serif;
 $fourth-font: "Varta", sans-serif;
@@ -40,6 +40,7 @@ $bold: 700;
 
 // line-height
 
+$max-width: 1024px;
 
 $upload-image-hover-overlay-background: linear-gradient(to bottom, rgba(59, 66, 85, 0), rgba(59, 66, 85, 0.8)) !default;
 $normal-border-radius: 4px !default;

@@ -30,8 +30,8 @@ export class SideNavComponent implements OnInit {
   ];
 
   accountActions = [
-    { name: 'Khách hàng', icon: 'fas fa-user-tie', isSelected: false },
-    { name: 'Nhân viên', icon: 'fas fa-users', isSelected: false }
+    { name: 'Khách hàng', link: 'account/user', icon: 'fas fa-user-tie', isSelected: false },
+    { name: 'Nhân viên', link: 'account/employee', icon: 'fas fa-users', isSelected: false }
   ];
 
   ngOnInit() {

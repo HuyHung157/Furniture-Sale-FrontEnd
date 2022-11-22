@@ -11,206 +11,62 @@
                   <h1 class="sign-up__headingText">Đăng ký</h1>
               </div>
              
-              <mat-horizontal-stepper linear #stepper>
-                <mat-step [stepControl]="firstFormGroup">
-                  <form [formGroup]="firstFormGroup">
+              <form [formGroup]="signUpFormGroup">
 
-                    <!-- UserName -->
-                    <div class="form-group">
-                      <mat-form-field class="form-field" appearance="fill">
-                        <div class="group-input">
-                          <input matInput class="input input__username" type="text" formControlName="email" placeholder="Email đăng nhập" required />
-                          <i class="input_user fa fa-user"></i>
-                        </div>
-                        <mat-error *ngIf="firstFormGroup.controls.email.errors && 
-                        (firstFormGroup.controls.email.dirty  || firstFormGroup.controls.email.touched)">
-                          <span *ngIf='firstFormGroup.controls.email.errors.required'>Vui lòng nhập email</span>
-                          <span *ngIf='firstFormGroup.controls.email.errors.email'>Sai định dạng Email. Vd: email@gmail.com</span>
-                          <span *ngIf='firstFormGroup.controls.email.errors.exist'>Email đã tồn tại</span>
-                        </mat-error>
-                      </mat-form-field>
+                <!-- UserName -->
+                <div class="form-group">
+                  <mat-form-field class="form-field" appearance="fill">
+                    <div class="group-input">
+                      <input matInput class="input input__username" type="text" formControlName="email" placeholder="Email đăng nhập" required />
+                      <i class="input_user fa fa-user"></i>
                     </div>
-        
-                    <!-- Password -->
-                    <div class="form-group">
-                      <mat-form-field  class="form-field" appearance="fill">
-                          <div class="group-input">
-                            <input matInput class="input-form input__password" [type]="inputTypePassword" formControlName="password" placeholder="Mật khẩu" required #inputPass />
-                            <i [matTooltip]="tooltipContent" (click)="changeType(inputPass.type)" 
-                              class="input_password" [class]="iconPassword"></i>
-                          </div>
-                          <mat-error *ngIf="firstFormGroup.controls.password.errors && 
-                            (firstFormGroup.controls.password.dirty  || firstFormGroup.controls.password.touched)">
-                            <span *ngIf='firstFormGroup.controls.password.errors.required'>Vui lòng nhập mật khẩu</span>
-                            <span *ngIf='firstFormGroup.controls.password.errors.minlength'>Độ dài tối thiểu 8 ký tự</span>
-                          </mat-error>
-                      </mat-form-field>
-                    </div>
+                    <mat-error *ngIf="signUpFormGroup.controls.email.errors && 
+                    (signUpFormGroup.controls.email.dirty  || signUpFormGroup.controls.email.touched)">
+                      <span *ngIf='signUpFormGroup.controls.email.errors.required'>Vui lòng nhập email</span>
+                      <span *ngIf='signUpFormGroup.controls.email.errors.email'>Sai định dạng Email. Vd: email@gmail.com</span>
+                      <span *ngIf='signUpFormGroup.controls.email.errors.exist'>Email đã tồn tại</span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
 
-                    <!-- Password confirm -->
-                    <div class="form-group">
-                      <mat-form-field class="form-field" appearance="fill">
-                        <div class="group-input">
-                          <input matInput class="input-form input__password" [type]="inputTypePassword" formControlName="confirmPassword" 
-                              placeholder="Xác nhận mật khẩu" required #inputPass />
-                          <i [matTooltip]="tooltipContent" (click)="changeType(inputPass.type)" 
-                            class="input_password"[class]="iconPassword"></i>
-                        </div>
-                        <mat-error *ngIf="firstFormGroup.controls.confirmPassword.errors && 
-                            (firstFormGroup.controls.confirmPassword.dirty  || firstFormGroup.controls.confirmPassword.touched)">
-                            <span *ngIf='firstFormGroup.controls.confirmPassword.errors.required'>Vui lòng nhập mật khẩu</span>
-                            <span *ngIf='firstFormGroup.controls.confirmPassword.errors.confirmPasswordNotMatch'>Mật khẩu không trùng khớp</span>
-                          </mat-error>
-                      </mat-form-field>
-                    </div>
-                    
-                    <div class='group-action'>
-                      <button mat-button matStepperNext 
-                        class="btn__sign-up" 
-                        (click)="onNext(firstFormGroup)" >Tiếp theo</button>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step [stepControl]="secondFormGroup" >
-                  <form [formGroup]="secondFormGroup">
-                    <div class="row-group">
-                      <!-- FirstName -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <input matInput class="input-form input__firstname" type="text" formControlName="firstName" placeholder="Tên" required />
-                          <mat-error *ngIf="secondFormGroup.controls.firstName.errors?.required 
-                            && (secondFormGroup.controls.firstName.dirty  || secondFormGroup.controls.firstName.touched) ">
-                            Vui lòng nhập tên
-                          </mat-error>
-                        </mat-form-field>
+                <app-phone-input [field]="filedPhoneNumber"
+                  (phoneNumberEmitter)="setPhoneNumber($event,  signUpFormGroup.controls[filedPhoneNumber.key])"
+                ></app-phone-input>
+    
+                <!-- Password --> 
+                <div class="form-group">
+                  <mat-form-field  class="form-field" appearance="fill">
+                      <div class="group-input">
+                        <input matInput class="input-form input__password" [type]="inputTypePassword" formControlName="password" placeholder="Mật khẩu" required #inputPass />
+                        <i [matTooltip]="tooltipContent" (click)="changeType(inputPass.type)" 
+                          class="input_password" [class]="iconPassword"></i>
                       </div>
+                      <mat-error *ngIf="signUpFormGroup.controls.password.errors && 
+                        (signUpFormGroup.controls.password.dirty  || signUpFormGroup.controls.password.touched)">
+                        <span *ngIf='signUpFormGroup.controls.password.errors.required'>Vui lòng nhập mật khẩu</span>
+                        <span *ngIf='signUpFormGroup.controls.password.errors.minlength'>Độ dài tối thiểu 8 ký tự</span>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
 
-                      <!-- LastName -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <input matInput class="input-form input__firstname" type="text" formControlName="lastName" placeholder="Họ" required />
-                          <mat-error *ngIf="secondFormGroup.controls.lastName.errors?.required 
-                            && (secondFormGroup.controls.lastName.dirty  || secondFormGroup.controls.lastName.touched) ">
-                            Vui lòng nhập họ
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
+                <!-- Password confirm -->
+                <div class="form-group">
+                  <mat-form-field class="form-field" appearance="fill">
+                    <div class="group-input">
+                      <input matInput class="input-form input__password" [type]="inputTypePassword" formControlName="confirmPassword" 
+                          placeholder="Xác nhận mật khẩu" required #inputPass />
+                      <i [matTooltip]="tooltipContent" (click)="changeType(inputPass.type)" 
+                        class="input_password"[class]="iconPassword"></i>
                     </div>
-
-
-                    <div class="row-group">
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <mat-select  formControlName="gender" class="input-form" placeholder="Giới tính">
-                            <mat-option *ngFor="let gender of genders" [value]="gender.value">
-                              {{gender.label}}
-                            </mat-option>
-                          </mat-select>
-                          <mat-error *ngIf="secondFormGroup.controls.gender.errors?.required 
-                            && (secondFormGroup.controls.gender.dirty  || secondFormGroup.controls.gender.touched) ">
-                            Vui lòng chọn giới tính
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-
-                      <!-- birthday -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <input matInput class="input input__birthday" 
-                          formControlName="birthday" 
-                          placeholder="Năm sinh" required 
-                          [matDatepicker]="picker"/>
-                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                          <mat-datepicker #picker ></mat-datepicker>
-                          
-                          <mat-error *ngIf="secondFormGroup.controls.birthday.errors?.required 
-                            && (secondFormGroup.controls.birthday.dirty  || secondFormGroup.controls.birthday.touched) ">
-                            Vui lòng nhập ngày tháng năm sinh
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-                    </div>
-
-                    <div class='group-action'>
-                      <button mat-button matStepperPrevious>Quay lại</button>
-                      <button mat-button matStepperNext class="btn__sign-up w-65" (click)="onNext(secondFormGroup)">Tiếp theo</button>
-                    </div>
-                  </form>
-                </mat-step>
-                <mat-step [stepControl]="thirdFormGroup">
-                  <form [formGroup]="thirdFormGroup">
-                    <app-phone-input [field]="filedPhoneNumber"
-                      (phoneNumberEmitter)="setPhoneNumber($event,  thirdFormGroup.controls[filedPhoneNumber.key])"
-                    ></app-phone-input>
-
-                    <div class="row-group">
-                      <!-- address -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <input matInput class="input-form input__address" type="text" formControlName="address" placeholder="Địa chỉ" required />
-                          <mat-error *ngIf="thirdFormGroup.controls.address.errors?.required 
-                            && (thirdFormGroup.controls.address.dirty  || thirdFormGroup.controls.address.touched) ">
-                            Vui lòng nhập địa chỉ
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-                      <!-- city -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <mat-select (selectionChange)="onCityChange($event)"  formControlName="city" class="input-form" placeholder="Thành phố/Tỉnh">
-                            <mat-option *ngFor="let city of cities" [value]="city.value">
-                              {{city.label}}
-                            </mat-option>
-                          </mat-select>
-                          <mat-error *ngIf="thirdFormGroup.controls.city.errors?.required 
-                            && (thirdFormGroup.controls.city.dirty  || thirdFormGroup.controls.city.touched) ">
-                            Vui lòng chọn tỉnh/thành phố
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-
-                    </div>
-
-                    <div class="row-group">
-                      <!-- district -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <mat-select (selectionChange)="onDistrictChange($event)" formControlName="district" class="input-form" placeholder="Quận/Huyện">
-                            <mat-option *ngFor="let district of districts" [value]="district.value">
-                              {{district.label}}
-                            </mat-option>
-                          </mat-select>
-                          <mat-error *ngIf="thirdFormGroup.controls.district.errors?.required 
-                            && (thirdFormGroup.controls.district.dirty  || thirdFormGroup.controls.district.touched) ">
-                            Vui lòng chọn quận/huyện
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-                      <!-- ward -->
-                      <div class="form-group">
-                        <mat-form-field class="form-field" appearance="fill">
-                          <mat-select  formControlName="ward" class="input-form" placeholder="Phường/Xã">
-                            <mat-option *ngFor="let ward of wards" [value]="ward.value">
-                              {{ward.label}}
-                            </mat-option>
-                          </mat-select>
-                          <mat-error *ngIf="thirdFormGroup.controls.ward.errors?.required 
-                            && (thirdFormGroup.controls.ward.dirty  || thirdFormGroup.controls.ward.touched) ">
-                            Vui lòng chọn phường/xã
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-
-                    </div>
-
-                    <div>
-                      <button mat-button matStepperPrevious>Quay lại</button>
-                      <button mat-button (click)="stepper.reset()">Khôi phục lại</button>
-                      <button class="btn__sign-up" (click)="signUp()">Đăng ký</button>
-                    </div>
-                  </form>
-                </mat-step>
-              </mat-horizontal-stepper>
+                    <mat-error *ngIf="signUpFormGroup.controls.confirmPassword.errors && 
+                        (signUpFormGroup.controls.confirmPassword.dirty  || signUpFormGroup.controls.confirmPassword.touched)">
+                        <span *ngIf='signUpFormGroup.controls.confirmPassword.errors.required'>Vui lòng nhập mật khẩu</span>
+                        <span *ngIf='signUpFormGroup.controls.confirmPassword.errors.confirmPasswordNotMatch'>Mật khẩu không trùng khớp</span>
+                      </mat-error>
+                  </mat-form-field>
+                </div>
+                <button class="btn__sign-up" (click)="signUp()">Đăng ký</button>
+              </form>
 
               <a class="link__create_account" routerLink="/auth/sign-in">Đăng nhập</a>
           </div>

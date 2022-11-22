@@ -6,7 +6,7 @@ import { HomePageComponent } from './home-page.component';
 import { HomeComponent } from './modules/home/home.component';
 import { ShoppingCartComponent } from './modules/shopping-cart/shopping-cart.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ProductComponent } from './modules/product/product.component';
+import { ProductDetailComponent } from './modules/product-detail/product-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 import { PolicyRegulationComponent } from './modules/policy-regulation/policy-regulation.component';
@@ -19,7 +19,7 @@ import { InfrastructureModule } from 'src/infrastructure/modules/infrastructure.
     HomePageComponent,
     ShoppingCartComponent,
     NavbarComponent,
-    ProductComponent,
+    ProductDetailComponent,
     FooterComponent,
     PrivacyPolicyComponent,
     PolicyRegulationComponent

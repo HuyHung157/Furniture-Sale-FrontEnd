@@ -28,8 +28,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   public onClickProduct(product) {
-    console.log('detail')
-    // this.router.navigate(['/detail', product.id]);
+    this.router.navigate(['/product-detail', product.id]);
   }
 
   public addToCart(event) {

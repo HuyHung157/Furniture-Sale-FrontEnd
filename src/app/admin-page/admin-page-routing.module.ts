@@ -19,11 +19,11 @@ const routes: Routes = [
       {
         path: 'category',
         loadChildren: () => import('./modules/category/category.module').then((m) => m.CategoryModule),
-      }
-      // {
-      //   path: 'auth',
-      //   component:
-      // },
+      },
+      {
+        path: 'account',
+        loadChildren: () => import('./modules/account/account.module').then((m) => m.AccountModule),
+      },
       // {
       //   path: 'order',
       //   component:
